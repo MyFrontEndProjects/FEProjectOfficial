@@ -153,6 +153,19 @@ const OffcanvasExample = () => {
                 About us <i className="fa-regular fa-address-card" />
               </div>
             </NavLink>
+            <Link
+              to="http://localhost:8000/login"
+              target="_blank"
+              className="nav-link d-none d-md-flex align-self-center text-center text-uppercase fw-bold text-white me-3"
+              style={{ textDecoration: "none" }}
+            >
+              <div
+                className="align-self-center"
+                style={{ fontFamily: "cursive" }}
+              >
+                Quản trị <i className="fa-solid fa-screwdriver-wrench"></i>
+              </div>
+            </Link>
           </Navbar.Brand>
           {/* <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} /> */}
 
