@@ -1,0 +1,148 @@
+git init 
+git config [system] or [global] or [local] user.name [name] 
+git config [system] or [global] or [local] user.email [email] 
+git add README.md 
+git config --list [show list user]
+git remote add origin [repo link] 
+
+git remote -v [check repo link]
+git add . 
+git commit -m"[name]" 
+git push origin [master] or [main] 
+
+
+ git branch -M [main] or [master]
+git push -u origin [main] or [master]
+
+
+
+echo "# Demo" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/DrMoho/Demo.git
+git push -u origin main
+
+git remote add origin https://github.com/DrMoho/Demo.git
+git branch -M main
+git push -u origin main
+
+
+
+git fetch 
+git pull origin [master] or [main]
+
+
+
+git add . 
+git push -u origin [main] or [master]
+// -u or --set-upstream chon luong de up staging area
+
+git clone [repo] [file chứa]
+
+
+# tao repo central 
+git init --bare CentralRepo
+
+//merge nhanh voi nhau 
+git checkout [ten nhanh default]
+git merge [ten nhanh phu]
+<=> xung dot = giai quyet xung dot 
+git add . 
+git commit -m ""
+git push -u origin [nhanh default]
+
+//quay ve phien ban commit truoc 
+git log 
+git checkout [ma commit muon quay ve]
+
+xem so lan commit 
+git log --oneline 
+
+git branch [ten nhanh moi]
+git push -u origin [nhanh moi]
+=> tao nhanh moi thanh cong 
+
+Ex : A1 -> A2 -> B1 
+git checkout A2 
+git branch B1 
+git add . 
+git push -u origin B1 
+
+thay doi nhanh 
+A1 -> A2 -> B1 
+
+<=> A1 -> A2 -> A3 -> B1 
+
+git rebase [nhanh chinh hien tai]
+=> neu co xung dot = giai quyet 
+git add . 
+git commit -m"[commit lai doan da sua]"
+git rebase 
+
+xoa branch 
+A1 -> A2 -> A3 -> A4 
+        \B1 -> B2 
+
+xoa branch B 
+git branch -d B
+git push origin -d B 
+
+cach de cuu du lieu khi xoa branch 
+git log 
+git reset --hard [id cua commit muon quay lai]
+
+PS D:\Demopull> git push -u origin main
+To https://github.com/DrMoho/Demo.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/DrMoho/Demo.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. If you want to integrate the remote changes, use 'git pull'
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS D:\Demopull> ^C
+PS D:\Demopull> git branch main 
+fatal: a branch named 'main' already exists
+PS D:\Demopull> git brand -M main 
+git: 'brand' is not a git command. See 'git --help'.
+
+Loi push khong thanh cong 
+The most similar command is
+        branch
+PS D:\Demopull> git branch -M main 
+fatal: cannot rename the current branch while not on any.
+PS D:\Demopull> git log --oneline 
+038e8d9 (HEAD) Up thu file do an cuoi ki
+a61aa11 (origin/main) them 1 dong lenh vao git merge , reset jump , sua xung dot v.v
+2aa99bb (main) quay ve phien ban commit truoc
+1999022 them lenh add central repo
+0dc5eba Cap nhat cach clone line 42
+bb772bc chinh sua cach up sau khi pull
+819a506 chinh sua lenh pull
+b85d392 them lenh pull
+daada2f push nguyen file
+PS D:\Demopull> git push 
+fatal: You are not currently on a branch.
+To push the history leading to the current (detached HEAD)
+state now, use
+
+    git push origin HEAD:<name-of-remote-branch>
+
+PS D:\Demopull> git push origin HEAD:main
+Enumerating objects: 2279, done.
+Counting objects: 100% (2279/2279), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2260/2260), done.
+Writing objects: 100% (2278/2278), 4.97 MiB | 1.40 MiB/s, done.
+Total 2278 (delta 515), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (515/515), done.
+To https://github.com/DrMoho/Demo.git
+   a61aa11..038e8d9  HEAD -> main
+PS D:\Demopull>
+
+
+//git push origin HEAD:main
+
+
+

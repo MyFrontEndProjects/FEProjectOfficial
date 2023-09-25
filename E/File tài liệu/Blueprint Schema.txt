@@ -1,0 +1,55 @@
+Dưới đây là một danh sách đa dạng các kiểu dữ liệu mà bạn có thể gặp trong cơ sở dữ liệu, cùng với cách chuyển đổi chúng sang Laravel Blueprint:
+
+1. Kiểu Chuỗi (String):
+   Trong cơ sở dữ liệu: VARCHAR(255)
+   Trong Blueprint: \$table->string('column_name');
+
+2. Kiểu Văn Bản (Text):
+   Trong cơ sở dữ liệu: TEXT
+   Trong Blueprint: \$table->text('column_name');
+
+3. Kiểu Số Nguyên (Integer):
+   Trong cơ sở dữ liệu: INT
+   Trong Blueprint: \$table->integer('column_name');
+
+4. Kiểu Số Thực (Float):
+   Trong cơ sở dữ liệu: FLOAT(8, 2)
+   Trong Blueprint: \$table->float('column_name', 8, 2);
+
+5. Kiểu Boolean:
+   Trong cơ sở dữ liệu: BOOLEAN
+   Trong Blueprint: \$table->boolean('column_name');
+
+6. Kiểu Ngày (Date):
+   Trong cơ sở dữ liệu: DATE
+   Trong Blueprint: \$table->date('column_name');
+
+7. Kiểu Thời Gian (Time):
+   Trong cơ sở dữ liệu: TIME
+   Trong Blueprint: \$table->time('column_name');
+
+8. Kiểu Ngày và Thời Gian (DateTime):
+   Trong cơ sở dữ liệu: DATETIME
+   Trong Blueprint: \$table->dateTime('column_name');
+
+9. Kiểu JSON:
+   Trong cơ sở dữ liệu: JSON
+   Trong Blueprint: \$table->json('column_name');
+
+10. Kiểu Địa chỉ IP (IPAddress):
+    Trong cơ sở dữ liệu: VARCHAR(45)
+    Trong Blueprint: \$table->ipAddress('column_name');
+
+11. Kiểu Địa chỉ MAC (MACAddress):
+    Trong cơ sở dữ liệu: VARCHAR(17)
+    Trong Blueprint: \$table->macAddress('column_name');
+
+12. Kiểu Chuỗi Enum:
+    Trong cơ sở dữ liệu: ENUM('value1', 'value2', 'value3')
+    Trong Blueprint: \$table->enum('column_name', ['value1', 'value2', 'value3']);
+
+13. Kiểu UUID:
+    Trong cơ sở dữ liệu: CHAR(36)
+    Trong Blueprint: \$table->uuid('column_name');
+
+Vui lòng thay thế 'column_name' bằng tên thực sự của cột bạn đang làm việc. Đây chỉ là một số ví dụ và không bao gồm tất cả các kiểu dữ liệu có thể. Hãy kiểm tra tài liệu của hệ quản trị cơ sở dữ liệu mà bạn đang sử dụng để biết thêm chi tiết về các kiểu dữ liệu khác.

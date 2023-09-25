@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./src", // Thay đổi thành đường dẫn đến thư mục chứa mã nguồn của bạn
+    "paths": {
+      "@fortawesome/free-solid-svg-icons": ["node_modules/@fortawesome/free-solid-svg-icons"],
+      "@fortawesome/react-fontawesome": ["node_modules/@fortawesome/react-fontawesome"]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}

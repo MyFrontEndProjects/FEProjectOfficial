@@ -1,0 +1,234 @@
+Lệnh Laravel:
+
+1. Tạo một dự án Laravel mới:
+   composer create-project --prefer-dist laravel/laravel tên-dự-án
+
+2. Chạy máy chủ phát triển tích hợp sẵn trong Laravel:
+   php artisan serve
+
+3. Tạo migration mới:
+   php artisan make:migration tên-migration
+
+4. Chạy migration để tạo bảng trong cơ sở dữ liệu:
+   php artisan migrate
+
+5. Tạo một Controller mới:
+   php artisan make:controller tên-controller
+
+6. Tạo một Model mới:
+   php artisan make:model tên-model
+
+7. Tạo một tệp tin View mới:
+   php artisan make:view tên-view
+
+8. Tạo một Request mới:
+   php artisan make:request tên-request
+
+Lệnh Composer:
+
+1. Cài đặt các gói phụ thuộc:
+   composer install
+
+2. Cập nhật các gói phụ thuộc đã cài đặt:
+   composer update
+
+3. Thêm một gói phụ thuộc mới vào composer.json:
+   composer require tên-gói
+
+4. Xóa một gói phụ thuộc:
+   composer remove tên-gói
+
+5. Kiểm tra các gói phụ thuộc đã cài đặt:
+   composer show
+
+6. Cập nhật Composer và tải các phiên bản mới:
+   composer self-update
+Lệnh Laravel:
+
+1. Tạo một dự án Laravel mới:
+   composer create-project --prefer-dist laravel/laravel tên-dự-án
+
+2. Chạy máy chủ phát triển tích hợp sẵn trong Laravel:
+   php artisan serve
+
+3. Tạo migration mới:
+   php artisan make:migration tên-migration
+
+4. Chạy migration để tạo bảng trong cơ sở dữ liệu:
+   php artisan migrate
+
+5. Tạo một Controller mới:
+   php artisan make:controller tên-controller
+
+6. Tạo một Model mới:
+   php artisan make:model tên-model
+
+7. Tạo một tệp tin View mới:
+   php artisan make:view tên-view
+
+8. Tạo một Request mới:
+   php artisan make:request tên-request
+
+9. Chạy các Unit Test:
+   php artisan test
+
+10. Tạo một Resource Controller:
+    php artisan make:controller tên-controller --resource
+
+11. Tạo một Middleware mới:
+    php artisan make:middleware tên-middleware
+
+12. Tạo một Seeder mới:
+    php artisan make:seeder tên-seeder
+
+13. Tạo một Event mới:
+    php artisan make:event tên-event
+
+14. Tạo một Job mới:
+    php artisan make:job tên-job
+
+15. Tạo một Policy mới:
+    php artisan make:policy tên-policy --model=TênModel
+
+
+Lệnh Composer:
+
+1. Cài đặt các gói phụ thuộc:
+   composer install
+
+2. Cập nhật các gói phụ thuộc đã cài đặt:
+   composer update
+
+3. Thêm một gói phụ thuộc mới vào composer.json:
+   composer require tên-gói
+
+4. Xóa một gói phụ thuộc:
+   composer remove tên-gói
+
+5. Kiểm tra các gói phụ thuộc đã cài đặt:
+   composer show
+
+6. Cập nhật Composer và tải các phiên bản mới:
+   composer self-update
+
+7. Tìm kiếm một gói phụ thuộc:
+   composer search tên-gói
+
+8. Xem tất cả các lệnh hỗ trợ:
+   composer
+
+9. Xóa các tệp tin cache của Composer:
+   composer clear-cache
+
+10. Tạo một file composer.lock từ composer.json:
+    composer lock
+Lệnh Laravel:
+
+1. Tạo một dự án Laravel mới:
+   composer create-project --prefer-dist laravel/laravel tên-dự-án
+
+2. Chạy máy chủ phát triển tích hợp sẵn trong Laravel:
+   php artisan serve
+
+3. Tạo migration mới:
+   php artisan make:migration tên-migration
+
+4. Chạy migration để tạo bảng trong cơ sở dữ liệu:
+   php artisan migrate
+
+5. Tạo một Controller mới:
+   php artisan make:controller tên-controller
+
+6. Tạo một Model mới:
+   php artisan make:model tên-model
+
+7. Tạo một tệp tin View mới:
+   php artisan make:view tên-view
+
+8. Tạo một Request mới:
+   php artisan make:request tên-request
+
+9. Chạy các Unit Test:
+   php artisan test
+
+10. Tạo một Resource Controller:
+    php artisan make:controller tên-controller --resource
+
+11. Tạo một Middleware mới:
+    php artisan make:middleware tên-middleware
+
+12. Tạo một Seeder mới:
+    php artisan make:seeder tên-seeder
+
+13. Tạo một Event mới:
+    php artisan make:event tên-event
+
+14. Tạo một Job mới:
+    php artisan make:job tên-job
+
+15. Tạo một Policy mới:
+    php artisan make:policy tên-policy --model=TênModel
+
+16. Chạy các Tinker Console:
+    php artisan tinker
+
+17. Tạo một Factory mới:
+    php artisan make:factory tên-factory
+
+18. Tạo một Event Listener mới:
+    php artisan make:listener tên-listener --event=TênEvent
+
+19. Tạo một Trait mới:
+    php artisan make:trait tên-trait
+
+20. Tạo một Policy mới cho Resource:
+    php artisan make:policy tên-policy --model=TênModel --resource
+
+
+Lệnh Composer:
+
+1. Cài đặt các gói phụ thuộc:
+   composer install
+
+2. Cập nhật các gói phụ thuộc đã cài đặt:
+   composer update
+
+3. Thêm một gói phụ thuộc mới vào composer.json:
+   composer require tên-gói
+
+4. Xóa một gói phụ thuộc:
+   composer remove tên-gói
+
+5. Kiểm tra các gói phụ thuộc đã cài đặt:
+   composer show
+
+6. Cập nhật Composer và tải các phiên bản mới:
+   composer self-update
+
+7. Tìm kiếm một gói phụ thuộc:
+   composer search tên-gói
+
+8. Xem tất cả các lệnh hỗ trợ:
+   composer
+
+9. Xóa các tệp tin cache của Composer:
+   composer clear-cache
+
+10. Tạo một file composer.lock từ composer.json:
+    composer lock
+
+11. Tạo một Project Laravel mới:
+    composer create-project --prefer-dist laravel/laravel tên-dự-án
+
+12. Tạo một Package mới:
+    composer create-project --prefer-dist laravel/laravel tên-package
+
+13. Xem thông tin về một gói phụ thuộc cụ thể:
+    composer show tên-gói
+
+14. Kiểm tra sự tương thích của các gói phụ thuộc:
+    composer check-platform-reqs
+
+15. Xóa các gói phụ thuộc không sử dụng:
+    composer clearcache
+

@@ -1,0 +1,172 @@
+import React, { useState, useEffect } from "react";
+
+//useForm và SubmitHandler từ thư viện react-hook-form cái này là để yêu cầu bắt buộc phải nhập
+import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faGoogle,
+  faTwitter,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
+interface RegisterFormData {
+  name: string;
+  email: string;
+  password: string;
+  avatar: File | null;
+}
+
+const Register: React.FC = () => {
+  const navigate = useNavigate();
+
+  const {
+    register, //register được sử dụng để đăng ký các quy tắc kiểm tra yêu cầu cho các trường input
+    handleSubmit, //handleSubmit được sử dụng để xử lý sự kiện khi form được submit
+    formState: { errors }, //formState chứa các thông tin về trạng thái của form, bao gồm các lỗi (errors)
+  } = useForm<RegisterFormData>();
+
+  useEffect(() => {
+    //kiểm tra xem trong localStorage có tồn tại thông tin người đăng ký hay không.
+    //Nếu tồn tại, chúng ta sử dụng navigate để chuyển hướng đến trang /add.
+    if (localStorage.getItem("user-info")) {
+      navigate("/main");
+    }
+  }, [navigate]);
+
+  const onSubmit: SubmitHandler<RegisterFormData> = async (data) => {
+    console.warn(data); //Gửi dữ liệu của biến data lên endpoint
+
+    let result = await fetch("http://127.0.0.1:8000/api/register", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    });
+
+    result = await result.json(); // Sau khi nhận được kết quả từ serve, dữ liệu sẽ được lưu vào
+    // localStorage.
+    localStorage.setItem("user-info", JSON.stringify(result));
+    navigate("/main"); // Khi dữ liệu đã truyền vào thì nó sẽ chuyển đến trang main
+  };
+
+  return (
+    <>
+      <section className="vh-100">
+        <div className="container-fluid h-custom">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                  <p className="lead fw-normal mb-0 me-3">Sign in with</p>
+                  <button type="button" className="btn ">
+                    <FontAwesomeIcon icon={faFacebook} />
+                  </button>
+
+                  <button type="button" className="btn ">
+                    <FontAwesomeIcon icon={faTwitter} />
+                  </button>
+                  <button type="button" className="btn ">
+                    <FontAwesomeIcon icon={faGoogle} />
+                  </button>
+                </div>
+                <div className="divider d-flex align-items-center my-4">
+                  <p className="text-center fw-bold mx-3 mb-0">Or</p>
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="name">Avatar:</label>
+                  <input
+                    type="file"
+                    {...register("avatar", { required: true })}
+                    className="form-control mt-2"
+                    id="name"
+                    placeholder="Enter full name"
+                  />
+                  {errors.avatar && <p role="alert">avatar is required</p>}
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="name">Full Name:</label>
+                  <input
+                    type="text"
+                    {...register("name", { required: true })}
+                    className="form-control mt-2"
+                    id="name"
+                    placeholder="Enter full name"
+                  />
+                  {errors.name && <p role="alert">Full name is required</p>}
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="email" className="mt-2">
+                    Email:
+                  </label>
+                  <input
+                    type="email"
+                    {...register("email", { required: true })}
+                    className="form-control mt-2"
+                    id="email"
+                    placeholder="Enter email"
+                  />
+                  {errors.email && <p role="alert">Email is required</p>}
+                </div>
+                <div>
+                  <label htmlFor="password" className="mt-2">
+                    Password:
+                  </label>
+                  <input
+                    type="password"
+                    {...register("password", { required: true })}
+                    className="form-control mt-2"
+                    id="password"
+                    placeholder="Enter password"
+                  />
+                  {errors.password && <p role="alert">Password is required</p>}
+                </div>
+                <button
+                  type="submit"
+                  id="signup-button"
+                  className="btn btn-primary mt-3"
+                >
+                  Register
+                </button>
+              </form>
+            </div>
+            <div className="col-md-9 col-lg-6 col-xl-5">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              alt="sample"
+              className="img-fluid"
+            />
+          </div>
+          </div>
+        </div>
+        <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary fixed-bottom">
+          {/* Copyright */}
+          <div className="text-white mb-3 mb-md-0">
+            Copyright © 2020. All rights reserved.
+          </div>
+          {/* Copyright */}
+          {/* Right */}
+          <div>
+            <a href="#!" className="text-white me-4">
+              <FontAwesomeIcon icon={faFacebook} style={{ color: "#ffffff" }} />
+            </a>
+            <a href="#!" className="text-white me-4">
+              <FontAwesomeIcon icon={faTwitter} style={{ color: "#ffffff" }} />
+            </a>
+            <a href="#!" className="text-white me-4">
+              <FontAwesomeIcon icon={faGoogle} style={{ color: "#ffffff" }} />
+            </a>
+            <a href="#!" className="text-white">
+              <FontAwesomeIcon icon={faGithub} style={{ color: "#ffffff" }} />
+            </a>
+          </div>
+          {/* Right */}
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Register;
