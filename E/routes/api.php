@@ -28,7 +28,9 @@ Route::post('/register', [UserController::class, 'register']);
 // Route cho đăng nhập
 Route::post('/login', 'App\Http\Controllers\UserController@login');
 Route::get ('search/{key}', [ProductController::class,'search']);
+
 Route::get ('list', [ProductController::class,'list']);
+
 Route::get ('show/{id}', [ProductController::class,'showApi']);
 
 Route::get ('cart/list', 'App\Http\Controllers\CartApi@list');
