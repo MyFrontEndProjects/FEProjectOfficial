@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
     {{-- Fav icon --}}
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('Acer-logo.ico') }}" type="image/lg-icon">
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,17 +34,7 @@
 
     <!-- Bao gồm CSS của Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>
-        @yield('title', 'Official LexuZ Website')
-    </title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- Bao gồm CSS của Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -128,9 +118,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.cart.index') }}">Quản lý đơn đặt hàng <i class="fa-solid fa-clipboard-list"></i></a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Về trang chủ</a>
-                    </li> --}}
+                    <li class="nav-item">
+                        <a href="http://localhost:3000" class="nav-link" target="_blank">Trang chủ <i class="fa-solid fa-user"></i></a>
+                    </li>
                     <!-- Dropdown menu -->
                 </ul>
                 <!-- /nav left -->
