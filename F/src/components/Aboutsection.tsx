@@ -20,7 +20,7 @@ function AboutUs() {
                             </p>
                         </div>
                         <div className="col-lg-6">
-                            <img src="./img/aboutus-2.webp" alt="Dream Laptop History" className="img-fluid rounded" />
+                            <img src="./img/contact-1.webp" alt="Dream Laptop History" className="img-fluid rounded" />
                         </div>
                     </div>
                 </div>

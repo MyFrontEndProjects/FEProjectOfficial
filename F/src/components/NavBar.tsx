@@ -130,7 +130,7 @@ const OffcanvasExample = () => {
               </div>
             </NavLink>
             <NavLink
-              to="/shop"
+              to="/contact"
               style={{ textDecoration: "none" }}
               className="d-none d-md-flex align-self-center text-center text-uppercase fw-bold text-white me-3"
             >

@@ -12,16 +12,21 @@ import CardSession from "containers/pages/CardSession";
 import Shop from "containers/pages/Shop";
 import CartIndex from "containers/pages/CartIndex";
 import AboutUs from "containers/pages/AboutUs";
+import Contact from "containers/pages/Contact";
 
 const RouteContent = () => {
   return (<>
     <div className="container-fluid" style={{ margin: '70px 0 0 0', padding: '0' }}>
       <Routes>
+        <Route path="/" element={ <Main />} />
 
-        <Route path="" element={<Protected>
-          <Main />
-        </Protected>} />
+        <Route path="/shop" element={<Shop />} />
+
+        <Route path="/contact" element={<Contact />} />
+
         <Route path="/about us" element={<AboutUs />} />
+
+
 
         <Route path="/card" element={<CardSession />} />
 
@@ -47,7 +52,7 @@ const RouteContent = () => {
         />
         <Route path="productList/product/show/:id" element={<ShowProduct />} />
         <Route path="search" element={<SearchProduct />} />
-        <Route path="shop" element={<Shop />} />
+   
       </Routes>
     </div>
   </>);
