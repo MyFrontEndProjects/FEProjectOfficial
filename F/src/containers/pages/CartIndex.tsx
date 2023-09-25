@@ -61,7 +61,7 @@ const CartList = () => {
           <thead>
             <tr className="table-primary border-primary text-center">
               <th>#</th>
-              {/* <th>Id</th> */}
+              <th>Id</th>
               <th>Tên sản phẩm</th>
               <th style={{ width: 150 }}>image</th>
               <th>Số lượng</th>
@@ -74,7 +74,7 @@ const CartList = () => {
             {data.map((item, index) => (
               <tr className="">
                 <td>{index + 1}</td>
-                {/* <td>{item.product_id}</td> */}
+                <td>{item.product_id}</td>
                 <td>{item.name}</td>
                 <td>
                   <img
@@ -94,7 +94,7 @@ const CartList = () => {
                 <td>{item.price * item.quantityPro}</td>
                 <td>
                   <span className="mx-1">
-                    <Link to={"product/show/" + item.product_id}>
+                    <Link to={"/productList/product/show/" + item.product_id}>
                       <i className="bi bi-eye" />
                     </Link>
                   </span>

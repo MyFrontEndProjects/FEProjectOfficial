@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function income()
     {
         $homeData =[] ;
-        $homeData['title'] = 'Official LexuZ Website';
+        $homeData['title'] = 'Login';
         return view('auth.login')->with('homeData', $homeData);
     }
 

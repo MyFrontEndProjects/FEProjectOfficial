@@ -68,7 +68,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container text-black-50">
-            <a href="" class="" data-event-module-slug="header"data-event-label="logo">
+            <a href="{{ route('admin.home.index') }}" class=""
+                data-event-module-slug="header"data-event-label="logo">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
                     viewBox="0 0 64 64">
                     <linearGradient id="k41MFBC-6nrNxSe9HVK3Ya_hotvQzjQoPwi_gr1" x1="32" x2="32"
@@ -119,12 +120,13 @@
                                 class="fa-solid fa-gear"></i></a>
                     </li>
 
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="">Tùy chỉnh linh kiện <i class="fa-solid fa-gear"></i></a>
-                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.user') }}">tùy chỉnh Người dùng <i
                                 class="fa-solid fa-gear"></i></a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.cart.index') }}">Quản lý đơn đặt hàng <i class="fa-solid fa-clipboard-list"></i></a>
                     </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">Về trang chủ</a>
@@ -153,13 +155,17 @@
                             </ul>
                         @else
                             <ul class="dropdown-menu" aria-labelledby="UserDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('myProfile') }}">
-                                        <i class="fa-solid fa-user-gear"></i>
-                                        Cài đặt
-                                    </a>
-                                </li>
-
+                                @if (auth()->check() &&
+                                        auth()->user()->isAdmin())
+                                    <li>
+                                        <a class="dropdown-item" href="{{  route('userProfile', auth()->user()->id) }}">
+                                            <i class="fa-solid fa-user-gear"></i>
+                                            Cài đặt
+                                        </a>
+                                    </li>    
+                                    {{-- @else --}}
+                                @endif
+                                
                                 <li>
                                 <li>
                                     <form id="logout" action="{{ route('logout') }}" method="POST">

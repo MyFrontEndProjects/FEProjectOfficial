@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('sect1')
+@section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -12,7 +12,7 @@
                             @csrf
                             <div class="row mb-3">
                                 <label for="avatar"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Avatar') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="avatar" type="file"
@@ -94,6 +94,8 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Register') }}
                                     </button>
+                                    <p class="small fw-bold mt-2 pt-1 mb-0">Have an account? <a href="/login"
+                                        class="link-danger">Sign in</a></p>
                                 </div>
                             </div>
                         </form>

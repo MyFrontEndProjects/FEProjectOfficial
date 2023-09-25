@@ -65,13 +65,13 @@ class AdminUsersController extends Controller
         $User->password = $request->input('password');
         $User->balance = $request->input('balance');
         $User->email = $request->input('email');
-        $User->phone = $request->input('email');
-        $User->address = $request->input('email');
+        $User->phone = $request->input('phone');
+        $User->address = $request->input('address');
         $User->role = $request->input('role');
         $User->avatar = $request->file('avatar')->store('avatars');
         
         $User->save();
-        return redirect()->route('userProfile', $id);
+        return redirect()->route('admin.user');
     }
     public function deleteUser($id)
     {

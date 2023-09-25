@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/home', 'App\Http\Controllers\HomeController@home')
-    ->name("home");
+// Route::get('/home', 'App\Http\Controllers\HomeController@home')
+//     ->name("home");
 Route::get('/', 'App\Http\Controllers\HomeController@income')
     ->name("income");
 Route::get('/about', 'App\Http\Controllers\HomeController@about')
@@ -33,16 +33,11 @@ Route::get('/carpart/show/{id}', 'App\Http\Controllers\ProductController@carpart
 Route::post('/filter-stores', 'App\Http\Controllers\ProductController@filterStores')
     ->name('filterStores');
 
-// Route::post('/filter-carparts', 'App\Http\Controllers\ProductController@filterCarparts')
-//     ->name('filterCarparts');
 
 //get images
 Route::get('/store/showItem/{filename}', 'App\Http\Controllers\ProductController@showImage')
     ->name('store.showImage');
 
-// Route::get('/carpart/showItem/{filename}', 'App\Http\Controllers\ProductController@carpartshowImage')
-//     ->name('carpart.showImage');
-// //search
 Route::get('search', [
     'as' => 'search',
     'uses' => 'App\Http\Controllers\ProductController@getSearch',
@@ -102,6 +97,17 @@ Route::middleware('admin')->group(function () {
         ->name("userProfile.edit");
     Route::put('/userProfile/{id}/update', 'App\Http\Controllers\Admin\AdminUsersController@updateUser')
         ->name("userProfile.update");
+    //cart
+    Route::get('/admin/cart', 'App\Http\Controllers\Admin\AdminCartController@index')
+        ->name("admin.cart.index");
+    Route::post('/admin/cart/add', 'App\Http\Controllers\Admin\AdminCartController@add')
+        ->name("admin.cart.add");
+    Route::delete('admin/cart/{id}/delete', 'App\Http\Controllers\Admin\AdminCartPageController@delete')
+        ->name("admin.cart.delete");
+    Route::get('admin/cart/{id}/edit', 'App\Http\Controllers\Admin\AdminCartPageController@edit')
+        ->name("admin.cart.edit");
+    Route::put('admin/cart/{id}/update', 'App\Http\Controllers\Admin\AdminCartPageController@update')
+        ->name("admin.cart.update");
 });
 
 

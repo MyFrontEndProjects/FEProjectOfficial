@@ -150,7 +150,7 @@
                                 <form action="{{ route('admin.user.delete', $user->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger">
+                                    <button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">
                                         <i class="bi-trash"></i>
                                     </button>
                                 </form>
