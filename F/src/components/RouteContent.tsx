@@ -8,11 +8,11 @@ import ShowProduct from "containers/product/ShowProduct";
 import SearchProduct from "containers/pages/ResultSearch";
 import { Route, Routes } from "react-router-dom";
 import Main from "containers/pages/Main";
-import Content from "containers/pages/Content";
 import CardSession from "containers/pages/CardSession";
 import Shop from "containers/pages/Shop";
 import CartIndex from "containers/pages/CartIndex";
-import { CardText } from "reactstrap";
+import AboutUs from "containers/pages/AboutUs";
+
 const RouteContent = () => {
   return (<>
     <div className="container-fluid" style={{ margin: '70px 0 0 0', padding: '0' }}>
@@ -21,16 +21,13 @@ const RouteContent = () => {
         <Route path="" element={<Protected>
           <Main />
         </Protected>} />
+        <Route path="/about us" element={<AboutUs />} />
 
-        <Route path="main" element={<Protected>
-          <Main />
-        </Protected>} />
-
-        <Route path="card" element={<CardSession />} />
+        <Route path="/card" element={<CardSession />} />
 
         <Route path="/cart" element={<CartIndex />} />
         
-        <Route path="login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
 
         {/* <Route path="content" element={<Content />} /> */}
 
