@@ -11,6 +11,7 @@ function AboutUs() {
     return (
         <> 
         <Aboutsection/>
+        <Footer/>
       </>
     );
   }
