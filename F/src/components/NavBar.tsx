@@ -105,7 +105,7 @@ const OffcanvasExample = () => {
               </svg>
             </NavLink>
             <NavLink
-              to="/content"
+              to="/"
               style={{ textDecoration: "none" }}
               className="d-none d-md-flex align-self-center text-center text-uppercase fw-bold text-white me-3"
             >

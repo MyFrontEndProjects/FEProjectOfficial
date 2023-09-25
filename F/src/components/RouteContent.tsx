@@ -14,21 +14,26 @@ import Shop from "containers/pages/Shop";
 import CartIndex from "containers/pages/CartIndex";
 import { CardText } from "reactstrap";
 const RouteContent = () => {
-    return ( <>
-        <div className="container-fluid" style={{ margin: '70px 0 0 0', padding: '0' }}>
-        <Routes>
-        <Route path=""  element={<Protected>
-              <Main/>
-            </Protected>} />
-        <Route path="main"  element={<Protected>
-              <Main/>
-            </Protected>} />
-        <Route path="card"  element={<CardSession />} />
-        <Route path="/cart"  element={<CartIndex />} />
+  return (<>
+    <div className="container-fluid" style={{ margin: '70px 0 0 0', padding: '0' }}>
+      <Routes>
+
+        <Route path="" element={<Protected>
+          <Main />
+        </Protected>} />
+
+        <Route path="main" element={<Protected>
+          <Main />
+        </Protected>} />
+
+        <Route path="card" element={<CardSession />} />
+
+        <Route path="/cart" element={<CartIndex />} />
+        
         <Route path="login" element={<Login />} />
 
-        <Route path="content" element={<Content /> } />
-        
+        {/* <Route path="content" element={<Content />} /> */}
+
         <Route
           path="add"
           element={
@@ -47,8 +52,8 @@ const RouteContent = () => {
         <Route path="search" element={<SearchProduct />} />
         <Route path="shop" element={<Shop />} />
       </Routes>
-        </div>
-    </> );
+    </div>
+  </>);
 }
- 
+
 export default RouteContent;

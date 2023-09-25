@@ -1,7 +1,5 @@
-import Card from "components/Card";
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.json";
@@ -10,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Shop = () => {
   const navigate = useNavigate();
+  
   const [data, setData] = useState<MyDataType[]>([]);
   console.warn(data);
   // async function deleteItem(id: number) {

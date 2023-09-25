@@ -14,9 +14,9 @@ import 'font-awesome/css/font-awesome.css';
 const Main = () => {
     return ( <>
         <Content/>
-        <CategoryList />
+        {/* <CategoryList />
         <CardSession />
-        <Footer />
+        <Footer /> */}
         
     </> );
 }
