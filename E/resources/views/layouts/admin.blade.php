@@ -57,7 +57,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="font-family: cursive">
-        <div class="container text-black-50">
+        <div class="container ">
             <a href="{{ route('admin.home.index') }}" class=""
                 data-event-module-slug="header"data-event-label="logo">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
@@ -106,20 +106,20 @@
                 <!-- Nav right -->
                 <ul class="navbar-nav me-auto text-uppercase ">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.store.index') }}">Tùy chỉnh sản phẩm <i
+                        <a class="nav-link text-white" href="{{ route('admin.store.index') }}">Tùy chỉnh sản phẩm <i
                                 class="fa-solid fa-gear"></i></a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.user') }}">tùy chỉnh Người dùng <i
+                        <a class="nav-link text-white" href="{{ route('admin.user') }}">tùy chỉnh Người dùng <i
                                 class="fa-solid fa-gear"></i></a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.cart.index') }}">Quản lý đơn đặt hàng <i class="fa-solid fa-clipboard-list"></i></a>
+                        <a class="nav-link text-white" href="{{ route('admin.cart.index') }}">Quản lý đơn đặt hàng <i class="fa-solid fa-clipboard-list"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="http://localhost:3000" class="nav-link" target="_blank">Trang chủ <i class="fa-solid fa-user"></i></a>
+                        <a href="http://localhost:3000" class="nav-link text-white" target="_blank">Trang chủ <i class="fa-solid fa-user"></i></a>
                     </li>
                     <!-- Dropdown menu -->
                 </ul>
