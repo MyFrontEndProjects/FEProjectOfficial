@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'avatar' => ['required', 'file'],
+            'avatar' => ['file'],
         ]);
     }
 
@@ -66,13 +66,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $avatarPath = null; // Khởi tạo giá trị mặc định cho 'avatarPath'
+
+        // Kiểm tra xem người dùng đã tải lên avatar hay chưa
+        if (isset($data['avatar'])) {
+            $avatarPath = $data['avatar']->store('avatars');
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'balance' => 5000,
-            'avatar' => $data['avatar']->store('avatars'),
-            'role' => 'admin',
+            'avatar' => $avatarPath,
+            'role' => 'client',
         ]);
     }
 }

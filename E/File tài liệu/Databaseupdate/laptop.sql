@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 26, 2023 lúc 08:43 PM
+-- Thời gian đã tạo: Th9 26, 2023 lúc 09:25 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `feproject`
+-- Cơ sở dữ liệu: `laptop`
 --
 
 -- --------------------------------------------------------
@@ -161,10 +161,10 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL DEFAULT 'client',
-  `phone` int(20) NOT NULL,
+  `phone` int(15) DEFAULT NULL,
   `address` varchar(255) NOT NULL DEFAULT 'address',
   `balance` int(11) NOT NULL,
-  `avatar` varchar(255) NOT NULL DEFAULT 'user.png',
+  `avatar` varchar(255) DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -175,7 +175,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `phone`, `address`, `balance`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Admin@gmail.com', NULL, '12345678', 'admin', 935688218, 'abc', 5000000, 'avatars/S2qvhgXVolOIBzQTJxwD6OIlOETxUTMOmCPjccIU.png', NULL, '2023-09-26 08:44:26', '2023-09-26 11:43:00');
+(1, 'admin', 'Admin@gmail.com', NULL, '12345678', 'admin', 935688218, 'abc', 5000000, 'avatars/S2qvhgXVolOIBzQTJxwD6OIlOETxUTMOmCPjccIU.png', NULL, '2023-09-26 08:44:26', '2023-09-26 11:43:00'),
+(2, 'john', 'john@gmail.com', NULL, '$2y$10$oKjnHclLMKNlYesbZGc41uAhJvJkqCszaVGNTdHNXUowJYU.31FQO', 'admin', NULL, 'address', 5000, NULL, NULL, '2023-09-26 12:21:50', '2023-09-26 12:21:50'),
+(3, 'john', 'kkk@gmail.com', NULL, '$2y$10$.MtlqiEzlA/8WkvLdU1Ee.gGIDXl16fACChYj6N1T2VtK/PvpaYyC', 'client', NULL, 'address', 5000, NULL, NULL, '2023-09-26 12:23:21', '2023-09-26 12:23:21');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -266,7 +268,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

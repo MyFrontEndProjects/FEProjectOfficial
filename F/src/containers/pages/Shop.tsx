@@ -6,7 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.json";
 import { MyDataType } from "../../constants/MyDataType";
 import { useNavigate } from "react-router-dom";
-import Input from "components/Input";
+
 
 const Shop = () => {
   const navigate = useNavigate();
@@ -159,12 +159,11 @@ const Shop = () => {
       </div>
 
 
-      <section className="container  py-5 d-flex justify-content-center align-items-center">
-        <div className="row row-cols-1 row-cols-md-5 gy-4">
+      <section className="container py-5">
+        <div className="row gy-4">
           {data.map((item) => (
-
-            <div className="col-4">
-              <div className="card">
+            <div className="col-md-4">
+              <div className="card d-flex">
                 <Link to={"/show/" + item.id}>
                   <img
                     src={"http://127.0.0.1:8000/" + item.file_path}
@@ -176,14 +175,12 @@ const Shop = () => {
                   <Link to={"/show/" + item.id}>
                     <h3>{item.name}</h3>
                   </Link>
-                  {/* <p className="card-text">{item.description}</p> */}
                   <button
                     className="btn btn-success"
                     onClick={() => handleAddToCart(item.id)}
                   >
-                    mua
+                    Mua
                   </button>
-
                   <input
                     type="number"
                     value={1}
@@ -196,6 +193,7 @@ const Shop = () => {
           ))}
         </div>
       </section>
+
     </>
   );
 };
