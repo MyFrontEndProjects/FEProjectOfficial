@@ -22,7 +22,7 @@ class CartApi extends Controller
     public function delete($id)
     {
         Cart::destroy($id);
-        return back();
+        return Cart::all();
     }
     public function add(Request $request)
     {

@@ -29,7 +29,8 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', 'App\Http\Controllers\UserController@login');
 Route::get ('search/{key}', [ProductController::class,'search']);
 
-Route::get ('list', [ProductController::class,'list']);
+Route::post ('list', [ProductController::class,'list']);
+Route::get ('getCategory', [ProductController::class,'getCategory']);
 
 Route::get ('show/{id}', [ProductController::class,'showApi']);
 

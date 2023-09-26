@@ -50,7 +50,7 @@ const RouteContent = () => {
           path="productList/productUpdate/:id"
           element={<UpdateProduct />}
         />
-        <Route path="productList/product/show/:id" element={<ShowProduct />} />
+        <Route path="/show/:id" element={<ShowProduct />} />
         <Route path="search" element={<SearchProduct />} />
    
       </Routes>
