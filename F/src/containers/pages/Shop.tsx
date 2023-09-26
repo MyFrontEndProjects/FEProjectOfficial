@@ -139,7 +139,8 @@ const Shop = () => {
           <div className="col-lg-5 col-md-6 col-sm-12 py-2">
             <div className="row">
               <label htmlFor="SearchProduct" className="col-lg-2 col-4 d-flex align-items-center">
-                Search <i className="fa-solid fa-filter align-text-bottom"></i>:
+                Search <i className="ms-2 fa-solid fa-magnifying-glass" />
+
               </label>
               <input
                 type="text"
@@ -165,9 +166,8 @@ const Shop = () => {
       <section className="container py-5">
         <div className="row gy-4">
           {data.map((item) => (
-            <div className="col-md-4">
-              <div className="card d-flex   border-0 ">
-
+            <div className="col-lg-4 col-md-6">
+              <div className="card mb-4 d-flex flex-column h-100 border-0">
                 <Link to={"/show/" + item.id}>
                   <img
                     src={"http://127.0.0.1:8000/" + item.file_path}
@@ -175,49 +175,46 @@ const Shop = () => {
                     className="card-img-top"
                   />
                 </Link>
-
-                <div className="card-body">
-                  <div className="row text-center">
+                <div className="card-body flex-grow-1 d-flex flex-column">
+                  <div className="row text-center mb-3">
                     <Link to={"/show/" + item.id} className="text-decoration-none">
-                      <h4 >{item.name}</h4>
+                      <h4>{item.name}</h4>
                     </Link>
                   </div>
 
-                  <div className="row ms-5 pt-5 text-black">
-                    <span>{item.description}</span>  
-                   
-                  </div>
-                  
-                  <div className="row ms-5 pt-5 text-black-50">
-                    <h3 >{item.price} <i className="fa-solid fa-lira-sign" />
-                    </h3>
+                  <div className="row ms-3 ms-md-5 pt-3 text-black">
+                    <span>{item.description}</span>
                   </div>
 
-                  <div className="container d-flex justify-content-around " >
-                    <button className="btn btn-outline-warning text-black " onClick={() => handleAddToCart(item.id)}>
-                      Thêm vào giỏ hàng <i className="fa-solid fa-cart-plus" />
-
-                    </button>
-
-                    <button className="btn btn-outline-success text-black" >
-                      Mua ngay <i className="fa-regular fa-credit-card" />
-
-                    </button>
+                  <div className="row ms-3 ms-md-5 pt-3 text-black-50">
+                    <h3>{item.price} <i className="fa-solid fa-lira-sign" /></h3>
                   </div>
 
-                  <input
-                    type="number"
-                    value={1}
-                    name="quantity"
-                    className="d-none"
-                  />
+                  <div className="mt-auto">
+                    <div className="container d-flex justify-content-center justify-content-md-around">
+                      <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id)}>
+                        Thêm vào giỏ hàng <i className="fa-solid fa-cart-plus" />
+                      </button>
+
+                      <button className="btn btn-outline-success text-black">
+                        Mua ngay <i className="fa-regular fa-credit-card" />
+                      </button>
+                    </div>
+
+                    <input
+                      type="number"
+                      value={1}
+                      name="quantity"
+                      className="d-none"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </section>
-      
+
       <Footer />
     </>
   );
