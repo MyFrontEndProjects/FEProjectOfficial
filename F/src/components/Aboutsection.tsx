@@ -3,30 +3,6 @@ import React from 'react';
 function AboutUs() {
     return (
         <>
-          <section className="section bg-light mt-5">
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-6">
-                            <h6 className="text-primary text-uppercase">Sự Huyền Thoại</h6>
-                            <h1 className="mb-4"><span className="text-primary">Dream Laptop</span> - Kinh Nghiệm 6 Năm Trong Ngành</h1>
-                            <p className="mb-4">
-                                Dream Laptop, với hơn 6 năm kinh nghiệm, đã tạo dấu ấn mạnh mẽ trong lĩnh vực máy tính xách tay. Từ sự thành lập vào năm 2017, Dream Laptop đã trở thành biểu tượng của sự tin cậy và chất lượng.
-                            </p>
-                            <p className="mb-4">
-                                Hành trình huyền thoại của Dream Laptop bắt đầu với sự tâm huyết của những chuyên gia hàng đầu trong ngành công nghiệp máy tính. Chúng tôi đã xây dựng sản phẩm với tầm nhìn tạo ra những chiếc laptop vượt trội về hiệu suất và thương hiệu mạnh mẽ.
-                            </p>
-                            <p className="mb-4">
-                                Dream Laptop luôn đặt sự sáng tạo và phát triển liên tục vào trung tâm hoạt động. Chúng tôi cam kết mang đến cho khách hàng những công nghệ tiên tiến và sản phẩm chất lượng hàng đầu, đã giúp chúng tôi đoạt nhiều giải thưởng và niềm tin từ khách hàng trong suốt hành trình của mình.
-                            </p>
-                        </div>
-                        <div className="col-lg-6">
-                            <img src="./img/contact-1.webp" alt="Dream Laptop History" className="img-fluid rounded" />
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
             <section className="container-xxl py-5">
                 <div className="container">
                     <div className="row g-5">
@@ -80,15 +56,40 @@ function AboutUs() {
                                     </div>
                                 </div>
                             </div>
-                            <a href="#a" className="btn btn-primary py-3 px-5">Tìm hiểu thêm<i className="fa fa-arrow-right ms-3"></i></a>
+                            <a href="#section3" className="btn btn-primary py-3 px-5">Tìm hiểu thêm<i className="fa fa-arrow-right ms-3"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="section bg-light mt-5">
+                <div className="container">
+                    <div className="row align-items-center">
+                        <div className="col-lg-6">
+                            <h6 className="text-primary text-uppercase">Sự Huyền Thoại</h6>
+                            <h1 className="mb-4"><span className="text-primary">Dream Laptop</span> - Kinh Nghiệm 6 Năm Trong Ngành</h1>
+                            <p className="mb-4">
+                                Dream Laptop, với hơn 6 năm kinh nghiệm, đã tạo dấu ấn mạnh mẽ trong lĩnh vực máy tính xách tay. Từ sự thành lập vào năm 2017, Dream Laptop đã trở thành biểu tượng của sự tin cậy và chất lượng.
+                            </p>
+                            <p className="mb-4">
+                                Hành trình huyền thoại của Dream Laptop bắt đầu với sự tâm huyết của những chuyên gia hàng đầu trong ngành công nghiệp máy tính. Chúng tôi đã xây dựng sản phẩm với tầm nhìn tạo ra những chiếc laptop vượt trội về hiệu suất và thương hiệu mạnh mẽ.
+                            </p>
+                            <p className="mb-4">
+                                Dream Laptop luôn đặt sự sáng tạo và phát triển liên tục vào trung tâm hoạt động. Chúng tôi cam kết mang đến cho khách hàng những công nghệ tiên tiến và sản phẩm chất lượng hàng đầu, đã giúp chúng tôi đoạt nhiều giải thưởng và niềm tin từ khách hàng trong suốt hành trình của mình.
+                            </p>
+                        </div>
+                        <div className="col-lg-6">
+                            <img src="./img/aboutus-2.webp" alt="Dream Laptop History" className="img-fluid rounded" />
                         </div>
                     </div>
                 </div>
             </section>
 
-          
 
-            <section className="bg-light py-5 mt-5">
+
+
+
+
+            <section className="bg-light py-5 mt-5 " id="section3">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6">
