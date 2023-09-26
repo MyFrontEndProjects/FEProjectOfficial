@@ -16,7 +16,7 @@
                     <div class="col-1">
                         <span>
                             <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">
-                                <i class="fa-solid fa-plus"></i>Thêm
+                                <i class="fa-solid fa-plus"></i>
                             </a>
                             <div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
