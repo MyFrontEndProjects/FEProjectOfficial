@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 26, 2023 lúc 09:25 PM
+-- Thời gian đã tạo: Th9 26, 2023 lúc 11:31 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -43,7 +43,10 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `quantityPro`, `price`, `name`, `file_path`, `product_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 18000000, 'AORUS 7', 'products/KG7frYoqLeVh4Ogd1J0hOD4BVp7BOndDbEu18dRO.webp', 4, '2023-09-26 11:43:37', '2023-09-26 11:43:37');
+(2, 1, 18000000, 'PREDATOR TRITON 14', 'products/caro-1.webp', 4, '2023-09-26 13:13:24', '2023-09-26 13:13:24'),
+(3, 1, 18000000, 'PREDATOR TRITON 14', 'products/caro-1.webp', 4, '2023-09-26 13:21:38', '2023-09-26 13:21:38'),
+(4, 1, 18000000, 'PREDATOR TRITON 14', 'products/caro-1.webp', 4, '2023-09-26 13:22:04', '2023-09-26 13:22:04'),
+(5, 1, 18000000, 'PREDATOR TRITON 14', 'products/caro-1.webp', 4, '2023-09-26 13:28:04', '2023-09-26 13:28:04');
 
 -- --------------------------------------------------------
 
@@ -139,14 +142,16 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `file_path`, `price`, `quantity`, `category`, `brand`, `color`, `size`, `created_at`, `updated_at`) VALUES
-(1, 'G7 (Intel 12th Gen)', 'Windows 11 Home\r\nNVIDIA® GeForce RTX™ 30 Series Laptop GPUs\r\n12th Gen Intel® Core™ i5 H-Series Processor\r\nWINDFORCE Cooling System\r\n17.3” FHD 144Hz Display', 'products/BOcAxvmAJBoioS1QobE6ecAk8y4NR9WLb5v2KcxI.webp', 30000001, 148, 'NVIDIA® GeForce RTX™ 30 Series Laptop GPUs', 'GIGABYTE', 'Đen', '17.3” FHD 144Hz Display', '2023-09-26 11:14:01', '2023-09-26 11:14:22'),
-(2, 'A7 (AMD Ryzen 5000 Series)', 'Windows 11 Home\r\nWindows 11 Pro\r\nNVIDIA® GeForce RTX™ 30 Series Laptop GPUs\r\nAMD Ryzen™ 9 5000 HX-Series Mobile Processors\r\n17.3\" Thin Bezel FHD IPS-Level 144Hz display\r\n1+3 Multi Display for Multi-Tasking', 'products/AfOY30Lsh05akb80GEimZEPo4JW3UxzvK0zYZUJX.webp', 27999988, 14, 'NVIDIA® GeForce RTX™ 30 Series Laptop GPUs', 'GIGABYTE', 'Đen', '17.3\" Thin Bezel FHD IPS-Level 144Hz display', '2023-09-26 11:19:44', '2023-09-26 11:19:44'),
-(3, 'AORUS 17X', 'Windows 11 Home / Pro\r\nNVIDIA® GeForce RTX™ 40 Series Laptop GPUs\r\n13th Gen Intel® Core™ i9 / i7 Processor HX-Series\r\nUp to 17.3\" 16:9 QHD(2560 x 1440) 240Hz Panel\r\nWINDFORCE Infinity Cooling System', 'products/sDsjsfsPV6M5BDnmR4jPHzfSfY1Jj3JNwFWMeNzR.webp', 31500000, 45, 'NVIDIA® GeForce RTX™ 40 Series Laptop GPUs', 'AORUS', 'Bạc', '17.3”', '2023-09-26 11:22:24', '2023-09-26 11:22:24'),
-(4, 'AORUS 7', 'Windows 11 Home / Pro\r\nNVIDIA® GeForce RTX™ 40 Series Laptop GPUs, powered by NVIDIA DLSS 3, ultra-efficient Ada Lovelace arch, and Max-Q Technologies.\r\n12th Gen Intel® Core™ i5 H-Series Processor\r\nUp to 17.3\" 16:9 FHD(1920 x 1080) 360Hz Panel\r\nWINDFORCE Infinity Cooling System', 'products/KG7frYoqLeVh4Ogd1J0hOD4BVp7BOndDbEu18dRO.webp', 18000000, 72, 'NVIDIA® GeForce RTX™ 40 Series Laptop', 'AORUS', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24'),
-(5, 'Z790 AORUS PRO X', 'Supports Intel® Core™ 13th and next-gen processors\r\nDigital twin 18+1+2 phases VRM solution\r\nDual Channel DDR5：4*DIMMs with XMP 3.0 memory module support\r\nPCIe UD Slot X： PCIe 5.0 x16 slot with 10X strength for graphics card\r\nEZ-Latch Click：M.2 heatsinks with screwless design\r\nEZ-Latch Plus：M.2 slots with quick release design\r\nSensor Panel Link：Onboard video port for hassle-free in-chassis panel setup\r\nUC BIOS：User-Centred intuitive UX with Quick Access function\r\nUltra-Fast Storage：5*M.2 slots, including 1* PCIe 5.0 x4', 'products/B2BiHXWgt7kzIE7JC36SuKWTguplCBv67e0A9UkD.png', 2304000, 270, 'Key Features', 'AORUS', 'Bạc', '2\"', '2023-09-26 11:30:25', '2023-09-26 11:30:25'),
-(6, 'AORUS GeForce RTX™ 4080 16GB XTREME WATERFORCE', 'NVIDIA Ada Lovelace Streaming Multiprocessors:\r\nUp to 2x performance and power efficiency\r\n4th Generation Tensor Cores: Up to 4x performance with DLSS 3 vs. brute-force rendering\r\n3rd Generation RT Cores: Up to 2X ray tracing performance\r\nPowered by GeForce RTX™ 4080 16GB\r\nIntegrated with 16GB GDDR6X 256-bit memory interface\r\nWATERFORCE all-in-one cooling system\r\n360mm radiator with 3x 120mm ARGB fans\r\nProtection metal back plate\r\n4 Years Warranty (Online registration required)', 'products/PgbNU4UxGH6OUDVmDf6zWJYB7Ye01ZS3F0aQKeA6.webp', 3000000, 200, 'Key Features', 'NVIDIA', 'Đen', 'none', '2023-09-26 11:35:41', '2023-09-26 11:35:41'),
-(7, 'GeForce RTX™ 4060 Ti AERO OC 16G', 'Powered by NVIDIA DLSS 3, ultra-efficient Ada Lovelace arch, and full ray tracing\r\n4th Generation Tensor Cores: Up to 4x performance with DLSS 3 vs. brute-force rendering\r\n3rd Generation RT Cores: Up to 2X ray tracing performance\r\nPowered by GeForce RTX™ 4060 Ti (16GB)\r\nIntegrated with 16GB GDDR6 128bit memory interface\r\nWINDFORCE cooling system\r\nRGB Fusion\r\nDual BIOS\r\nProtection metal back plate', 'products/cpqzqbrzhloapKoK71l2uYc9L5EO1f2uvmezhl4T.webp', 2300000, 2000, 'Key Features', 'NVIDIA', 'Trắng', 'none', '2023-09-26 11:37:22', '2023-09-26 11:37:22'),
-(8, 'B650M AORUS PRO AX (rev. 1.2)', '70A Smart Power Stage*\r\n8-Layer 2X Copper PCB\r\nPCIe 5.0 Ready Low Loss PCB\r\nFully Covered MOSFET Heatsinks\r\n6mm Heatpipe\r\n7 W/mk Thermal Conductivity Pad\r\nIntegrated I/O Shield', 'products/mXxXOOYA9395LpvDSWQ8jLzCdOMqLannUDj4S5iz.webp', 1450000, 3000, 'Motherboard', 'AORUS', 'Đen', 'none', '2023-09-26 11:40:42', '2023-09-26 11:40:42');
+(1, 'PREDATOR TRITON 16', 'NVIDIA® GEFORCE RTX™ 40 SERIES LAPTOPS\r\nIntel® Core™ i9 Processor1\r\nWINDOWS 11 HOME', 'products/store2.webp', 1800, 72, 'PREDATOR', 'PREDATOR', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24'),
+(2, 'PREDATOR TRITON 17 X\r\n', 'GEFORCE RTX™ 4090\r\nIntel® Core™ i9-13900HX\r\nWINDOWS 11 HOME\r\n32GB DDR5 / 4TB', 'products/store3.webp', 1599, 72, 'PREDATOR', 'PREDATOR', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24'),
+(3, 'PREDATOR HELIOS NEO 16\r\n', 'GEFORCE RTX™ 4070\r\nIntel® Core™ i7-13700HX\r\nWINDOWS 11 HOME\r\n32GB DDR5 / 2TB', 'products/store4.webp', 1599, 72, 'PREDATOR', 'PREDATOR', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24'),
+(4, 'PREDATOR TRITON 14', 'NVIDIA® GEFORCE RTX™ 40 SERIES LAPTOPS\r\nIntel® Core™ i7 Processor1\r\nWINDOWS 11 HOME\r\n32GB LPDDR5', 'products/store1.webp', 1599, 72, 'PREDATOR', 'PREDATOR', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24'),
+(5, 'Swift 14', '13th Gen Intel® Core™ H-Series\r\nTwinAir cooling\r\nAntimicrobial Corning® Gorilla® Glass\r\nWINDOWS 11 HOME\r\n', 'products/store5.webp', 1599, 72, 'Swift', 'Swift', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24'),
+(6, 'Swift 5', '12th Gen Intel® Core™ processors\r\nTwinAir cooling\r\nAntimicrobial Corning® Gorilla® Glass\r\nWINDOWS 11 HOME\r\n', 'products/store6.webp', 1599, 72, 'Swift', 'Swift', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24'),
+(7, 'Swift Edge 16', 'AMD Ryzen™ 7040 Series\r\n16-inch, 16:10, 3.2K OLED\r\nAntimicrobial Corning® Gorilla® Glass\r\nWINDOWS 11 HOME\r\n', 'products/store6.webp', 1599, 72, 'Swift', 'Swift', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24'),
+(8, 'Swift X AMD', 'AMD Ryzen™ 5000 Series1\r\nGeForce RTX™ 3050 Ti1\r\n16GB RAM \r\nSSD slots up to 2TB.\r\nWINDOWS 11 HOME\r\n', 'products/store8.webp', 1599, 72, 'Swift', 'Swift', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24'),
+(9, 'Nitro 5 Intel', 'Intel® Core™ i7 Processors1\r\nGeForce RTX™ 30 Series\r\n32GB, 3200MHZ\r\nWINDOWS 11 HOME\r\n', 'products/store9.webp', 1599, 72, 'Nitro', 'Nitro', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24'),
+(10, 'Nitro 7', 'Intel® Core™ i7 Processors1\r\nGeForce RTX™\r\n32GB, 3200MHZ\r\nWINDOWS 11 HOME\r\n', 'products/store11.webp', 1599, 72, 'Nitro', 'Nitro', 'Đen', '17.3”', '2023-09-26 11:24:24', '2023-09-26 11:24:24');
 
 -- --------------------------------------------------------
 
@@ -238,7 +243,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -262,7 +267,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
