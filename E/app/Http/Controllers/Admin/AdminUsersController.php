@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Models\Order;
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -25,11 +26,14 @@ class AdminUsersController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:8',
-            'avatar' => 'required|file',
-            'balance' => 'required|numeric|gt:0',
-            'role' => 'required|string',
         ]);
+        // Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
+        $existingUser = User::where('email', $request->input('email'))->first();
 
+        if ($existingUser) {
+            // Nếu email đã tồn tại, bạn có thể trả về thông báo lỗi
+            return back()->with('error', 'Email đã tồn tại trong hệ thống.');
+        }
         $newUser = new User();
         $newUser->name = $request->input('name');
         $newUser->password = $request->input('password');
@@ -37,8 +41,12 @@ class AdminUsersController extends Controller
         $newUser->email = $request->input('email');
         $newUser->phone = $request->input('phone');
         $newUser->address = $request->input('address');
-        $newUser->role = $request->input('role');
-        $newUser->avatar = $request->file('avatar')->store('avatars');
+        $newUser->role = 'user';
+        if ($request->file('avatar')) {
+            $newUser->avatar = $request->file('avatar')->store('avatars');
+        } else {
+            $newUser->avatar = "avatars/user.png";
+        };
         $newUser->save();
         return back();
     }
@@ -55,9 +63,6 @@ class AdminUsersController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:8',
-            'avatar' => 'required|file',
-            'balance' => 'required|numeric|gt:0',
-            'role' => 'required|string',
         ]);
 
         $User = User::findOrFail($id);
@@ -69,7 +74,7 @@ class AdminUsersController extends Controller
         $User->address = $request->input('address');
         $User->role = $request->input('role');
         $User->avatar = $request->file('avatar')->store('avatars');
-        
+
         $User->save();
         return redirect()->route('admin.user');
     }
@@ -83,7 +88,6 @@ class AdminUsersController extends Controller
         $userInfo = [];
         $userInfo['title'] = 'Edit user';
         $userInfo['user'] = User::findOrFail($id);
-        $userInfo["orders"] = Order::with(['items.product'])->where('user_id', User::find($id))->get();
         return view('Admin.UserAccount.userProfile')->with('userInfo', $userInfo);
     }
 }

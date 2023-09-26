@@ -48,11 +48,6 @@
                         <p class="m-b-10 f-w-600">Số dư tài khoản</p>
                         <h6 class="text-muted f-w-400">{{ $userInfo['user']->balance }}</h6>
                     </div>
-                    <div class="col-sm-6">
-                        <p class="m-b-10 f-w-600"><a href="{{ route('my-account.orders') }}"
-                                class="text-decoration-none text-dark"> Số đơn hàng</a></p>
-                        <h6 class="text-muted f-w-400">{{ count($userInfo['orders']) }}</h6>
-                    </div>
                 </div>
                 <ul class="social-link list-unstyled m-t-40 m-b-10 d-flex gap-2">
                     <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title=""
