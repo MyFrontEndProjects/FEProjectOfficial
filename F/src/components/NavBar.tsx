@@ -1,6 +1,4 @@
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -9,7 +7,6 @@ import { useState } from "react";
 
 import { MyDataType } from "../constants/MyDataType";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-// import CardSession from './../containers/pages/CardSession';
 interface User {
   name: string;
   // Các thuộc tính khác của User nếu cần
@@ -44,7 +41,7 @@ const OffcanvasExample = () => {
   return (
     <>
       <Navbar expand="md" className="bg-body-tertiary py-0 fixed-top bg-dark">
-        <Container fluid style={{ backgroundColor: "#444444" }}>
+        <Container fluid className="bg-dark">
           <Navbar.Toggle
             aria-controls={`offcanvasNavbar-expand-md`}
             className="bg-light"
@@ -104,6 +101,7 @@ const OffcanvasExample = () => {
                 ></path>
               </svg>
             </NavLink>
+            
             <NavLink
               to="/"
               style={{ textDecoration: "none" }}
@@ -167,38 +165,36 @@ const OffcanvasExample = () => {
               </div>
             </Link>
           </Navbar.Brand>
-          {/* <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} /> */}
+          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
 
-          <Navbar.Offcanvas
+          <Navbar.Offcanvas style={{ fontFamily: "cursive" }}
             id={`offcanvasNavbar-expand-md`}
             aria-labelledby={`offcanvasNavbarLabel-expand-md`}
             placement="start"
           >
-            <Offcanvas.Header closeButton>
+            <Offcanvas.Header closeButton className="bg-dark text-white">
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
-                Offcanvas
+                Dream Laptop
               </Offcanvas.Title>
             </Offcanvas.Header>
-            <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3 text-uppercase fw-bold">
-                {/* <NavLink to="/shop" className="nav-link text-white">
-                      Shop
-                </NavLink> */}
+
+            <Offcanvas.Body className="bg-dark navbar-dark">
+              <Nav className="justify-content-end flex-grow-1 pe-3 text-uppercase fw-bold ">
                 {localStorage.getItem("user-info") ? (
                   <>
                     <NavDropdown
                       title={
                         <span className="text-white my-auto">Product</span>
                       }
-                      // className="nav-item"
+                    // className="nav-item"
                     >
                       <NavDropdown.Item href="#action3">
-                        <NavLink to="/add" className="nav-link">
+                        <NavLink to="/add" className="nav-link text-black">
                           Add
                         </NavLink>
                       </NavDropdown.Item>
                       <NavDropdown.Item href="#action4">
-                        <NavLink to="/productList" className="nav-link">
+                        <NavLink to="/productList" className="text-black nav-link">
                           ProductList
                         </NavLink>
                       </NavDropdown.Item>
@@ -206,7 +202,7 @@ const OffcanvasExample = () => {
                       <NavDropdown.Item href="#action5">
                         <NavLink
                           to="productList/productUpdate/:id"
-                          className="nav-link"
+                          className="nav-link text-black"
                         >
                           Update Product
                         </NavLink>{" "}
@@ -221,13 +217,13 @@ const OffcanvasExample = () => {
                         </span>
                       }
                       id={`offcanvasUserNavbarDropdown-expand-md`}
-                      className="nav-item"
+                      className="nav-item "
                     >
                       <NavDropdown.Item onClick={LogOut}>
                         Logout
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item>Something else here</NavDropdown.Item>
+                      <NavDropdown.Item className="text-black">Something else here</NavDropdown.Item>
                     </NavDropdown>
                   </>
                 ) : (
@@ -245,54 +241,22 @@ const OffcanvasExample = () => {
                       className="nav-item"
                     >
                       <NavDropdown.Item href="#action3">
-                        <NavLink to="/login" className="nav-link">
+                        <NavLink to="/login" className="nav-link text-black">
                           Login
                         </NavLink>
                       </NavDropdown.Item>
                       <NavDropdown.Item href="#action4">
-                        <NavLink to="/register" className="nav-link">
+                        <NavLink to="/register" className="nav-link text-black">
                           Register
                         </NavLink>
                       </NavDropdown.Item>
                     </NavDropdown>
                   </>
                 )}
-
-                {/* <NavDropdown
-                  title={<span className="text-white my-auto">Pages</span>}
-                  id={`offcanvasNavbarDropdown-expand-md`}
-                  className="nav-item"
-                >
-                  
-                  <NavDropdown.Item href="#action4">
-                    <NavLink to="" className="nav-link">
-                      Main
-                    </NavLink>
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
-                  <NavLink to="card" className="nav-link">
-                      CardSession
-                    </NavLink>
-                  </NavDropdown.Item>
-                </NavDropdown> */}
               </Nav>
-              {/* <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                  onChange={(e) => search(e.target.value)}
-                />
-                <Button variant="outline-success">
-                  <Link className="nav-link" to="/search">
-                    Search
-                  </Link>
-                </Button>
-              </Form> */}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
+
           <NavLink to="/cart" className="ms-3">
             <i className="bi bi-cart-x fs-1"></i>
           </NavLink>

@@ -1,5 +1,4 @@
 import React from 'react';
-import contactImage from './img/contact-1.webp';
 function Contactsection() {
   return (
     <>

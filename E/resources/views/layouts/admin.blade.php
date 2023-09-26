@@ -56,7 +56,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="font-family: cursive">
         <div class="container text-black-50">
             <a href="{{ route('admin.home.index') }}" class=""
                 data-event-module-slug="header"data-event-label="logo">
@@ -170,107 +170,7 @@
                         @endguest
 
                     </li>
-                    {{-- <li class="nav-item">
-                        <form action="{{ route('search') }}" method="GET" class="nav-link">
-                            @csrf
-                            <input type="text" name="SearchValue" id="SearchInput" autocomplete="off">
-                            <ul id="searchResult" class="List-group position-absolute bg-light text-dark"
-                                style="display: block; z-index:100; padding:0; width:189px"></ul>
-
-                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-                            <script type="text/javascript">
-                                $(document).ready(function() {
-                                    $('#SearchInput').on('keyup input', function() {
-                                        var input = $(this).val();
-                                        if (input != null) {
-                                            $.ajax({
-                                                url: '{{ route('suggest_ajax') }}', // Đường dẫn đã đăng ký trong route
-                                                method: 'get',
-                                                data: {
-                                                    SearchInput: input
-                                                }, // Gửi dữ liệu từ input
-                                                success: function(data) {
-                                                    // Xóa nội dung hiện tại của div searchResult
-                                                    $('#searchResult').empty();
-
-                                                    // Đưa dữ liệu từ controller vào div searchResult
-                                                    $('#searchResult').html(data);
-                                                }
-                                            });
-                                        } else {
-                                            $('#searchResult').empty(); // Xóa nội dung div searchResult nếu không có input
-                                            $('#searchResult').css('display', 'none');
-                                        }
-                                    });
-
-                                    $('#searchResult').on('click', 'li', function() {
-                                        var selectedText = $(this).text();
-                                        var redirectUrl = '{{ route('search') }}?SearchValue=' + encodeURIComponent(selectedText);
-                                        window.location.href = redirectUrl;
-                                    });
-                                });
-                            </script>
-
-                            <button type="submit">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
-                        </form>
-
-                    </li>
-
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="UserDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-regular fa-user"></i>
-                        </a>
-
-                        @guest
-                            <ul class="dropdown-menu" aria-labelledby="UserDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('login') }}"><i
-                                            class="fa-solid fa-user-gear"></i>
-                                        Đăng nhập</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('register') }}"><i
-                                            class="fa-solid fa-right-from-bracket"></i>Tạo tài khoản</a>
-                                </li>
-                            </ul>
-                        @else
-                            <ul class="dropdown-menu" aria-labelledby="UserDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="">
-                                        <i class="fa-solid fa-user-gear"></i>
-                                        Cài đặt
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('cart.index') }}">
-                                        <i class="fa-solid fa-cart-shopping"></i>
-                                        Đơn hàng
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('my-account.orders') }}">
-                                        <i class="fa-solid fa-file-invoice-dollar"></i>
-                                        Danh sách hóa đơn
-                                    </a>
-                                </li>
-                                <li>
-                                    <form id="logout" action="{{ route('logout') }}" method="POST">
-                                        <a class="dropdown-item" role="button"
-                                            onclick="document.getElementById('logout').submit();">
-                                            <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
-                                        </a>
-                                        @csrf
-                                    </form>
-
-                                </li>
-                            </ul>
-                        @endguest
-
-                    </li> --}}
+                    
                 </ul>
 
 
@@ -286,15 +186,7 @@
         @yield('content')
     </div>
 
-    {{-- <div class="d-flex">
-        <a href="#top" class="btn scroll-to-top text-white "
-            style="background-color: black; width: 50px;" role="button" title="Scroll to Top">
-            <i class="fa fa-arrow-up text-white-50"></i>
-        </a>
-    </div>
-    <footer class="container-fluid" style="background-color: black">
-    </footer>
-</body> --}}
+   
     <style>
         .custom-container {
             position: relative;
