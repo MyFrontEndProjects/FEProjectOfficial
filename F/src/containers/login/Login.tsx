@@ -28,32 +28,33 @@ const Login = () => {
       navigate("/main");
     }
   });
-  // userService.login(email, password).then((response) => {
-  //   if (response.errorCode === 0) {
-  //     setMessage("");
-  //     localStorage.setItem("user-info", JSON.stringify(response.data));
 
-  //     navigate("/main");
-  //   } else {
-  //     setMessage(response.message);
-  //   }
-  // });
   async function login() {
     console.warn(email, password);
-    let item = {email, password};
+    let item = { email, password };
     let result = await fetch("http://127.0.0.1:8000/api/login", {
-      method: 'POST',
+      method: "POST",
       headers: {
-        "Content-Type" : "application/json",
-        "Accept" : "application/json"
-
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
-      body: JSON.stringify(item)
+      body: JSON.stringify(item),
     });
-    result = await result.json();
-    localStorage.setItem('user-info',JSON.stringify(result));
-    navigate('/main');
+    // Sử dụng hàm json() để chuyển đổi kết quả thành JSON
+    result = await result.json() as Response;
+    // Kiểm tra nếu có token truy cập
+    if (result.token) {
+      // Lưu token vào localStorage
+      localStorage.setItem("user-info", JSON.stringify(result));
+      navigate("/main");
+    }
+    // Nếu không có token
+    else {
+      // Hiển thị thông báo lỗi
+      alert(result.error);
+    }
   }
+
   const usernameRef = React.useRef<any>();
   const passwordRef = React.useRef<any>();
   const [message, setMessage] = useState("");

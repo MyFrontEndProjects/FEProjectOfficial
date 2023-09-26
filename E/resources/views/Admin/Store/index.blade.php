@@ -126,7 +126,10 @@
                         </td>
                         <td>{{ $store->name }}</td>
                         <td class="col-2">
-                            <img src={{asset($store->file_path)}} alt="image" class="img-fluid">
+                            <a href="http://localhost:3000/show/1">
+                                <img src={{asset($store->file_path)}} alt="image" class="img-fluid">
+                            </a>
+                            
                         </td>
                         <td>{{ $store->category }}</td>
                         <td>{{ $store->quantity }}</td>
