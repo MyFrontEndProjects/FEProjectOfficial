@@ -37,22 +37,36 @@ const Shop = () => {
     fetchCategory();
   }, []);
 
-  async function fetchData() {
-    let response = await fetch("http://127.0.0.1:8000/api/list", {
-      method: "POST",
-      body: JSON.stringify({ selectedCategory: Category }),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
-    let result = await response.json();
-    setData(result);
-    console.log(result);
-  }
   useEffect(() => {
-    fetchData();
+    async function fetchData() {
+      try {
+        // Đầu tiên, lấy danh sách danh mục
+        let reqCategories = await fetch(
+          "http://127.0.0.1:8000/api/getCategory"
+        );
+        let categoriesResponse = await reqCategories.json();
+        setCategories(categoriesResponse);
+
+        // Sau đó, lấy danh sách sản phẩm dựa trên danh mục đã chọn
+        let reqProducts = await fetch("http://127.0.0.1:8000/api/list", {
+          method: "POST",
+          body: JSON.stringify({ selectedCategory: Category }),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
+        let productsResponse = await reqProducts.json();
+        setData(productsResponse);
+        console.log(productsResponse);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData(); // Gọi fetchData khi Component được tạo
   }, [Category]);
+
   async function handleAddToCart(productId: number) {
     try {
       const data = {
@@ -108,33 +122,33 @@ const Shop = () => {
             />
           </div>
           <div className="col-6">
-          <div className="row">
-          <label
-            htmlFor="selectedCategory"
-            className="col-2 d-flex align-self-center"
-          >
-            Lọc <i className="fa-solid fa-filter align-text-bottom"></i>:
-          </label>
-          <form className="ms-5 col d-flex">
-            <select
-              name="selectedCategory"
-              id="selectedCategory"
-              className="form-select"
-              onChange={(e) => {
-                setCategory(e.target.value);
-                console.log(e.target.value);
-              }}
-            >
-              <option value="0">Lọc</option>
-              {categories.length > 0 &&
-                categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-            </select>
-          </form>
-          </div>
+            <div className="row">
+              <label
+                htmlFor="selectedCategory"
+                className="col-2 d-flex align-self-center"
+              >
+                Lọc <i className="fa-solid fa-filter align-text-bottom"></i>:
+              </label>
+              <form className="ms-5 col d-flex">
+                <select
+                  name="selectedCategory"
+                  id="selectedCategory"
+                  className="form-select"
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                >
+                  <option value="0">Lọc</option>
+                  {categories.length > 0 &&
+                    categories.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                </select>
+              </form>
+            </div>
           </div>
         </div>
 
@@ -142,15 +156,17 @@ const Shop = () => {
           {data.map((item) => (
             <div className="col">
               <div className="card">
-                <img
-                  src={"http://127.0.0.1:8000/" + item.file_path}
-                  alt={item.name}
-                  className="card-img-top"
-                />
+                <Link to={"/show/" + item.id}>
+                  <img
+                    src={"http://127.0.0.1:8000/" + item.file_path}
+                    alt={item.name}
+                    className="card-img-top"
+                  />
+                </Link>
                 <div className="card-body">
-                  {/* <Link to={titleUrl}>
-                    <h5 className="card-title ">{title}</h5>
-                  </Link> */}
+                  <Link to={"/show/" + item.id}>
+                    <h3>{item.name}</h3>
+                  </Link>
                   <p className="card-text">{item.description}</p>
                   <button
                     className="btn btn-success"

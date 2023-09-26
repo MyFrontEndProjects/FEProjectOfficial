@@ -154,7 +154,7 @@ const ProductList = () => {
                 <td>{item.size}</td>
                 <td>
                   <span className="mx-1">
-                    <Link to={"product/show/"+item.id}>
+                    <Link to={"/show/"+item.id}>
                     <i className="bi bi-eye" />
                     </Link>
                   </span>
