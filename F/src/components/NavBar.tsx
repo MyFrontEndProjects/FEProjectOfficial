@@ -277,7 +277,7 @@ const OffcanvasExample = () => {
                   </NavDropdown.Item>
                 </NavDropdown> */}
               </Nav>
-              <Form className="d-flex">
+              {/* <Form className="d-flex">
                 <Form.Control
                   type="search"
                   placeholder="Search"
@@ -290,7 +290,7 @@ const OffcanvasExample = () => {
                     Search
                   </Link>
                 </Button>
-              </Form>
+              </Form> */}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
           <NavLink to="/cart" className="ms-3">
