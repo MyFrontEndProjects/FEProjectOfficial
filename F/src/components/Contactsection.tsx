@@ -55,7 +55,7 @@ function Contactsection() {
         </div>
       </section>
 
-      <section className="section bg-light py-2">
+      <section className="section bg-light pt-2 pb-0">
         <div className="container">
           <h6 className="text-primary text-uppercase">Thông Tin Chi Nhánh</h6>
           <h1 className="mb-4"><span className="text-primary">Dream Laptop</span> - Gần Bạn Ở Khắp Mọi Nơi</h1>

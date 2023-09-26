@@ -79,7 +79,7 @@ const Content = () => {
 
 
 
-      <section className="container bg-light py-5 border-bottom " style={{ borderTopLeftRadius: '60px', borderTopRightRadius: '60px' }}>
+      <section className="container bg-light py-5 mt-5 border-bottom " style={{ borderTopLeftRadius: '60px', borderTopRightRadius: '60px' }}>
         <div className="row ">
           <ul className="nav">
             <li className="nav-item col-lg-3 col-md-6 col-6 d-flex justify-content-center align-items-center">

@@ -256,10 +256,10 @@ const OffcanvasExample = () => {
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
-
+{/* 
           <NavLink to="/cart" className="ms-3">
             <i className="bi bi-cart-x fs-1"></i>
-          </NavLink>
+          </NavLink> */}
         </Container>
       </Navbar>
     </>

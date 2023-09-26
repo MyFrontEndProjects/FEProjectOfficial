@@ -1,4 +1,3 @@
-import Card from "components/Card";
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -108,32 +107,18 @@ const Shop = () => {
   return (
     <>
       <div className="container">
-        <div className="row row-cols-1 row-cols-md-2 mb-3">
-          <div className="col-sm-6">
-            <Input
-              id="SearchProduct"
-              label="Search Products"
-              type="text"
-              placeholder="Search"
-              autoComplete="off"
-              labelSize={3}
-              className="form-control form-control-lg"
-              onChange={(e) => search(e.target.value)}
-            />
-          </div>
-          <div className="col-6">
+        <div className="row d-flex justify-content-between">
+
+          <div className="col-lg-5 col-md-6 col-sm-12 py-2">
             <div className="row">
-              <label
-                htmlFor="selectedCategory"
-                className="col-2 d-flex align-self-center"
-              >
-                Lọc <i className="fa-solid fa-filter align-text-bottom"></i>:
+              <label htmlFor="selectedCategory" className="col-4 col-lg-2 d-flex align-items-center">
+                Lọc <i className="ms-1 fa-solid fa-filter align-text-bottom"></i>:
               </label>
-              <form className="ms-5 col d-flex">
+              <form className="col d-flex">
                 <select
                   name="selectedCategory"
                   id="selectedCategory"
-                  className="form-select"
+                  className="col-lg-10 col-md-8 col-8 form-control-sm"
                   onChange={(e) => {
                     setCategory(e.target.value);
                     console.log(e.target.value);
@@ -150,11 +135,35 @@ const Shop = () => {
               </form>
             </div>
           </div>
-        </div>
 
+          <div className="col-lg-5 col-md-6 col-sm-12 py-2">
+            <div className="row">
+              <label htmlFor="SearchProduct" className="col-lg-2 col-4 d-flex align-items-center">
+                Search <i className="fa-solid fa-filter align-text-bottom"></i>:
+              </label>
+              <input
+                type="text"
+                name="SearchProduct"
+                id="SearchProduct"
+                className="col-lg-10 col-8 form-control-sm"
+                placeholder="Search"
+                autoComplete="off"
+                onChange={(e) => search(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="col-lg-2 col-12 d-flex align-items-center justify-content-lg-end justify-content-sm-start">
+            <button className="btn btn-warning ">Giỏ Hàng <i className="fa-solid fa-cart-plus" /></button>
+          </div>
+        </div>
+      </div>
+
+
+      <section className="container  py-5 d-flex justify-content-center align-items-center">
         <div className="row row-cols-1 row-cols-md-5 gy-4">
           {data.map((item) => (
-            <div className="col">
+
+            <div className="col-4">
               <div className="card">
                 <Link to={"/show/" + item.id}>
                   <img
@@ -167,7 +176,7 @@ const Shop = () => {
                   <Link to={"/show/" + item.id}>
                     <h3>{item.name}</h3>
                   </Link>
-                  <p className="card-text">{item.description}</p>
+                  {/* <p className="card-text">{item.description}</p> */}
                   <button
                     className="btn btn-success"
                     onClick={() => handleAddToCart(item.id)}
@@ -186,7 +195,7 @@ const Shop = () => {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </>
   );
 };

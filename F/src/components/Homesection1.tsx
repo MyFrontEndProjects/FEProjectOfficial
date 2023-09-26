@@ -4,7 +4,7 @@ const Homesection1 = () => {
         <>
 
 
-            <section className="container bg-dark py-5" style={{ borderBottomLeftRadius: '60px', borderBottomRightRadius: '60px' }}>
+            <section className="container bg-dark py-5 mb-5" style={{ borderBottomLeftRadius: '60px', borderBottomRightRadius: '60px' }}>
                 <div className="row">
                     <ul className="nav d-flex justify-content-between align-items-center">
                         <li className="nav-item col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
