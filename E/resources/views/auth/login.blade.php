@@ -9,13 +9,13 @@
                         <!-- Hình ảnh xe hơi -->
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('./img/store-5.png') }}" class="d-block w-100" alt="Car 1">
+                                <img src="{{ asset('./img/caro-1.webp') }}" class="d-block w-100" alt="Car 1">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('./img/store-7.png') }}" class="d-block w-100" alt="Car 2">
+                                <img src="{{ asset('./img/caro-2.webp') }}" class="d-block w-100" alt="Car 2">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('./img/store-9.png') }}" class="d-block w-100" alt="Car 3">
+                                <img src="{{ asset('./img/caro-3.webp') }}" class="d-block w-100" alt="Car 3">
                             </div>
                         </div>
 
