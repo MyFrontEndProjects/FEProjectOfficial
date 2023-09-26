@@ -4,11 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.json";
 import { MyDataType } from "../../constants/MyDataType";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Shop = () => {
   const navigate = useNavigate();
-  
+
   const [data, setData] = useState<MyDataType[]>([]);
   console.warn(data);
   // async function deleteItem(id: number) {
@@ -34,42 +34,68 @@ const Shop = () => {
         productId: productId,
         quantityPro: 1,
       };
-  
-        let result = await fetch("http://127.0.0.1:8000/api/cart/add", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-              "Content-Type": "application/json",
-              accept: "application/json",
-            },
-          });
-      
-          result = await result.json();
-          alert(`Đã thêm vào giỏ hàng `);
-          navigate("/cart");
-        // Gọi phương thức POST hoặc PUT đến API Laravel
-        // const response = await axios.post(`/api/cart/add/3`, data);
-  
-        // // Xử lý phản hồi từ API (nếu cần)
-       console.log(result);
-        // navigate("/shop");
-        
 
-        // Cập nhật giao diện người dùng nếu cần
-      } catch (error) {
-        // Xử lý lỗi nếu có
-        console.error(error);
-      }
-  };
+      let result = await fetch("http://127.0.0.1:8000/api/cart/add", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+      });
+
+      result = await result.json();
+      alert(`Đã thêm vào giỏ hàng `);
+      navigate("/cart");
+      // Gọi phương thức POST hoặc PUT đến API Laravel
+      // const response = await axios.post(`/api/cart/add/3`, data);
+
+      // // Xử lý phản hồi từ API (nếu cần)
+      console.log(result);
+      // navigate("/shop");
+
+      // Cập nhật giao diện người dùng nếu cần
+    } catch (error) {
+      // Xử lý lỗi nếu có
+      console.error(error);
+    }
+  }
 
   return (
     <>
       <div className="container">
+        <div className="row row-cols-2 mt-3 mb-3">
+          <label className="col-1">
+            Bộ lọc <i className="fa-solid fa-filter" />:
+          </label>
+
+          <form
+            action="{{ route('filterStores') }}"
+            method="POST"
+            id="myForm"
+            className="col-4"
+          >
+            <select
+              name="selectedCategory"
+              id="selectedCategory"
+              className="form-select ms-3"
+            >
+              <option value="0">Lọc theo hãng xe</option>
+              {data.map((item) => (
+               <option value={item.category}> {item.category}</option>
+              ))}
+            </select>
+          </form>
+        </div>
         <div className="row row-cols-1 row-cols-md-5 gy-4">
           {data.map((item) => (
             <div className="col">
               <div className="card">
-                <img src={"http://127.0.0.1:8000/" + item.file_path} alt={item.name} className="card-img-top" />
+                <img
+                  src={"http://127.0.0.1:8000/" + item.file_path}
+                  alt={item.name}
+                  className="card-img-top"
+                />
                 <div className="card-body">
                   {/* <Link to={titleUrl}>
                     <h5 className="card-title ">{title}</h5>
@@ -78,11 +104,10 @@ const Shop = () => {
                   <button
                     className="btn btn-success"
                     onClick={() => handleAddToCart(item.id)}
-
                   >
-                  mua
+                    mua
                   </button>
-                  
+
                   <input
                     type="number"
                     value={1}
