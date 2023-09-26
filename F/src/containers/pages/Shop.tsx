@@ -6,7 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.json";
 import { MyDataType } from "../../constants/MyDataType";
 import { useNavigate } from "react-router-dom";
-
+import Footer from 'components/Footer';
 
 const Shop = () => {
   const navigate = useNavigate();
@@ -153,7 +153,10 @@ const Shop = () => {
             </div>
           </div>
           <div className="col-lg-2 col-12 d-flex align-items-center justify-content-lg-end justify-content-sm-start">
-            <button className="btn btn-warning ">Giỏ Hàng <i className="fa-solid fa-cart-plus" /></button>
+            <button className="btn btn-warning " >
+              <a href="/cart" className="text-decoration-none text-white">Giỏ Hàng <i className="fa-solid fa-cart-plus" /></a>
+
+            </button>
           </div>
         </div>
       </div>
@@ -163,7 +166,8 @@ const Shop = () => {
         <div className="row gy-4">
           {data.map((item) => (
             <div className="col-md-4">
-              <div className="card d-flex">
+              <div className="card d-flex   border-0 ">
+
                 <Link to={"/show/" + item.id}>
                   <img
                     src={"http://127.0.0.1:8000/" + item.file_path}
@@ -171,16 +175,36 @@ const Shop = () => {
                     className="card-img-top"
                   />
                 </Link>
+
                 <div className="card-body">
-                  <Link to={"/show/" + item.id}>
-                    <h3>{item.name}</h3>
-                  </Link>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => handleAddToCart(item.id)}
-                  >
-                    Mua
-                  </button>
+                  <div className="row text-center">
+                    <Link to={"/show/" + item.id} className="text-decoration-none">
+                      <h4 >{item.name}</h4>
+                    </Link>
+                  </div>
+
+                  <div className="row ms-5 pt-5 text-black">
+                    <span>{item.description}</span>  
+                   
+                  </div>
+                  
+                  <div className="row ms-5 pt-5 text-black-50">
+                    <h3 >{item.price} <i className="fa-solid fa-lira-sign" />
+                    </h3>
+                  </div>
+
+                  <div className="container d-flex justify-content-around " >
+                    <button className="btn btn-outline-warning text-black " onClick={() => handleAddToCart(item.id)}>
+                      Thêm vào giỏ hàng <i className="fa-solid fa-cart-plus" />
+
+                    </button>
+
+                    <button className="btn btn-outline-success text-black" >
+                      Mua ngay <i className="fa-regular fa-credit-card" />
+
+                    </button>
+                  </div>
+
                   <input
                     type="number"
                     value={1}
@@ -193,7 +217,8 @@ const Shop = () => {
           ))}
         </div>
       </section>
-
+      
+      <Footer />
     </>
   );
 };
