@@ -56,7 +56,8 @@ function AboutUs() {
                                     </div>
                                 </div>
                             </div>
-                            <a href="#section3" className="btn btn-primary py-3 px-5">Tìm hiểu thêm<i className="fa fa-arrow-right ms-3"></i></a>
+                            <a href="#section3" className="btn btn-primary py-3 px-5">Tìm hiểu thêm <i className="fa-solid fa-angles-down" />
+</a>
                         </div>
                     </div>
                 </div>
