@@ -18,7 +18,10 @@ import userService from "services/userService";
 
 // import { Container } from "reactstrap";
 import Register from "./Register";
-
+interface UserResponse extends Response {
+  // Thêm các thuộc tính error và token
+  error?: string;
+}
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,11 +31,38 @@ const Login = () => {
       navigate("/main");
     }
   });
+  // userService.login(email, password).then((response) => {
+  //   if (response.errorCode === 0) {
+  //     setMessage("");
+  //     localStorage.setItem("user-info", JSON.stringify(response.data));
+
+  //     navigate("/main");
+  //   } else {
+  //     setMessage(response.message);
+  //   }
+  // });
+  // async function login() {
+  //   console.warn(email, password);
+  //   let item = {email, password};
+  //   let result = await fetch("http://127.0.0.1:8000/api/login", {
+  //     method: 'POST',
+  //     headers: {
+  //       "Content-Type" : "application/json",
+  //       "Accept" : "application/json"
+
+  //     },
+  //     body: JSON.stringify(item)
+  //   });
+  //   result = await result.json();
+  //   localStorage.setItem('user-info',JSON.stringify(result));
+  //   navigate('/main');
+  // }
 
   async function login() {
     console.warn(email, password);
     let item = { email, password };
-    let result = await fetch("http://127.0.0.1:8000/api/login", {
+    let result: UserResponse;
+    result = await fetch("http://127.0.0.1:8000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,18 +70,17 @@ const Login = () => {
       },
       body: JSON.stringify(item),
     });
-    // Sử dụng hàm json() để chuyển đổi kết quả thành JSON
-    result = await result.json() as Response;
-    // Kiểm tra nếu có token truy cập
-    if (result.token) {
-      // Lưu token vào localStorage
-      localStorage.setItem("user-info", JSON.stringify(result));
-      navigate("/main");
+    // Cast the result of the json() method to the UserResponse type
+    result = await result.json();
+    // Check if there is a token
+    if (result.error) {
+      navigate("/");
     }
-    // Nếu không có token
+    // If there is no token
     else {
-      // Hiển thị thông báo lỗi
-      alert(result.error);
+      // Save the token in localStorage
+      localStorage.setItem("user-info", JSON.stringify(result));
+      navigate("/");
     }
   }
 

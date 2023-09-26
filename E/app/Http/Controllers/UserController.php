@@ -49,18 +49,12 @@ class UserController extends Controller
             // Trả về mã lỗi 401 và thông báo lỗi
             return response()->json([
                 'error' => 'Email or password is not matched.'
-            ], 401);
+            ]);
         }
 
         // Nếu tìm thấy người dùng và mật khẩu khớp
         else {
-            // Tạo token truy cập cho người dùng
-            $token = $user->createToken('LaravelAuthApp')->accessToken;
-
-            // Trả về mã thành công 200 và token truy cập
-            return response()->json([
-                'token' => $token
-            ], 200);
+            return $user;
         }
     }
     
