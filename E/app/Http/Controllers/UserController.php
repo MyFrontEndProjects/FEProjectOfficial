@@ -25,12 +25,43 @@ class UserController extends Controller
         $newUser->save();
         return $newUser;
     }
+    // function login(Request $request)
+    // {
+    //     $user = User::where('email', $request->email)->first();
+    //     if (!$user || !Hash::check($request->password, $user->password)) {
+    //         return ["error" => "Email or password is not matched."];
+    //     }
+    //     return $user;
+    // }
     function login(Request $request)
     {
+        // Kiểm tra tính hợp lệ của dữ liệu đầu vào
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        // Tìm người dùng theo email
         $user = User::where('email', $request->email)->first();
+
+        // Nếu không tìm thấy người dùng hoặc mật khẩu không khớp
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return ["error" => "Email or password is not matched."];
+            // Trả về mã lỗi 401 và thông báo lỗi
+            return response()->json([
+                'error' => 'Email or password is not matched.'
+            ], 401);
         }
-        return $user;
+
+        // Nếu tìm thấy người dùng và mật khẩu khớp
+        else {
+            // Tạo token truy cập cho người dùng
+            $token = $user->createToken('LaravelAuthApp')->accessToken;
+
+            // Trả về mã thành công 200 và token truy cập
+            return response()->json([
+                'token' => $token
+            ], 200);
+        }
     }
+    
 }

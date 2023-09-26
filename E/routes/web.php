@@ -57,20 +57,7 @@ Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')
 Route::post('/cart/addToCard{id}', 'App\Http\Controllers\CartController@addToCard')
     ->name('cart.addNew');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')
-        ->name('cart.purchase');
-    Route::get('/cart/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')
-        ->name('my-account.orders');
-    Route::get('/myProfile', 'App\Http\Controllers\MyAccountController@MyProfile')
-        ->name('myProfile');
-    Route::get('/edit/info', 'App\Http\Controllers\MyAccountController@editAccount')
-        ->name('editAccount');
-    Route::get('/update/{id}/info', 'App\Http\Controllers\MyAccountController@updateAccount')
-        ->name('editAccount.update');
-});
-Route::get('/profile/avatar/{filename}', 'App\http\Http\Controllers\MyAccountController@showImage')
-    ->name('showAvatar');
+
 //admin routes
 Route::middleware('admin')->group(function () {
     Route::get('/admin', 'App\Http\Controllers\Admin\AdminStoreHomeController@index')
@@ -117,9 +104,4 @@ Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register'
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
-//home controller chuyển trang
 
-Route::get('/home/about', 'App\Http\Controllers\HomeController@about')->name('home.about');
-Route::get('/home/testimonial', 'App\Http\Controllers\HomeController@testimonial')->name('home.testimonial');
-Route::get('/home/service', 'App\Http\Controllers\HomeController@service')->name('home.service');
-Route::get('/home/team', 'App\Http\Controllers\HomeController@team')->name('home.team');
