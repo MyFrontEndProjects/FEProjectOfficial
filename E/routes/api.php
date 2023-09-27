@@ -22,11 +22,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 // Route cho đăng ký
 Route::post('/register', [UserController::class, 'register']);
 
 // Route cho đăng nhập
 Route::post('/login', 'App\Http\Controllers\UserController@login');
+Route::get('login', function (){
+    $response = ['errorCode'=>401, 'message'=>'Unauthenticated'];
+    return response()->json($response, 401);
+})->name('login');
 Route::get ('search/{key}', [ProductController::class,'search']);
 
 Route::post ('list', [ProductController::class,'list']);

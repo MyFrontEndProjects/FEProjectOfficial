@@ -4,15 +4,16 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useState } from "react";
-
 import { MyDataType } from "../constants/MyDataType";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-interface User {
+type LoginInfo  = {
+  id: number;
   name: string;
-  // Các thuộc tính khác của User nếu cần
-}
+  email: string;
+  accessToken: string;
+};
 const OffcanvasExample = () => {
-  let user: User | null = null;
+  let user: LoginInfo | null = null;
 
   // Lấy giá trị từ localStorage và kiểm tra nếu có
   const userString = localStorage.getItem("user-info");
@@ -211,9 +212,7 @@ const OffcanvasExample = () => {
                     <NavDropdown
                       title={
                         <span className="text-white my-auto">
-                          {user && typeof user === "object" && "name" in user
-                            ? user.name
-                            : "Guest"}
+                          {user ? user.name : "Guest"}
                         </span>
                       }
                       id={`offcanvasUserNavbarDropdown-expand-md`}

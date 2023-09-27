@@ -15,86 +15,22 @@ import userService from "services/userService";
 // import { library } from '@fortawesome/fontawesome-svg-core'
 // import { fas } from '@fortawesome/free-solid-svg-icons'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
-
-// import { Container } from "reactstrap";
-import Register from "./Register";
-interface UserResponse extends Response {
-  // Thêm các thuộc tính error và token
-  error?: string;
-}
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-      navigate("/main");
-    }
-  });
-  // userService.login(email, password).then((response) => {
-  //   if (response.errorCode === 0) {
-  //     setMessage("");
-  //     localStorage.setItem("user-info", JSON.stringify(response.data));
 
-  //     navigate("/main");
-  //   } else {
-  //     setMessage(response.message);
-  //   }
-  // });
-  // async function login() {
-  //   console.warn(email, password);
-  //   let item = {email, password};
-  //   let result = await fetch("http://127.0.0.1:8000/api/login", {
-  //     method: 'POST',
-  //     headers: {
-  //       "Content-Type" : "application/json",
-  //       "Accept" : "application/json"
-
-  //     },
-  //     body: JSON.stringify(item)
-  //   });
-  //   result = await result.json();
-  //   localStorage.setItem('user-info',JSON.stringify(result));
-  //   navigate('/main');
-  // }
-
-  async function login() {
-    console.warn(email, password);
-    let item = { email, password };
-    let result: UserResponse;
-    result = await fetch("http://127.0.0.1:8000/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(item),
-    });
-    // Cast the result of the json() method to the UserResponse type
-    result = await result.json();
-    // Check if there is a token
-    if (result.error) {
-      navigate("/");
-    }
-    // If there is no token
-    else {
-      // Save the token in localStorage
-      localStorage.setItem("user-info", JSON.stringify(result));
-      navigate("/");
-    }
-  }
-
-  const usernameRef = React.useRef<any>();
+  const emailRef = React.useRef<any>();
   const passwordRef = React.useRef<any>();
   const [message, setMessage] = useState("");
   const formSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const username = usernameRef.current?.value;
-    const password = passwordRef.current?.value;
-    userService.login(username, password).then((res) => {
+    userService.login(email, password).then((res) => {
       if (res.errorCode === 0) {
         setMessage("");
-        navigate("/main");
+      console.log(res.data);
+      localStorage.setItem("user-info", JSON.stringify(res.data));
+        navigate("/");
       } else {
         setMessage(res.message);
       }
@@ -113,7 +49,7 @@ const Login = () => {
               />
             </div>
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              {/* <p className="text-center text-danger">{message}</p> */}
+              <p className="text-center text-danger">{message}</p>
               <form onSubmit={formSubmitHandler}>
                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                   <p className="lead fw-normal mb-0 me-3">Sign in with</p>
@@ -135,7 +71,7 @@ const Login = () => {
 
                 <div className="form-outline mb-4">
                   <Input
-                    inputRef={usernameRef}
+                    inputRef={emailRef}
                     id="txtUserName"
                     label="Email"
                     type="email"
@@ -183,7 +119,7 @@ const Login = () => {
                     type="submit"
                     className="btn btn-primary btn-lg"
                     style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-                    onClick={login}
+                    // onClick={handleLogin}
                   >
                     Login
                   </button>
@@ -198,13 +134,13 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary fixed-bottom">
-          {/* Copyright */}
+        {/* <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary fixed-bottom">
+          
           <div className="text-white mb-3 mb-md-0">
             Copyright © 2020. All rights reserved.
           </div>
-          {/* Copyright */}
-          {/* Right */}
+          
+         
           <div>
             <a href="#!" className="text-white me-4">
               <FontAwesomeIcon icon={faFacebook} style={{ color: "#ffffff" }} />
@@ -219,8 +155,8 @@ const Login = () => {
               <FontAwesomeIcon icon={faGithub} style={{ color: "#ffffff" }} />
             </a>
           </div>
-          {/* Right */}
-        </div>
+         
+        </div> */}
       </section>
     </>
   );
