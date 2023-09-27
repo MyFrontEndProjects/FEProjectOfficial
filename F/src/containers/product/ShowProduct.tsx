@@ -57,7 +57,7 @@ const ShowProduct = () => {
       });
 
       result = await result.json();
-      alert(`Đã thêm vào giỏ hàng `);
+      // alert(`Đã thêm vào giỏ hàng `);
 
       // Gọi phương thức POST hoặc PUT đến API Laravel
       // const response = await axios.post(`/api/cart/add/3`, data);
@@ -65,7 +65,7 @@ const ShowProduct = () => {
       // // Xử lý phản hồi từ API (nếu cần)
       console.log(result);
       // navigate("/shop");
-
+      navigate("/cart");
       // Cập nhật giao diện người dùng nếu cần
     } catch (error) {
       // Xử lý lỗi nếu có
