@@ -31,7 +31,7 @@ class AdminCartController extends Controller
             return back();
         } else {
             session()->flash('product_not_found', 'Sản phẩm không tồn tại.');
-            return redirect()->route('admin.cart.index');    
+            return redirect()->route('admin.cart.index');
         }
     }
     public function edit($id)
@@ -52,5 +52,10 @@ class AdminCartController extends Controller
         $item->file_path = $product->file_path;
         $item->save();
         return redirect()->route('admin.cart.index');
+    }
+    public function delete($id)
+    {
+        Cart::destroy($id);
+        return back();
     }
 }

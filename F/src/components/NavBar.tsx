@@ -11,6 +11,12 @@ type LoginInfo  = {
   name: string;
   email: string;
   accessToken: string;
+  avatar: string;
+  role: string;
+  phone: string;
+  address: string;
+  api_token: string;
+  balance: number;
 };
 const OffcanvasExample = () => {
   let user: LoginInfo | null = null;
@@ -206,7 +212,7 @@ const OffcanvasExample = () => {
                           className="nav-link text-black"
                         >
                           Update Product
-                        </NavLink>{" "}
+                        </NavLink>
                       </NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown
@@ -222,7 +228,14 @@ const OffcanvasExample = () => {
                         Logout
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item className="text-black">Something else here</NavDropdown.Item>
+                      <NavDropdown.Item className="text-black">
+                      <NavLink
+                          to="/profile"
+                          className="nav-link text-black"
+                        >
+                          My Profile
+                        </NavLink>
+                      </NavDropdown.Item>
                     </NavDropdown>
                   </>
                 ) : (

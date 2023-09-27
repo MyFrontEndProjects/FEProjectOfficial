@@ -30,6 +30,7 @@ class CartApi extends Controller
 
         if ($product) {
             $item = new Cart();
+            $item->user_id = $request->user_id;
             $item->product_id = $request->productId;
             $item->quantityPro = $request->quantityPro;
             $item->price = $product->price;

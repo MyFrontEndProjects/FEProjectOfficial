@@ -13,7 +13,7 @@ import Shop from "containers/pages/Shop";
 import CartIndex from "containers/pages/CartIndex";
 import AboutUs from "containers/pages/AboutUs";
 import Contact from "containers/pages/Contact";
-
+import UserProfile from "containers/pages/UserProfile";
 const RouteContent = () => {
   return (<>
     <div className="container-fluid" style={{ margin: '70px 0 0 0', padding: '0' }}>
@@ -25,6 +25,7 @@ const RouteContent = () => {
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/about us" element={<AboutUs />} />
+        <Route path="/profile" element={<UserProfile />} />
 
 
 

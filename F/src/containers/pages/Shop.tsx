@@ -6,8 +6,32 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.json";
 import { MyDataType } from "../../constants/MyDataType";
 import Footer from 'components/Footer';
+type LoginInfo  = {
+  id: number;
+  name: string;
+  email: string;
+  accessToken: string;
+  avatar: string;
+  role: string;
+  phone: string;
+  address: string;
+  api_token: string;
+  balance: number;
+};
 
 const Shop = () => {
+  let user: LoginInfo;
+
+  // Lấy giá trị từ localStorage và kiểm tra nếu có
+  const userString = localStorage.getItem("user-info");
+  if (userString) {
+    try {
+      user = JSON.parse(userString);
+    } catch (error) {
+      // Xử lý lỗi nếu có
+      console.error("Error parsing user info:", error);
+    }
+  }
   const [data, setData] = useState<MyDataType[]>([]);
   const [Category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
@@ -64,13 +88,17 @@ const Shop = () => {
     fetchData(); // Gọi fetchData khi Component được tạo
   }, [Category]);
 
-  async function handleAddToCart(productId: number) {
+  async function handleAddToCart(productId: number, userId : number |null) {
     try {
+      if(userId === null) {
+        userId = 1
+      }
       const data = {
         productId: productId,
         quantityPro: 1,
+        user_id: userId,
       };
-
+      
       let result = await fetch("http://127.0.0.1:8000/api/cart/add", {
         method: "POST",
         body: JSON.stringify(data),
@@ -198,7 +226,7 @@ const Shop = () => {
 
                   <div className="mt-auto">
                     <div className="container d-flex justify-content-center justify-content-md-around">
-                      <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id)}>
+                      <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id, user.id )}>
                         Thêm vào giỏ hàng <i className="fa-solid fa-cart-plus" />
                       </button>
 

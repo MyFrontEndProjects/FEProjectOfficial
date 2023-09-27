@@ -73,6 +73,7 @@
                     <tr class="text-center">
                         <th scope="col">STT</th>
                         <th scope="col">ID</th>
+                        <th scope="col">Mã người dùng</th>
                         <th scope="col">Mã sản phẩm</th>
                         <th scope="col">Tên</th>
                         <th scope="col">Hình ảnh</th>
@@ -88,6 +89,7 @@
                         <tr class="text-center">
                             <td>{{ $counter }}</td>
                             <td>{{ $cart->id }}</td>
+                            <td>{{ $cart->user_id }}</td>
                             <td>{{ $cart->product_id }}</td>
                             <td>{{ $cart->name }}</td>
                             <td class="col-2">

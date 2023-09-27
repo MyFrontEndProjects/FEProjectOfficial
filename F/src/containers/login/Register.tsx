@@ -14,7 +14,7 @@ interface RegisterFormData {
   name: string;
   email: string;
   password: string;
-  avatar: File | null;
+  // avatar: File | null;
 }
 
 const Register: React.FC = () => {
@@ -26,13 +26,13 @@ const Register: React.FC = () => {
     formState: { errors }, //formState chứa các thông tin về trạng thái của form, bao gồm các lỗi (errors)
   } = useForm<RegisterFormData>();
 
-  useEffect(() => {
-    //kiểm tra xem trong localStorage có tồn tại thông tin người đăng ký hay không.
-    //Nếu tồn tại, chúng ta sử dụng navigate để chuyển hướng đến trang /add.
-    if (localStorage.getItem("user-info")) {
-      navigate("/main");
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   //kiểm tra xem trong localStorage có tồn tại thông tin người đăng ký hay không.
+  //   //Nếu tồn tại, chúng ta sử dụng navigate để chuyển hướng đến trang /add.
+  //   if (localStorage.getItem("user-info")) {
+  //     navigate("/main");
+  //   }
+  // }, [navigate]);
 
   const onSubmit: SubmitHandler<RegisterFormData> = async (data) => {
     console.warn(data); //Gửi dữ liệu của biến data lên endpoint
@@ -46,10 +46,10 @@ const Register: React.FC = () => {
       },
     });
 
-    result = await result.json(); // Sau khi nhận được kết quả từ serve, dữ liệu sẽ được lưu vào
-    // localStorage.
+    result = await result.json(); 
     localStorage.setItem("user-info", JSON.stringify(result));
-    navigate("/main"); // Khi dữ liệu đã truyền vào thì nó sẽ chuyển đến trang main
+    console.log(result);
+    navigate("/"); // Khi dữ liệu đã truyền vào thì nó sẽ chuyển đến trang main
   };
 
   return (
@@ -75,7 +75,7 @@ const Register: React.FC = () => {
                 <div className="divider d-flex align-items-center my-4">
                   <p className="text-center fw-bold mx-3 mb-0">Or</p>
                 </div>
-                <div className="form-outline mb-4">
+                {/* <div className="form-outline mb-4">
                   <label htmlFor="name">Avatar:</label>
                   <input
                     type="file"
@@ -85,7 +85,7 @@ const Register: React.FC = () => {
                     placeholder="Enter full name"
                   />
                   {errors.avatar && <p role="alert">avatar is required</p>}
-                </div>
+                </div> */}
                 <div className="form-outline mb-4">
                   <label htmlFor="name">Full Name:</label>
                   <input

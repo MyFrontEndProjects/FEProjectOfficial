@@ -91,11 +91,11 @@ Route::middleware('admin')->group(function () {
     Route::post('/admin/cart/add', 'App\Http\Controllers\Admin\AdminCartController@add')
         ->name("admin.cart.add");
         
-    Route::delete('admin/cart/{id}/delete', 'App\Http\Controllers\Admin\AdminCartPageController@delete')
+    Route::delete('admin/cart/{id}/delete', 'App\Http\Controllers\Admin\AdminCartController@delete')
         ->name("admin.cart.delete");
-    Route::get('admin/cart/{id}/edit', 'App\Http\Controllers\Admin\AdminCartPageController@edit')
+    Route::get('admin/cart/{id}/edit', 'App\Http\Controllers\Admin\AdminCartController@edit')
         ->name("admin.cart.edit");
-    Route::put('admin/cart/{id}/update', 'App\Http\Controllers\Admin\AdminCartPageController@update')
+    Route::put('admin/cart/{id}/update', 'App\Http\Controllers\Admin\AdminCartController@updateQuantityPro')
         ->name("admin.cart.update");
 });
 
