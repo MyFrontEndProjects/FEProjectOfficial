@@ -209,6 +209,7 @@ const Shop = () => {
       <div className="py-5 text-center mt-5">
         <h1>Get Your Game On</h1>
       </div>
+      
 
       <section className="container py-5">
         <div className="row gy-4">

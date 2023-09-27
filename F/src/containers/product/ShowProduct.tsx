@@ -225,7 +225,9 @@ const ShowProduct = () => {
                   </div>
 
                   <div className="row ms-3 ms-md-5 pt-3 text-black">
-                    <span>{item.description}</span>
+                    <pre className="fs-7" style={{ fontFamily: "Roboto Mono" }}>
+                      <span>{item.description}</span>
+                    </pre>
                   </div>
 
                   <div className="row ms-3 ms-md-5 pt-3 text-black-50">
@@ -234,7 +236,7 @@ const ShowProduct = () => {
 
                   <div className="mt-auto">
                     <div className="container d-flex justify-content-center justify-content-md-around">
-                      <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id,user.id,1)}>
+                      <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id, user.id, 1)}>
                         Thêm vào giỏ hàng <i className="fa-solid fa-cart-plus" />
                       </button>
 
