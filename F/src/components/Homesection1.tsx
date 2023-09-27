@@ -2,8 +2,6 @@
 const Homesection1 = () => {
     return (
         <>
-
-
             <section className="container bg-dark py-5 mb-5" style={{ borderBottomLeftRadius: '60px', borderBottomRightRadius: '60px' }}>
                 <div className="row">
                     <ul className="nav d-flex justify-content-between align-items-center">
