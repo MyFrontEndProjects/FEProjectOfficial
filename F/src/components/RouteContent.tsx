@@ -15,48 +15,57 @@ import AboutUs from "containers/pages/AboutUs";
 import Contact from "containers/pages/Contact";
 import UserProfile from "containers/pages/UserProfile";
 const RouteContent = () => {
-  return (<>
-    <div className="container-fluid" style={{ margin: '70px 0 0 0', padding: '0' }}>
-      <Routes>
-        <Route path="/" element={ <Main />} />
+  return (
+    <>
+      <div
+        className="container-fluid"
+        style={{ margin: "70px 0 0 0", padding: "0" }}
+      >
+        <Routes>
+          <Route path="/" element={<Main />} />
 
-        <Route path="/shop" element={<Shop />} />
+          <Route path="/shop" element={<Shop />} />
 
-        <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<Contact />} />
 
-        <Route path="/about us" element={<AboutUs />} />
-        <Route path="/profile" element={<UserProfile />} />
+          <Route path="/about us" element={<AboutUs />} />
+          <Route path="/profile" element={<UserProfile />} />
 
+          <Route path="/card" element={<CardSession />} />
 
+          <Route
+            path="/cart"
+            element={
+              <Protected>
+                <CartIndex />
+              </Protected>
+            }
+          />
 
-        <Route path="/card" element={<CardSession />} />
+          <Route path="/login" element={<Login />} />
 
-        <Route path="/cart" element={<CartIndex />} />
-        
-        <Route path="/login" element={<Login />} />
+          {/* <Route path="content" element={<Content />} /> */}
 
-        {/* <Route path="content" element={<Content />} /> */}
-
-        <Route
-          path="add"
-          element={
-            <Protected>
-              <AddProduct />
-            </Protected>
-          }
-        />
-        <Route path="register" element={<Register />} />
-        <Route path="/productList" element={<ProductList />} />
-        <Route
-          path="productList/productUpdate/:id"
-          element={<UpdateProduct />}
-        />
-        <Route path="/show/:id" element={<ShowProduct />} />
-        <Route path="search" element={<SearchProduct />} />
-   
-      </Routes>
-    </div>
-  </>);
-}
+          <Route
+            path="/add"
+            element={
+              <Protected>
+                <AddProduct />
+              </Protected>
+            }
+          />
+          <Route path="register" element={<Register />} />
+          <Route path="/productList" element={<ProductList />} />
+          <Route
+            path="productList/productUpdate/:id"
+            element={<UpdateProduct />}
+          />
+          <Route path="/show/:id" element={<ShowProduct />} />
+          <Route path="search" element={<SearchProduct />} />
+        </Routes>
+      </div>
+    </>
+  );
+};
 
 export default RouteContent;
