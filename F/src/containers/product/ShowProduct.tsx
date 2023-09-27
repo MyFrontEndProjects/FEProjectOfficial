@@ -8,15 +8,43 @@ import { MyDataType } from '../../constants/MyDataType';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+type LoginInfo = {
+  id: number;
+  name: string;
+  email: string;
+  accessToken: string;
+  avatar: string;
+  role: string;
+  phone: string;
+  address: string;
+  api_token: string;
+  balance: number;
+};
 const ShowProduct = () => {
+  let user: LoginInfo;
+
+  // Lấy giá trị từ localStorage và kiểm tra nếu có
+  const userString = localStorage.getItem("user-info");
+  if (userString) {
+    try {
+      user = JSON.parse(userString);
+    } catch (error) {
+      // Xử lý lỗi nếu có
+      console.error("Error parsing user info:", error);
+    }
+  }
   const navigate = useNavigate();
   const [Quantity, setQuantity] = useState(1);
 
-  async function handleAddToCart(productId: number, quantityPro: number) {
+  async function handleAddToCart(productId: number, userId: number, quantity: number) {
     try {
+      if (userId === null) {
+        userId = 1;
+      }
       const data = {
         productId: productId,
-        quantityPro: quantityPro,
+        quantityPro: quantity,
+        user_id: userId,
       };
 
       let result = await fetch("http://127.0.0.1:8000/api/cart/add", {
@@ -29,8 +57,8 @@ const ShowProduct = () => {
       });
 
       result = await result.json();
+      alert(`Đã thêm vào giỏ hàng `);
 
-      navigate("/cart");
       // Gọi phương thức POST hoặc PUT đến API Laravel
       // const response = await axios.post(`/api/cart/add/3`, data);
 
@@ -160,7 +188,7 @@ const ShowProduct = () => {
                   />
                   <button
                     className="btn btn-success ms-2"
-                    onClick={() => handleAddToCart(data.id, Quantity)}
+                    onClick={() => handleAddToCart(data.id, user.id, Quantity)}
                   >
                     Mua
                   </button>
@@ -206,7 +234,7 @@ const ShowProduct = () => {
 
                   <div className="mt-auto">
                     <div className="container d-flex justify-content-center justify-content-md-around">
-                      <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id, 1)}>
+                      <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id,user.id,1)}>
                         Thêm vào giỏ hàng <i className="fa-solid fa-cart-plus" />
                       </button>
 
@@ -214,13 +242,6 @@ const ShowProduct = () => {
                         Mua ngay <i className="fa-regular fa-credit-card" />
                       </button>
                     </div>
-
-                    <input
-                      type="number"
-                      value={1}
-                      name="quantity"
-                      className="d-none"
-                    />
                   </div>
                 </div>
               </div>
