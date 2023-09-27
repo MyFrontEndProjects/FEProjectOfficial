@@ -77,7 +77,7 @@ class UserController extends Controller
             $user = auth()->user();
             $token = hash('sha1', time(). Str::random(50));
             $user->forceFill(['api_token' => $token])->save();
-            $data = ['id' => $user->id, 'name' => $user->name,'email'=>$user->email, 'token'=>$token, 'avatar' => $user->avatar];
+            $data = ['id' => $user->id, 'name' => $user->name,'email'=>$user->email, 'token'=>$token, 'avatar' => $user->avatar, 'role' => $user->role];
             return BaseResponse::withData($data);
         } else {
             return BaseResponse::error(1, 'wrong name or password');

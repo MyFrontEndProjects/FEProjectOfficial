@@ -21,7 +21,7 @@ type LoginInfo = {
 
 const Shop = () => {
   let user: LoginInfo;
-
+  
   // Lấy giá trị từ localStorage và kiểm tra nếu có
   const userString = localStorage.getItem("user-info");
   if (userString) {
@@ -109,8 +109,9 @@ const Shop = () => {
       });
 
       result = await result.json();
+      
       alert(`Đã thêm vào giỏ hàng `);
-
+      
       // Gọi phương thức POST hoặc PUT đến API Laravel
       // const response = await axios.post(`/api/cart/add/3`, data);
 

@@ -6,7 +6,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { useState } from "react";
 import { MyDataType } from "../constants/MyDataType";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-type LoginInfo  = {
+type LoginInfo = {
   id: number;
   name: string;
   email: string;
@@ -109,7 +109,7 @@ const OffcanvasExample = () => {
                 ></path>
               </svg>
             </NavLink>
-            
+
             <NavLink
               to="/"
               style={{ textDecoration: "none" }}
@@ -159,23 +159,26 @@ const OffcanvasExample = () => {
                 About us <i className="fa-regular fa-address-card" />
               </div>
             </NavLink>
-            <Link
-              to="http://localhost:8000/login"
-              target="_blank"
-              className="nav-link d-none d-md-flex align-self-center text-center text-uppercase fw-bold text-white me-3"
-              style={{ textDecoration: "none" }}
-            >
-              <div
-                className="align-self-center"
-                style={{ fontFamily: "cursive" }}
+            {user && user.role === "admin" ? (
+              <Link
+                to="http://localhost:8000/login"
+                target="_blank"
+                className="nav-link d-none d-md-flex align-self-center text-center text-uppercase fw-bold text-white me-3"
+                style={{ textDecoration: "none" }}
               >
-                Quản trị <i className="fa-solid fa-screwdriver-wrench"></i>
-              </div>
-            </Link>
+                <div
+                  className="align-self-center"
+                  style={{ fontFamily: "cursive" }}
+                >
+                  Quản trị <i className="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+              </Link>
+            ) : null}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
 
-          <Navbar.Offcanvas style={{ fontFamily: "cursive" }}
+          <Navbar.Offcanvas
+            style={{ fontFamily: "cursive" }}
             id={`offcanvasNavbar-expand-md`}
             aria-labelledby={`offcanvasNavbarLabel-expand-md`}
             placement="start"
@@ -194,7 +197,7 @@ const OffcanvasExample = () => {
                       title={
                         <span className="text-white my-auto">Product</span>
                       }
-                    // className="nav-item"
+                      // className="nav-item"
                     >
                       <NavDropdown.Item href="#action3">
                         <NavLink to="/add" className="nav-link text-black">
@@ -202,7 +205,10 @@ const OffcanvasExample = () => {
                         </NavLink>
                       </NavDropdown.Item>
                       <NavDropdown.Item href="#action4">
-                        <NavLink to="/productList" className="text-black nav-link">
+                        <NavLink
+                          to="/productList"
+                          className="text-black nav-link"
+                        >
                           ProductList
                         </NavLink>
                       </NavDropdown.Item>
@@ -230,10 +236,7 @@ const OffcanvasExample = () => {
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
                       <NavDropdown.Item className="text-black">
-                      <NavLink
-                          to="/profile"
-                          className="nav-link text-black"
-                        >
+                        <NavLink to="/profile" className="nav-link text-black">
                           My Profile
                         </NavLink>
                       </NavDropdown.Item>
@@ -269,6 +272,7 @@ const OffcanvasExample = () => {
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
+
         </Container>
       </Navbar>
       
