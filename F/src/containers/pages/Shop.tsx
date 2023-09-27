@@ -21,7 +21,7 @@ type LoginInfo = {
 
 const Shop = () => {
   let user: LoginInfo;
-  
+
   // Lấy giá trị từ localStorage và kiểm tra nếu có
   const userString = localStorage.getItem("user-info");
   if (userString) {
@@ -35,6 +35,8 @@ const Shop = () => {
   const [data, setData] = useState<MyDataType[]>([]);
   const [Category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
+  const [Comment, setComment] = useState("");
+  console.log(Comment);
   // async function deleteItem(id: number) {
   //   let result = await fetch("http://127.0.0.1:8000/api/delete/" + id, {
   //     method: "DELETE",
@@ -109,9 +111,46 @@ const Shop = () => {
       });
 
       result = await result.json();
-      
+
       alert(`Đã thêm vào giỏ hàng `);
-      
+
+      // Gọi phương thức POST hoặc PUT đến API Laravel
+      // const response = await axios.post(`/api/cart/add/3`, data);
+
+      // // Xử lý phản hồi từ API (nếu cần)
+      console.log(result);
+      // navigate("/shop");
+
+      // Cập nhật giao diện người dùng nếu cần
+    } catch (error) {
+      // Xử lý lỗi nếu có
+      console.error(error);
+    }
+  }
+  async function handleAddComment(productId: number, userId: number, comment: string){
+    try {
+      if (userId === null) {
+        userId = 1;
+      }
+      const data = {
+        productId: productId,
+        comment: comment,
+        user_id: userId,
+      };
+
+      let result = await fetch("http://127.0.0.1:8000/api/Comment/add", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+      });
+
+      result = await result.json();
+
+      alert(` Bình luận đã được đăng `);
+
       // Gọi phương thức POST hoặc PUT đến API Laravel
       // const response = await axios.post(`/api/cart/add/3`, data);
 
@@ -215,8 +254,10 @@ const Shop = () => {
           {data.map((item) => (
             <div className="col-lg-4 col-md-6">
               <div className="card mb-4 d-flex flex-column h-100 border-0">
-
-                <div className="image-container" style={{ height: 350, overflow: 'hidden', marginTop: 10 }}>
+                <div
+                  className="image-container"
+                  style={{ height: 350, overflow: "hidden", marginTop: 10 }}
+                >
                   <Link to={"/show/" + item.id}>
                     <img
                       src={"http://127.0.0.1:8000/" + item.file_path}
@@ -225,7 +266,6 @@ const Shop = () => {
                     />
                   </Link>
                 </div>
-                
 
                 <div className="card-body flex-grow-1 d-flex flex-column">
                   <div className="row text-center mb-3">
@@ -253,27 +293,83 @@ const Shop = () => {
                     <div className="container d-flex justify-content-center justify-content-md-around">
                       {localStorage.getItem("user-info") ? (
                         <>
-                          <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id, user.id)} >
+                          <button
+                            className="btn btn-outline-warning text-black"
+                            onClick={() => handleAddToCart(item.id, user.id)}
+                          >
                             Thêm vào giỏ hàng{" "}
                             <i className="fa-solid fa-cart-plus" />
                           </button>
 
-                          <button className="btn btn-outline-success text-black">
+                          <button
+                            className="btn btn-outline-success text-black"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                          >
                             Mua ngay <i className="fa-regular fa-credit-card" />
                           </button>
+                          <div
+                            className="modal fade"
+                            id="exampleModal"
+                            tabIndex={-1}
+                            aria-labelledby="exampleModalLabel"
+                            aria-hidden="true"
+                          >
+                            <div className="modal-dialog">
+                              <div className="modal-content">
+                                <div className="modal-header">
+                                  <h5
+                                    className="modal-title"
+                                    id="exampleModalLabel"
+                                  >
+                                    Bình luận
+                                  </h5>
+                                  <button
+                                    type="button"
+                                    className="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  />
+                                </div>
+                                <div className="modal-body">
+                                  <textarea  name="comment" id="comment" className="form-control" rows={3} onChange={(e) => setComment(e.target.value)}/>
+                                </div>
+                                <div className="modal-footer">
+                                  <button
+                                    type="button"
+                                    className="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                    
+                                  >
+                                    Đóng
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                    onClick={() => handleAddComment(item.id, user.id, Comment)}
+                                  >
+                                    Đăng
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </>
                       ) : (
                         <>
                           <button className="btn btn-outline-warning text-black">
-                            <a href="/login" className="text-decoration-none text-black">
-                              Thêm vào giỏ hàng{" "} <i className="fa-solid fa-cart-plus" />
+                            <a
+                              href="/login"
+                              className="text-decoration-none text-black"
+                            >
+                              Thêm vào giỏ hàng{" "}
+                              <i className="fa-solid fa-cart-plus" />
                             </a>
                           </button>
 
                           <button className="btn btn-outline-success text-black">
                             Mua ngay <i className="fa-regular fa-credit-card" />
                           </button>
-
                         </>
                       )}
                     </div>
@@ -292,8 +388,12 @@ const Shop = () => {
         </div>
       </section>
 
-     <style dangerouslySetInnerHTML={{__html: "\n    .card-footer {\n        width: 100%;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        padding-top: 10px;\n        border-top: 1px solid #ddd;\n    }\n\n    .text-title>a {\n        text-decoration: none;\n    }\n\n    .text-title {\n        font-weight: 900;\n        font-size: 1.2em;\n        line-height: 1.5;\n    }\n\n\n    /*Button*/\n    .card-button {\n        border: 1px solid #252525;\n        display: flex;\n        padding: .3em;\n        cursor: pointer;\n        border-radius: 50px;\n        transition: .3s ease-in-out;\n    }\n\n    /*Hover*/\n    /* Khi ảnh nằm trong một container */\n    .image-container {\n        position: relative;\n        /* Để xác định vị trí tương đối */\n        overflow: hidden;\n        /* Ẩn phần ảnh vượt ra khỏi container */\n    }\n\n    /* Ảnh ban đầu */\n    .image-container img {\n        width: 100%;\n        /* Đặt chiều rộng ban đầu */\n        height: auto;\n        /* Tự động tính chiều cao */\n        transition: transform 0.3s;\n        /* Hiệu ứng chuyển đổi */\n    }\n\n    /* Ảnh khi hover */\n    .image-container:hover img {\n        transform: scale(1.1);\n        /* Phóng to ảnh khi hover */\n    }\n\n    .card-button:hover {\n        border: 1px solid #ffcaa6;\n        background-color: #ffcaa6;\n    }\n" }} />
-
+      <style
+        dangerouslySetInnerHTML={{
+          __html:
+            "\n    .card-footer {\n        width: 100%;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        padding-top: 10px;\n        border-top: 1px solid #ddd;\n    }\n\n    .text-title>a {\n        text-decoration: none;\n    }\n\n    .text-title {\n        font-weight: 900;\n        font-size: 1.2em;\n        line-height: 1.5;\n    }\n\n\n    /*Button*/\n    .card-button {\n        border: 1px solid #252525;\n        display: flex;\n        padding: .3em;\n        cursor: pointer;\n        border-radius: 50px;\n        transition: .3s ease-in-out;\n    }\n\n    /*Hover*/\n    /* Khi ảnh nằm trong một container */\n    .image-container {\n        position: relative;\n        /* Để xác định vị trí tương đối */\n        overflow: hidden;\n        /* Ẩn phần ảnh vượt ra khỏi container */\n    }\n\n    /* Ảnh ban đầu */\n    .image-container img {\n        width: 100%;\n        /* Đặt chiều rộng ban đầu */\n        height: auto;\n        /* Tự động tính chiều cao */\n        transition: transform 0.3s;\n        /* Hiệu ứng chuyển đổi */\n    }\n\n    /* Ảnh khi hover */\n    .image-container:hover img {\n        transform: scale(1.1);\n        /* Phóng to ảnh khi hover */\n    }\n\n    .card-button:hover {\n        border: 1px solid #ffcaa6;\n        background-color: #ffcaa6;\n    }\n",
+        }}
+      />
 
       <Footer />
     </>
