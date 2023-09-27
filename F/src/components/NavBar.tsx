@@ -47,6 +47,7 @@ const OffcanvasExample = () => {
   }
   return (
     <>
+
       <Navbar expand="md" className="bg-body-tertiary py-0 fixed-top bg-dark">
         <Container fluid className="bg-dark">
           <Navbar.Toggle
@@ -268,12 +269,9 @@ const OffcanvasExample = () => {
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
-{/* 
-          <NavLink to="/cart" className="ms-3">
-            <i className="bi bi-cart-x fs-1"></i>
-          </NavLink> */}
         </Container>
       </Navbar>
+      
     </>
   );
 };

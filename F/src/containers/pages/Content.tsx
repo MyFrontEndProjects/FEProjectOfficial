@@ -5,6 +5,7 @@ import "font-awesome/css/font-awesome.css";
 import '@fortawesome/fontawesome-free/css/all.css';
 import Footer from 'components/Footer';
 import Homesection1 from 'components/Homesection1';
+import Homesection2 from 'components/Homesection2';
 import Cardsession from 'containers/pages/CardSession';
 
 
@@ -14,7 +15,7 @@ const Content = () => {
   return (
     <>
 
-      <div id="header-carousel" className="carousel slide d-none d-sm-block" data-bs-ride="carousel">
+      <div id="header-carousel" className="carousel d-md-none slide d-sm-none d-lg-block " data-bs-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img className="border rounded-5" src="./img/bg-2.png" alt="img" style={{ width: '100%', height: '90vh' }} />
@@ -32,7 +33,7 @@ const Content = () => {
                       Xem thêm <i className="fa fa-arrow-right ms-3" />
                     </a>
                   </div>
-                  <div className="col-lg-6 d-none d-lg-flex animated zoomIn">
+                  <div className="col-lg-6  d-lg-flex  animated zoomIn">
                     <img className="img-fluid" src="./img/caro-1.webp" alt="hots" style={{ width: '100%' }} />
                   </div>
                 </div>
@@ -56,7 +57,7 @@ const Content = () => {
                     Xem thêm <i className="fa fa-arrow-right ms-3" />
                     </a>
                   </div>
-                  <div className="col-lg-6 d-none d-lg-flex animated zoomIn">
+                  <div className="col-lg-6  d-lg-flex animated zoomIn">
                     <img className="img-fluid" src="./img/caro-8.webp" alt="hots" style={{ width: '100%' }} />
                   </div>
                 </div>
@@ -129,6 +130,7 @@ const Content = () => {
 
       </section>
       <Homesection1 />
+      <Homesection2 />
       {/* <Cardsession /> */}
       <Footer />
     </>
