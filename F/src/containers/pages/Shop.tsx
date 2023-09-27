@@ -82,7 +82,7 @@ const Shop = () => {
 
       result = await result.json();
       alert(`Đã thêm vào giỏ hàng `);
-      
+
       // Gọi phương thức POST hoặc PUT đến API Laravel
       // const response = await axios.post(`/api/cart/add/3`, data);
 
@@ -106,6 +106,8 @@ const Shop = () => {
   return (
     <>
       <div className="container">
+
+
         <div className="row d-flex justify-content-between">
 
           <div className="col-lg-5 col-md-6 col-sm-12 py-2">
@@ -159,6 +161,11 @@ const Shop = () => {
             </button>
           </div>
         </div>
+      </div>
+
+
+      <div className="py-5 text-center mt-5">
+        <h1>Get Your Game On</h1>
       </div>
 
 

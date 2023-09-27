@@ -60,26 +60,27 @@ const CartList = () => {
 
   return (
     <>
+
+
       <div className="container">
         <table className="table table-bordered border-primary table-hover table-striped">
           <thead>
             <tr className="table-primary border-primary text-center">
-              <th>#</th>
               <th>Tên sản phẩm</th>
-              <th style={{ width: 150 }}>Hình ảnh</th>
+              <th style={{ width: 150 }} className="d-none d-sm-table-cell">
+                Hình ảnh
+              </th>
               <th>Số lượng</th>
               <th>Giá</th>
               <th>Tổng tiền</th>
-              <th>Chỉnh sửa</th>
+              <th>Chỉnh sửa số lượng</th>
             </tr>
           </thead>
           <tbody className="text-center">
             {data.map((item, index) => (
-              <tr className="">
-                <td>{index + 1}</td>
-
+              <tr className="" key={index}>
                 <td>{item.name}</td>
-                <td>
+                <td className="d-none d-sm-table-cell">
                   <img
                     src={"http://127.0.0.1:8000/" + item.file_path}
                     alt="img"
@@ -91,32 +92,40 @@ const CartList = () => {
                 </td>
                 <td>{item.price}</td>
                 <td>{item.price * item.quantityPro}</td>
-                <td >
-
-                  <div className="container ">
+                <td>
+                  <div className="container">
                     <div className="row">
-                      <div className="col-lg-2 d-flex align-items-center">
-                          <Link to={"/show/" + item.product_id}>
-                            <i className="bi bi-eye" />
-                          </Link>
-                        <span onClick={() => deleteItem(item.id)} className="mx-3">
+                      <div className="col-lg-2 col-sm-6 d-flex align-items-center">
+                        <Link to={"/show/" + item.product_id}>
+                          <i className="bi bi-eye" />
+                        </Link>
+                        <span
+                          onClick={() => deleteItem(item.id)}
+                          className="mx-3"
+                        >
                           <i className="bi-trash text-danger" />
                         </span>
                       </div>
-                   
+                      <div className="col-lg-7 col-sm-6">
                         <input
                           type="number"
                           defaultValue={item.quantityPro}
-                          className="form-control-sm col-lg-7 input-number px-1"
+                          className="form-control input-number px-1"
                           min={1}
-                          onChange={(e) => setNewQuantity(parseInt(e.target.value))}
+                          onChange={(e) =>
+                            setNewQuantity(parseInt(e.target.value))
+                          }
                         />
-                        <button className="btn btn-outline-info col-lg-2 ms-3" onClick={() => updateQuantityPro(item.id)}>
+                      </div>
+                      <div className="col-lg-2 col-sm-6 d-md-flex justify-content-md-center">
+                        <button
+                          className="btn btn-outline-info"
+                          onClick={() => updateQuantityPro(item.id)}
+                        >
                           Update
                         </button>
-                  
+                      </div>
                     </div>
-
                   </div>
                 </td>
               </tr>
@@ -124,6 +133,8 @@ const CartList = () => {
           </tbody>
         </table>
       </div>
+
+
     </>
   );
 };
