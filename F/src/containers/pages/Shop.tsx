@@ -214,13 +214,18 @@ const Shop = () => {
           {data.map((item) => (
             <div className="col-lg-4 col-md-6">
               <div className="card mb-4 d-flex flex-column h-100 border-0">
-                <Link to={"/show/" + item.id}>
-                  <img
-                    src={"http://127.0.0.1:8000/" + item.file_path}
-                    alt={item.name}
-                    className="card-img-top "
-                  />
-                </Link>
+
+                <div className="image-container" style={{ height: 350, overflow: 'hidden', marginTop: 10 }}>
+                  <Link to={"/show/" + item.id}>
+                    <img
+                      src={"http://127.0.0.1:8000/" + item.file_path}
+                      alt={item.name}
+                      className="card-img-top img-card"
+                    />
+                  </Link>
+                </div>
+                
+
                 <div className="card-body flex-grow-1 d-flex flex-column">
                   <div className="row text-center mb-3">
                     <Link
@@ -248,26 +253,26 @@ const Shop = () => {
                       {localStorage.getItem("user-info") ? (
                         <>
                           <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id, user.id)} >
-                        Thêm vào giỏ hàng{" "}
-                        <i className="fa-solid fa-cart-plus" />
-                      </button>
-
-                      <button className="btn btn-outline-success text-black">
-                        Mua ngay <i className="fa-regular fa-credit-card" />
-                      </button>
-                        </>
-                      ) : (
-                        <>
-                        <button className="btn btn-outline-warning text-black">
-                          <a href="/login" className="text-decoration-none text-black">
-                          Thêm vào giỏ hàng{" "} <i className="fa-solid fa-cart-plus" />
-                          </a>
+                            Thêm vào giỏ hàng{" "}
+                            <i className="fa-solid fa-cart-plus" />
                           </button>
 
                           <button className="btn btn-outline-success text-black">
                             Mua ngay <i className="fa-regular fa-credit-card" />
                           </button>
-                          
+                        </>
+                      ) : (
+                        <>
+                          <button className="btn btn-outline-warning text-black">
+                            <a href="/login" className="text-decoration-none text-black">
+                              Thêm vào giỏ hàng{" "} <i className="fa-solid fa-cart-plus" />
+                            </a>
+                          </button>
+
+                          <button className="btn btn-outline-success text-black">
+                            Mua ngay <i className="fa-regular fa-credit-card" />
+                          </button>
+
                         </>
                       )}
                     </div>
@@ -285,6 +290,9 @@ const Shop = () => {
           ))}
         </div>
       </section>
+
+     <style dangerouslySetInnerHTML={{__html: "\n    .card-footer {\n        width: 100%;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        padding-top: 10px;\n        border-top: 1px solid #ddd;\n    }\n\n    .text-title>a {\n        text-decoration: none;\n    }\n\n    .text-title {\n        font-weight: 900;\n        font-size: 1.2em;\n        line-height: 1.5;\n    }\n\n\n    /*Button*/\n    .card-button {\n        border: 1px solid #252525;\n        display: flex;\n        padding: .3em;\n        cursor: pointer;\n        border-radius: 50px;\n        transition: .3s ease-in-out;\n    }\n\n    /*Hover*/\n    /* Khi ảnh nằm trong một container */\n    .image-container {\n        position: relative;\n        /* Để xác định vị trí tương đối */\n        overflow: hidden;\n        /* Ẩn phần ảnh vượt ra khỏi container */\n    }\n\n    /* Ảnh ban đầu */\n    .image-container img {\n        width: 100%;\n        /* Đặt chiều rộng ban đầu */\n        height: auto;\n        /* Tự động tính chiều cao */\n        transition: transform 0.3s;\n        /* Hiệu ứng chuyển đổi */\n    }\n\n    /* Ảnh khi hover */\n    .image-container:hover img {\n        transform: scale(1.1);\n        /* Phóng to ảnh khi hover */\n    }\n\n    .card-button:hover {\n        border: 1px solid #ffcaa6;\n        background-color: #ffcaa6;\n    }\n" }} />
+
 
       <Footer />
     </>
