@@ -5,11 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.json";
 import { MyDataType } from "../../constants/MyDataType";
-import { useNavigate } from "react-router-dom";
 import Footer from 'components/Footer';
 
 const Shop = () => {
-  const navigate = useNavigate();
   const [data, setData] = useState<MyDataType[]>([]);
   const [Category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
@@ -184,7 +182,7 @@ const Shop = () => {
                   </div>
 
                   <div className="row ms-3 ms-md-5 pt-3 text-black">
-                    <span>{item.description}</span>
+                    <pre className="fs-7" style={{ fontFamily: 'Roboto Mono' }}>{item.description}</pre>
                   </div>
 
                   <div className="row ms-3 ms-md-5 pt-3 text-black-50">

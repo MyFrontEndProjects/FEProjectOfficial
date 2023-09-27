@@ -21,7 +21,7 @@ const CartList = () => {
     fetchData(); // Gọi lại fetchData sau khi xóa thành công
     console.warn(result);
   }
-  
+
   const updateQuantityPro = async (id: number) => {
     try {
       const response = await fetch(
@@ -34,10 +34,12 @@ const CartList = () => {
           },
           body: JSON.stringify({ quantityPro: newQuantity }), // Gửi số lượng mới
         }
+
       );
 
       if (response.ok) {
         fetchData(); // Gọi lại fetchData sau khi cập nhật thành công
+
       } else {
         console.error("Failed to update quantity");
       }
@@ -51,6 +53,7 @@ const CartList = () => {
     let result = await response.json();
     setData(result);
   }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -63,18 +66,18 @@ const CartList = () => {
             <tr className="table-primary border-primary text-center">
               <th>#</th>
               <th>Tên sản phẩm</th>
-              <th style={{ width: 150 }}>image</th>
+              <th style={{ width: 150 }}>Hình ảnh</th>
               <th>Số lượng</th>
-              <th>Price</th>
+              <th>Giá</th>
               <th>Tổng tiền</th>
-              <th>Operations</th>
+              <th>Chỉnh sửa</th>
             </tr>
           </thead>
           <tbody className="text-center">
             {data.map((item, index) => (
               <tr className="">
                 <td>{index + 1}</td>
-              
+
                 <td>{item.name}</td>
                 <td>
                   <img
@@ -84,30 +87,37 @@ const CartList = () => {
                   />
                 </td>
                 <td className="justify-content-around">
-                    <span>{item.quantityPro}</span>
+                  <span>{item.quantityPro}</span>
                 </td>
                 <td>{item.price}</td>
                 <td>{item.price * item.quantityPro}</td>
-                <td>
-                  <span className="mx-1">
-                    <Link to={"/productList/product/show/" + item.product_id}>
-                      <i className="bi bi-eye" />
-                    </Link>
-                  </span>
-                  <span onClick={() => deleteItem(item.id)} className="mx-1">
-                    <i className="bi-trash text-danger" />
-                  </span>
-                  <span>
-                    <input
-                        id = {"handle" + item.id}
-                      type="number"
-                      value={item.quantityPro}
-                      onChange={(e) => setNewQuantity(parseInt(e.target.value))}
-                    />
-                    <button onClick={() => updateQuantityPro(item.id)}>
-                      Update
-                    </button>
-                  </span>
+                <td >
+
+                  <div className="container ">
+                    <div className="row">
+                      <div className="col-lg-2 d-flex align-items-center">
+                          <Link to={"/show/" + item.product_id}>
+                            <i className="bi bi-eye" />
+                          </Link>
+                        <span onClick={() => deleteItem(item.id)} className="mx-3">
+                          <i className="bi-trash text-danger" />
+                        </span>
+                      </div>
+                   
+                        <input
+                          type="number"
+                          defaultValue={item.quantityPro}
+                          className="form-control-sm col-lg-7 input-number px-1"
+                          min={1}
+                          onChange={(e) => setNewQuantity(parseInt(e.target.value))}
+                        />
+                        <button className="btn btn-outline-info col-lg-2 ms-3" onClick={() => updateQuantityPro(item.id)}>
+                          Update
+                        </button>
+                  
+                    </div>
+
+                  </div>
                 </td>
               </tr>
             ))}

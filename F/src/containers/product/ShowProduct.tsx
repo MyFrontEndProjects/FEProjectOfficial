@@ -30,7 +30,6 @@ const ShowProduct = () => {
 
       result = await result.json();
 
-      alert(`Đã thêm vào giỏ hàng `);
       navigate("/cart");
       // Gọi phương thức POST hoặc PUT đến API Laravel
       // const response = await axios.post(`/api/cart/add/3`, data);
@@ -135,10 +134,6 @@ const ShowProduct = () => {
                 <h6 className="mb-4 pb-2 border-bottom fw-bold">Thông tin</h6>
                 <div className="row">
                   <div className="col-md-6 mb-3">
-                    <p className="fw-bold">Email</p>
-                    <h6>{data.name}</h6>
-                  </div>
-                  <div className="col-md-6 mb-3">
                     <p className="fw-bold">Description</p>
                     <h6>{data.description}</h6>
                   </div>
@@ -148,7 +143,7 @@ const ShowProduct = () => {
                   <div className="row">
                     <div className="col-md-6 mb-3">
                       <p className="fw-bold">Price</p>
-                      <h6>{data.price}</h6>
+                      <h3 className="text-black-50"> {data.price} <i className="fa-solid fa-lira-sign" /></h3>
                     </div>
                   </div>
                 </div>
