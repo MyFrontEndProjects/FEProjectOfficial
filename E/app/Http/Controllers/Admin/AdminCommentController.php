@@ -20,16 +20,22 @@ class AdminCommentController extends Controller
     public function add(Request $request) {
         $product = Product::find($request->productId);
         $user = User::find($request->user_id);
-        if ($product && $user) {
-            $cmt = new Comment();
-            $cmt->user_id = $request->user_id;
-            $cmt->product_id = $request->productId;
-            $cmt->comment= $request->comment;
-            $cmt->save();
-            return back();
-        } else {
-            session()->flash('ID_not_found', 'Sản phẩm hoặc người dùng không tồn tại.');
+        $comment = $request->comment;
+        if ($comment ==null || $comment =='') {
+            session()->flash('ID_not_found', 'Bình luận trống');
             return redirect()->route('admin.Comment.index');
+        } else {
+            if ($product && $user) {
+                $cmt = new Comment();
+                $cmt->user_id = $request->user_id;
+                $cmt->product_id = $request->productId;
+                $cmt->comment= $request->comment;
+                $cmt->save();
+                return $cmt;
+            } else {
+                session()->flash('ID_not_found', 'Sản phẩm hoặc người dùng không tồn tại.');
+            return redirect()->route('admin.Comment.index');
+            }
         }
     }
     public function edit($id)
