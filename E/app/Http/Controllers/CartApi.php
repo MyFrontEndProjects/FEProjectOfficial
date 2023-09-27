@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
@@ -27,8 +27,8 @@ class CartApi extends Controller
     public function add(Request $request)
     {
         $product = Product::find($request->productId);
-
-        if ($product) {
+        $user = User::find($request->user_id);
+        if ($product && $user) {
             $item = new Cart();
             $item->user_id = $request->user_id;
             $item->product_id = $request->productId;
@@ -40,7 +40,7 @@ class CartApi extends Controller
             return $item;
         } else {
             return response()->json([
-                "message" => 'San Pham khong ton tai'
+                "message" => 'San Pham hoac nguoi dung khong ton tai'
             ]);
         }
     }

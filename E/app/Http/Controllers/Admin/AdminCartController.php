@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
-
+use App\Models\User;
 class AdminCartController extends Controller
 {
     public function index()
@@ -19,8 +19,8 @@ class AdminCartController extends Controller
     public function add(Request $request)
     {
         $product = Product::find($request->productId);
-
-        if ($product) {
+        $user = User::find($request->user_id);
+        if ($product && $user ) {
             $item = new Cart();
             $item->product_id = $request->productId;
             $item->quantityPro = $request->quantityPro;
@@ -30,7 +30,7 @@ class AdminCartController extends Controller
             $item->save();
             return back();
         } else {
-            session()->flash('product_not_found', 'Sản phẩm không tồn tại.');
+            session()->flash('ID_not_found', 'Sản phẩm hoặc người dùng không tồn tại.');
             return redirect()->route('admin.cart.index');
         }
     }

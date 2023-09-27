@@ -32,11 +32,13 @@ Route::get('login', function (){
     $response = ['errorCode'=>401, 'message'=>'Unauthenticated'];
     return response()->json($response, 401);
 })->name('login');
+
 Route::get ('search/{key}', [ProductController::class,'search']);
-
+// Route lấy danh sách sản phẩm 
 Route::post ('list', [ProductController::class,'list']);
+// Route lấy category của sản phẩm
 Route::get ('getCategory', [ProductController::class,'getCategory']);
-
+// Route show sản phẩm
 Route::get ('show/{id}', [ProductController::class,'showApi']);
 // Route::middleware('auth')->group(function () {
 // Route::get ('cart/list', 'App\Http\Controllers\CartApi@list');

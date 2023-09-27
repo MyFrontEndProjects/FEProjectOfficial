@@ -97,6 +97,21 @@ Route::middleware('admin')->group(function () {
         ->name("admin.cart.edit");
     Route::put('admin/cart/{id}/update', 'App\Http\Controllers\Admin\AdminCartController@updateQuantityPro')
         ->name("admin.cart.update");
+
+    //Comment
+    Route::get('/admin/Comment', 'App\Http\Controllers\Admin\AdminCommentController@index')
+    ->name("admin.Comment.index");
+    Route::post('/admin/Comment/add', 'App\Http\Controllers\Admin\AdminCommentController@add')
+    ->name("admin.Comment.add");
+    
+    Route::delete('admin/Comment/{id}/delete', 'App\Http\Controllers\Admin\AdminCommentController@delete')
+        ->name("admin.Comment.delete");
+    Route::get('admin/Comment/{id}/edit', 'App\Http\Controllers\Admin\AdminCommentController@edit')
+        ->name("admin.Comment.edit");
+    Route::put('admin/Comment/{id}/update', 'App\Http\Controllers\Admin\AdminCommentController@update')
+        ->name("admin.Comment.update");
+    
+
 });
 
 

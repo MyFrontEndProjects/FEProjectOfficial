@@ -119,6 +119,9 @@
                         <a class="nav-link text-white" href="{{ route('admin.cart.index') }}">Quản lý đơn đặt hàng <i class="fa-solid fa-clipboard-list"></i></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ route('admin.Comment.index') }}">Bình luận <i class="fa-solid fa-clipboard-list"></i></a>
+                    </li>
+                    <li class="nav-item">
                         <a href="http://localhost:3000" class="nav-link text-white" target="_blank">Trang chủ <i class="fa-solid fa-user"></i></a>
                     </li>
                     <!-- Dropdown menu -->
