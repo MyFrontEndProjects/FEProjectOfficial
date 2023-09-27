@@ -60,7 +60,7 @@ const Register: React.FC = () => {
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <form onSubmit={handleSubmit(onSubmit)}>
               <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                  <p className="lead fw-normal mb-0 me-3">Sign in with</p>
+                  <p className="lead fw-normal mb-0 me-3">Đăng nhập bằng</p>
                   <button type="button" className="btn ">
                     <FontAwesomeIcon icon={faFacebook} />
                   </button>
@@ -73,7 +73,7 @@ const Register: React.FC = () => {
                   </button>
                 </div>
                 <div className="divider d-flex align-items-center my-4">
-                  <p className="text-center fw-bold mx-3 mb-0">Or</p>
+                  <p className="text-center fw-bold mx-3 mb-0">Hay</p>
                 </div>
                 {/* <div className="form-outline mb-4">
                   <label htmlFor="name">Avatar:</label>
@@ -87,7 +87,7 @@ const Register: React.FC = () => {
                   {errors.avatar && <p role="alert">avatar is required</p>}
                 </div> */}
                 <div className="form-outline mb-4">
-                  <label htmlFor="name">Full Name:</label>
+                  <label htmlFor="name">Tên tài khoản:</label>
                   <input
                     type="text"
                     {...register("name", { required: true })}
@@ -112,7 +112,7 @@ const Register: React.FC = () => {
                 </div>
                 <div>
                   <label htmlFor="password" className="mt-2">
-                    Password:
+                    Mật khẩu
                   </label>
                   <input
                     type="password"
@@ -123,18 +123,28 @@ const Register: React.FC = () => {
                   />
                   {errors.password && <p role="alert">Password is required</p>}
                 </div>
-                <button
+                <div className="text-center text-lg-start mt-4 pt-2">
+                  <button
                   type="submit"
+                    className="btn btn-primary btn-lg"
+                    style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                   id="signup-button"
-                  className="btn btn-primary mt-3"
-                >
-                  Register
-                </button>
+                   
+                  >
+                    Đăng Ký
+                  </button>
+                  <p className="small fw-bold mt-2 pt-1 mb-0">
+                    Bạn đã có tài khoản?{" "}
+                    <Link to="/login" className="text-danger">
+                      Đăng nhập
+                    </Link>
+                  </p>
+                </div>
               </form>
             </div>
             <div className="col-md-9 col-lg-6 col-xl-5">
             <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              src="https://evcom.com.br/wp-content/uploads/sites/4/2020/02/Banner-Como-Atuamos_1920x1080square-1024x995.png"
               alt="sample"
               className="img-fluid"
             />

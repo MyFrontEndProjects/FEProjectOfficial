@@ -7,7 +7,7 @@ const CategoryList = () => {
     <>
       <div className="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 pt-2">
         <div className="col pt-3 pt-lg-2 ps-3 ps-lg-0 text-start text-md-center">
-          <Link className="nav-link" to="/search">
+          <Link className="nav-link" to="search">
             <svg
               width={34}
               height={60}
@@ -89,7 +89,7 @@ const CategoryList = () => {
           </Link>
         </div>
         <div className="col pt-3 pt-lg-2 ps-3 ps-lg-0 text-start text-md-center">
-          <Link className="nav-link" to="/search">
+          <Link className="nav-link" to="/show/1">
             <svg
               width={50}
               height={50}

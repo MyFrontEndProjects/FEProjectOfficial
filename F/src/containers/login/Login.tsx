@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import "./Login.css";
 import Input from "../../components/Input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +9,7 @@ import {
   faFacebook,
   faGoogle,
   faTwitter,
-  faGithub,
+  // faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import userService from "services/userService";
 // import { library } from '@fortawesome/fontawesome-svg-core'
@@ -52,7 +52,7 @@ const Login = () => {
               <p className="text-center text-danger">{message}</p>
               <form onSubmit={formSubmitHandler}>
                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                  <p className="lead fw-normal mb-0 me-3">Sign in with</p>
+                  <p className="lead fw-normal mb-0 me-3">Đăng nhập bằng</p>
                   <button type="button" className="btn ">
                     <FontAwesomeIcon icon={faFacebook} />
                   </button>
@@ -65,7 +65,7 @@ const Login = () => {
                   </button>
                 </div>
                 <div className="divider d-flex align-items-center my-4">
-                  <p className="text-center fw-bold mx-3 mb-0">Or</p>
+                  <p className="text-center fw-bold mx-3 mb-0">Hay</p>
                 </div>
                 {/* Email input */}
 

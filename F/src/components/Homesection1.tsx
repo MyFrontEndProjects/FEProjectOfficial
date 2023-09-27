@@ -28,7 +28,8 @@ const Homesection1 = () => {
                                     </span>
                                 </div>
                                 <div className="d-flex justify-content-center px-5 py-3">
-                                    <div className="btn bg-light border rounded-5 ">Tìm hiểu thêm <i className="fa-solid fa-angles-right" />
+                                    
+                                    <div className="btn bg-light border rounded-5 "><a href="/show/1"  className="text-decoration-none">Tìm hiểu thêm </a><i className="fa-solid fa-angles-right" />
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +55,7 @@ const Homesection1 = () => {
                                     </span>
                                 </div>
                                 <div className="d-flex justify-content-center px-5 py-3">
-                                    <div className="btn bg-light border rounded-5 ">Tìm hiểu thêm <i className="fa-solid fa-angles-right" />
+                                    <div className="btn bg-light border rounded-5 "><a href="/show/1" className="text-decoration-none">Tìm hiểu thêm </a><i className="fa-solid fa-angles-right" />
                                     </div>
                                 </div>
                             </div>

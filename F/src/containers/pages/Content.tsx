@@ -28,7 +28,7 @@ const Content = () => {
                     <h1 className="display-3 text-white mb-4 pb-3 animated slideInDown">
                       ROG Strix Scar 17 2023
                     </h1><h5>NVIDIA® GeForce RTX™ 4080 Laptop GPU</h5>
-                    <a href="#a" className="btn btn-primary py-3 px-5 animated slideInDown">
+                    <a href="/show/2" className="btn btn-primary py-3 px-5 animated slideInDown">
                       Xem thêm <i className="fa fa-arrow-right ms-3" />
                     </a>
                   </div>
@@ -52,8 +52,8 @@ const Content = () => {
                     <h1 className="display-3 text-white mb-4 pb-3 animated slideInDown">
                       TITAN Fall 217 2023
                     </h1><h5>NVIDIA® GeForce RTX™ 4080 Laptop GPU</h5>
-                    <a href="#a" className="btn btn-primary py-3 px-5 animated slideInDown">
-                      Xem thêm <i className="fa fa-arrow-right ms-3" />
+                    <a href="/show/1" className="btn btn-primary py-3 px-5 animated slideInDown">
+                    Xem thêm <i className="fa fa-arrow-right ms-3" />
                     </a>
                   </div>
                   <div className="col-lg-6 d-none d-lg-flex animated zoomIn">
@@ -84,7 +84,7 @@ const Content = () => {
           <ul className="nav">
             <li className="nav-item col-lg-3 col-md-6 col-6 d-flex justify-content-center align-items-center">
               <div className="text-center">
-                <a className="nav-link fs-1" href="#a">
+                <a className="nav-link fs-1" href="/shop">
                   <i className="fa-solid fa-tv fa-2x" style={{ color: '#000000' }} />
                 </a>
                 <span style={{ fontFamily: 'cursive' }}>MÀN HÌNH</span>
@@ -92,7 +92,7 @@ const Content = () => {
             </li>
             <li className="nav-item col-lg-3 col-md-6 col-6 d-flex justify-content-center align-items-center">
               <div className="text-center">
-                <a className="nav-link  fs-1 " href="#a"> <i className="fa-solid fa-laptop fa-2x" style={{ color: '#000000' }} /></a>
+                <a className="nav-link  fs-1 " href="/shop"> <i className="fa-solid fa-laptop fa-2x" style={{ color: '#000000' }} /></a>
                 <span style={{ fontFamily: 'cursive' }}>LAPTOP</span>
 
               </div>
@@ -100,14 +100,14 @@ const Content = () => {
 
             <li className="nav-item col-lg-3 col-md-6 col-6 d-flex justify-content-center align-items-center">
               <div className="text-center">
-                <a className="nav-link  fs-1 " href="#a"> <i className="fa-solid fa-headphones-simple fa-2x" style={{ color: '#000000' }} /></a>
+                <a className="nav-link  fs-1 " href="/shop"> <i className="fa-solid fa-headphones-simple fa-2x" style={{ color: '#000000' }} /></a>
                 <span style={{ fontFamily: 'cursive' }}>TAI NGHE</span>
               </div>
 
             </li>
             <li className="nav-item col-lg-3 col-md-6 col-6 d-flex justify-content-center align-items-center">
               <div className="text-center">
-                <a className="nav-link  fs-1 " href="#a"> <i className="fa-regular fa-hard-drive fa-2x" style={{ color: '#000000' }} />
+                <a className="nav-link  fs-1 " href="/shop"> <i className="fa-regular fa-hard-drive fa-2x" style={{ color: '#000000' }} />
                 </a>
                 <span className="" style={{ fontFamily: 'cursive' }}>PHỤ KIỆN</span>
 
