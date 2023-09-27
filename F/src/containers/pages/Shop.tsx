@@ -5,8 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.json";
 import { MyDataType } from "../../constants/MyDataType";
-import Footer from 'components/Footer';
-type LoginInfo  = {
+import Footer from "components/Footer";
+type LoginInfo = {
   id: number;
   name: string;
   email: string;
@@ -88,17 +88,17 @@ const Shop = () => {
     fetchData(); // Gọi fetchData khi Component được tạo
   }, [Category]);
 
-  async function handleAddToCart(productId: number, userId : number |null) {
+  async function handleAddToCart(productId: number, userId: number) {
     try {
-      if(userId === null) {
-        userId = 1
+      if (userId === null) {
+        userId = 1;
       }
       const data = {
         productId: productId,
         quantityPro: 1,
         user_id: userId,
       };
-      
+
       let result = await fetch("http://127.0.0.1:8000/api/cart/add", {
         method: "POST",
         body: JSON.stringify(data),
@@ -134,14 +134,15 @@ const Shop = () => {
   return (
     <>
       <div className="container">
-
-
         <div className="row d-flex justify-content-between">
-
           <div className="col-lg-5 col-md-6 col-sm-12 py-2">
             <div className="row">
-              <label htmlFor="selectedCategory" className="col-4 col-lg-2 d-flex align-items-center">
-                Lọc <i className="ms-1 fa-solid fa-filter align-text-bottom"></i>:
+              <label
+                htmlFor="selectedCategory"
+                className="col-4 col-lg-2 d-flex align-items-center"
+              >
+                Lọc{" "}
+                <i className="ms-1 fa-solid fa-filter align-text-bottom"></i>:
               </label>
               <form className="col d-flex">
                 <select
@@ -167,9 +168,11 @@ const Shop = () => {
 
           <div className="col-lg-5 col-md-6 col-sm-12 py-2">
             <div className="row">
-              <label htmlFor="SearchProduct" className="col-lg-2 col-4 d-flex align-items-center">
+              <label
+                htmlFor="SearchProduct"
+                className="col-lg-2 col-4 d-flex align-items-center"
+              >
                 Search <i className="ms-2 fa-solid fa-magnifying-glass" />
-
               </label>
               <input
                 type="text"
@@ -183,19 +186,28 @@ const Shop = () => {
             </div>
           </div>
           <div className="col-lg-2 col-12 d-flex align-items-center justify-content-lg-end justify-content-sm-start">
-            <button className="btn btn-warning " >
-              <a href="/cart" className="text-decoration-none text-white">Giỏ Hàng <i className="fa-solid fa-cart-plus" /></a>
-
+            <button className="btn btn-warning ">
+              {localStorage.getItem("user-info") ? (
+                <>
+                  <a href="/cart" className="text-decoration-none text-white">
+                    Giỏ Hàng <i className="fa-solid fa-cart-plus" />
+                  </a>
+                </>
+              ) : (
+                <>
+                  <a href="/login" className="text-decoration-none text-white">
+                    Giỏ Hàng <i className="fa-solid fa-cart-plus" />
+                  </a>
+                </>
+              )}
             </button>
           </div>
         </div>
       </div>
 
-
       <div className="py-5 text-center mt-5">
         <h1>Get Your Game On</h1>
       </div>
-
 
       <section className="container py-5">
         <div className="row gy-4">
@@ -211,28 +223,53 @@ const Shop = () => {
                 </Link>
                 <div className="card-body flex-grow-1 d-flex flex-column">
                   <div className="row text-center mb-3">
-                    <Link to={"/show/" + item.id} className="text-decoration-none text-success">
+                    <Link
+                      to={"/show/" + item.id}
+                      className="text-decoration-none text-success"
+                    >
                       <h4>{item.name}</h4>
                     </Link>
                   </div>
 
                   <div className="row ms-3 ms-md-5 pt-3 text-black">
-                    <pre className="fs-7" style={{ fontFamily: 'Roboto Mono' }}>{item.description}</pre>
+                    <pre className="fs-7" style={{ fontFamily: "Roboto Mono" }}>
+                      {item.description}
+                    </pre>
                   </div>
 
                   <div className="row ms-3 ms-md-5 pt-3 text-black-50">
-                    <h3>{item.price} <i className="fa-solid fa-lira-sign" /></h3>
+                    <h3>
+                      {item.price} <i className="fa-solid fa-lira-sign" />
+                    </h3>
                   </div>
 
                   <div className="mt-auto">
                     <div className="container d-flex justify-content-center justify-content-md-around">
-                      <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id, user.id )}>
-                        Thêm vào giỏ hàng <i className="fa-solid fa-cart-plus" />
+                      {localStorage.getItem("user-info") ? (
+                        <>
+                          <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id, user.id)} >
+                        Thêm vào giỏ hàng{" "}
+                        <i className="fa-solid fa-cart-plus" />
                       </button>
 
                       <button className="btn btn-outline-success text-black">
                         Mua ngay <i className="fa-regular fa-credit-card" />
                       </button>
+                        </>
+                      ) : (
+                        <>
+                        <button className="btn btn-outline-warning text-black">
+                          <a href="/login" className="text-decoration-none text-black">
+                          Thêm vào giỏ hàng{" "} <i className="fa-solid fa-cart-plus" />
+                          </a>
+                          </button>
+
+                          <button className="btn btn-outline-success text-black">
+                            Mua ngay <i className="fa-regular fa-credit-card" />
+                          </button>
+                          
+                        </>
+                      )}
                     </div>
 
                     <input
