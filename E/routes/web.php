@@ -87,8 +87,10 @@ Route::middleware('admin')->group(function () {
     //cart
     Route::get('/admin/cart', 'App\Http\Controllers\Admin\AdminCartController@index')
         ->name("admin.cart.index");
+
     Route::post('/admin/cart/add', 'App\Http\Controllers\Admin\AdminCartController@add')
         ->name("admin.cart.add");
+        
     Route::delete('admin/cart/{id}/delete', 'App\Http\Controllers\Admin\AdminCartPageController@delete')
         ->name("admin.cart.delete");
     Route::get('admin/cart/{id}/edit', 'App\Http\Controllers\Admin\AdminCartPageController@edit')

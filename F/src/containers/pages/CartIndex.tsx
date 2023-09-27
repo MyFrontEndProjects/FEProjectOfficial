@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.json";
 import { CartDataType } from "../../constants/CartDataType";
-import { MyDataType } from "../../constants/MyDataType";
+
 
 const CartList = () => {
   const [data, setData] = useState<CartDataType[]>([]);
@@ -54,6 +54,7 @@ const CartList = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <>
       <div className="container">
@@ -61,7 +62,6 @@ const CartList = () => {
           <thead>
             <tr className="table-primary border-primary text-center">
               <th>#</th>
-              <th>Id</th>
               <th>Tên sản phẩm</th>
               <th style={{ width: 150 }}>image</th>
               <th>Số lượng</th>
@@ -74,7 +74,7 @@ const CartList = () => {
             {data.map((item, index) => (
               <tr className="">
                 <td>{index + 1}</td>
-                <td>{item.product_id}</td>
+              
                 <td>{item.name}</td>
                 <td>
                   <img
@@ -84,11 +84,7 @@ const CartList = () => {
                   />
                 </td>
                 <td className="justify-content-around">
-                    <span><i className="bi bi-caret-down"></i></span>
-                    
                     <span>{item.quantityPro}</span>
-                    
-                    <span><i className="bi bi-caret-up"></i></span>
                 </td>
                 <td>{item.price}</td>
                 <td>{item.price * item.quantityPro}</td>
@@ -105,7 +101,7 @@ const CartList = () => {
                     <input
                         id = {"handle" + item.id}
                       type="number"
-                      value={newQuantity}
+                      value={item.quantityPro}
                       onChange={(e) => setNewQuantity(parseInt(e.target.value))}
                     />
                     <button onClick={() => updateQuantityPro(item.id)}>

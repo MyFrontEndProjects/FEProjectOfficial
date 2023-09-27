@@ -84,7 +84,7 @@ const Shop = () => {
 
       result = await result.json();
       alert(`Đã thêm vào giỏ hàng `);
-      navigate("/cart");
+      
       // Gọi phương thức POST hoặc PUT đến API Laravel
       // const response = await axios.post(`/api/cart/add/3`, data);
 
@@ -98,6 +98,7 @@ const Shop = () => {
       console.error(error);
     }
   }
+
   async function search(key: string) {
     console.warn(key);
     let response = await fetch("http://127.0.0.1:8000/api/search/" + key);
@@ -172,12 +173,12 @@ const Shop = () => {
                   <img
                     src={"http://127.0.0.1:8000/" + item.file_path}
                     alt={item.name}
-                    className="card-img-top"
+                    className="card-img-top "
                   />
                 </Link>
                 <div className="card-body flex-grow-1 d-flex flex-column">
                   <div className="row text-center mb-3">
-                    <Link to={"/show/" + item.id} className="text-decoration-none">
+                    <Link to={"/show/" + item.id} className="text-decoration-none text-success">
                       <h4>{item.name}</h4>
                     </Link>
                   </div>
