@@ -71,6 +71,7 @@ Route::delete('/Comment/delete/{id}', 'App\Http\Controllers\CommentController@de
 
 
 Route::post ('/Reviews/list', 'App\Http\Controllers\ReviewsController@list');
+Route::get ('/Reviews/getAll', 'App\Http\Controllers\ReviewsController@getAll');
 Route::post('/Reviews/add', 'App\Http\Controllers\ReviewsController@add');
 // Route::get('/Reviews/show/{id}', 'App\Http\Controllers\ReviewsController@show');
 Route::put('/Reviews/update/{id}', 'App\Http\Controllers\ReviewsController@update');

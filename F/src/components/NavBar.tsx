@@ -111,7 +111,9 @@ const OffcanvasExample = () => {
             </NavLink>
           </Navbar.Brand>
 
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-white text-white mx-sm-5" />
+
 
           <div className="d-flex mx-5 align-items-center">
 
