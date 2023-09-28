@@ -133,6 +133,12 @@ const OffcanvasExample = () => {
                 About us <i className="fa-regular fa-address-card" />
               </div>
             </NavLink>
+            <NavLink to="/review" style={{ textDecoration: "none" }}
+              className="d-none d-md-flex align-self-center text-center text-uppercase fw-bold text-white me-3">
+              <div className="align-self-center" style={{ fontFamily: "cursive" }}>
+                Review<i className="fa-regular fa-address-card" />
+              </div>
+            </NavLink>
           </div>
 
           <div className="d-flex mx-5 align-items-center">

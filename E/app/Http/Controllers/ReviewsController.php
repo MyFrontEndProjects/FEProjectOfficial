@@ -57,6 +57,10 @@ class ReviewsController extends Controller
     {   $id = $request->user_id;
         return Review::where('user_id', $id)->get();
     }
+    function getAll()
+    {   
+        return Review::all();
+    }
     public function delete($id)
     {
         Review::destroy($id);

@@ -14,6 +14,7 @@ import CartIndex from "containers/pages/CartIndex";
 import AboutUs from "containers/pages/AboutUs";
 import Contact from "containers/pages/Contact";
 import UserProfile from "containers/pages/UserProfile";
+import Review from "containers/pages/Review";
 const RouteContent = () => {
   return (
     <>
@@ -42,7 +43,9 @@ const RouteContent = () => {
             }
           />
 
+
           <Route path="/login" element={<Login />} />
+          <Route path="/review" element={<Review />} />
 
           {/* <Route path="content" element={<Content />} /> */}
 
@@ -62,6 +65,7 @@ const RouteContent = () => {
           />
           <Route path="/show/:id" element={<ShowProduct />} />
           <Route path="search" element={<SearchProduct />} />
+          
         </Routes>
       </div>
     </>
