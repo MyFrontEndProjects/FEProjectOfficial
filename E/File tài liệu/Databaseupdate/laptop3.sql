@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 28, 2023 lúc 08:39 PM
+-- Thời gian đã tạo: Th9 28, 2023 lúc 09:17 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -197,7 +197,10 @@ INSERT INTO `products` (`id`, `name`, `description`, `file_path`, `price`, `quan
 (7, 'Swift Edge 16', 'AMD Ryzen™ 7040 Series\r\n16-inch, 16:10, 3.2K OLED\r\nAntimicrobial Corning® Gorilla® Glass\r\nWINDOWS 11 HOME\r\n', 'products/store6.webp', 1599, 72, 'Swift', 'Swift', 'Đen', '17.3”', '2023-09-26 04:24:24', '2023-09-26 04:24:24'),
 (8, 'Swift X AMD', 'AMD Ryzen™ 5000 Series1\r\nGeForce RTX™ 3050 Ti1\r\n16GB RAM \r\nWINDOWS 11 HOME\r\n', 'products/store8.webp', 1599, 72, 'Swift', 'Swift', 'Đen', '17.3”', '2023-09-26 04:24:24', '2023-09-26 04:24:24'),
 (9, 'Nitro 5 Intel', 'Intel® Core™ i7 Processors1\r\nGeForce RTX™ 30 Series\r\n32GB, 3200MHZ\r\nWINDOWS 11 HOME\r\n', 'products/store9.webp', 1599, 72, 'Nitro', 'Nitro', 'Đen', '17.3”', '2023-09-26 04:24:24', '2023-09-26 04:24:24'),
-(10, 'Nitro 7', 'Intel® Core™ i7 Processors1\r\nGeForce RTX™\r\n32GB, 3200MHZ\r\nWINDOWS 11 HOME\r\n', 'products/store11.webp', 1599, 72, 'Nitro', 'Nitro', 'Đen', '17.3”', '2023-09-26 04:24:24', '2023-09-26 04:24:24');
+(10, 'Nitro 7', 'Intel® Core™ i7 Processors1\r\nGeForce RTX™\r\n32GB, 3200MHZ\r\nWINDOWS 11 HOME\r\n', 'products/store11.webp', 1599, 72, 'Nitro', 'Nitro', 'Đen', '17.3”', '2023-09-26 04:24:24', '2023-09-26 04:24:24'),
+(11, 'Nitro 17 AMD', 'AMD Ryzen™ 7 7840HS\r\nNVIDIA® GeForce RTX™ 4050\r\n16 GB, DDR5 SDRAM\r\n1 TB SSD                    \r\n', 'products/store12.webp', 1199, 72, 'Nitro', 'Nitro', 'Đen', '17.3”', '2023-09-26 04:24:24', '2023-09-26 04:24:24'),
+(12, 'Nitro 16 Intel', 'Intel® Core™ i5-13500H\r\nNVIDIA® GeForce RTX™ 4050\r\n8 GB, DDR5 SDRAM\r\n512 GB SSD                                 \r\n', 'products/store13.webp', 1099, 72, 'Nitro', 'Nitro', 'Đen', '17.3”', '2023-09-26 04:24:24', '2023-09-26 04:24:24'),
+(13, 'Nitro 16 AMD', 'AMD Ryzen™ 5 7640HS processor\r\nNVIDIA® GeForce RTX™ 4050\r\n8 GB, DDR5 SDRAM\r\n512 GB SSD                                 \r\n', 'products/store14.webp', 1099, 72, 'Nitro', 'Nitro', 'Đen', '17.3”', '2023-09-26 04:24:24', '2023-09-26 04:24:24');
 
 -- --------------------------------------------------------
 
