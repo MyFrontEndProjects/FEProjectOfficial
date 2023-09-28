@@ -86,23 +86,26 @@ const Content = () => {
             <li className="nav-item col-lg-3 col-md-6 col-6 d-flex justify-content-center align-items-center">
               <div className="text-center">
                 <a className="nav-link fs-1" href="/shop">
-                  <i className="fa-solid fa-tv fa-2x" style={{ color: '#000000' }} />
+                <i className="fa-solid fa-gamepad fa-2x" style={{color: '#000000'}} />
+
                 </a>
-                <span style={{ fontFamily: 'cursive' }}>MÀN HÌNH</span>
+                <span style={{ fontFamily: 'cursive' }}>Laptop Gaming</span>
               </div>
             </li>
             <li className="nav-item col-lg-3 col-md-6 col-6 d-flex justify-content-center align-items-center">
               <div className="text-center">
                 <a className="nav-link  fs-1 " href="/shop"> <i className="fa-solid fa-laptop fa-2x" style={{ color: '#000000' }} /></a>
-                <span style={{ fontFamily: 'cursive' }}>LAPTOP</span>
+                <span style={{ fontFamily: 'cursive' }}>Laptop Văn Phòng</span>
 
               </div>
             </li>
 
             <li className="nav-item col-lg-3 col-md-6 col-6 d-flex justify-content-center align-items-center">
               <div className="text-center">
-                <a className="nav-link  fs-1 " href="/shop"> <i className="fa-solid fa-headphones-simple fa-2x" style={{ color: '#000000' }} /></a>
-                <span style={{ fontFamily: 'cursive' }}>TAI NGHE</span>
+                <a className="nav-link  fs-1 " href="/shop"> <i className="fa-solid fa-laptop-code fa-2x" style={{color: '#000000'}} /> </a>
+
+               
+                <span style={{ fontFamily: 'cursive' }}>Laptop Học Tập</span>
               </div>
 
             </li>
@@ -110,7 +113,7 @@ const Content = () => {
               <div className="text-center">
                 <a className="nav-link  fs-1 " href="/shop"> <i className="fa-regular fa-hard-drive fa-2x" style={{ color: '#000000' }} />
                 </a>
-                <span className="" style={{ fontFamily: 'cursive' }}>PHỤ KIỆN</span>
+                <span className="" style={{ fontFamily: 'cursive' }}>Khác</span>
 
               </div>
             </li>
