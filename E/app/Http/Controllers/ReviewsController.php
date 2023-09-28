@@ -38,17 +38,21 @@ class ReviewsController extends Controller
        
     }
     public function update(Request $request, $id)
-    {
-        $review = review::findOrFail($id);
-        $review->review = $request->review;
-
-        $review->save();
-        return $review;
+    {   
+        try {
+            $review = Review::findOrFail($id);
+            $review->review = $request->review;
+            $review->phone = $request->phone;
+            $review->save();
+            return $review;
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                "message" => 'Mã này có thể đã bị xóa hoặc chưa được thiết lập'
+            ]);
+        }
+        
     }
-    public function show($id)
-    {
-        return Review::find($id);
-    }
+    
     function list(Request $request)
     {   $id = $request->user_id;
         return Review::where('user_id', $id)->get();

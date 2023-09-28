@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Chỉnh sửa bình luận
+        Chỉnh sửa đánh giá
     </div>
     <div class="card-body">
         @if ($errors->any())
@@ -13,20 +13,20 @@
             @endforeach
         </ul>
         @endif
-        <form action="{{ route('admin.Comment.update', ['id'=> $data['Comment']->id]) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.Review.update', ['id'=> $data['Reviews']->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Mã Sản Phẩm</label>
+                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Số điện thoại</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
-                            <input name="productId" value="{{ $data['Comment']->product_id }}" type="text" class="form-control">
+                            <input name="phone" value="{{ $data['Reviews']->phone }}" type="text" class="form-control">
                         </div>
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Bình luận</label>
+                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Đánh giá</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
-                            <textarea name="comment" rows="3" value="{{ $data['Comment']->product_id }}" type="text" class="form-control"></textarea>
+                            <textarea name="review" rows="3" value="{{ $data['Review']->review}}" type="text" class="form-control"></textarea>
                         </div>
                     </div>
                     <button onclick="return confirm('Bạn có chắc chắn muốn thay đổi?');" class="btn btn-primary">Cập nhật</button>

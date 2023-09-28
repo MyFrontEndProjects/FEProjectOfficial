@@ -103,13 +103,24 @@ Route::middleware('admin')->group(function () {
     ->name("admin.Comment.index");
     Route::post('/admin/Comment/add', 'App\Http\Controllers\Admin\AdminCommentController@add')
     ->name("admin.Comment.add");
-    
     Route::delete('admin/Comment/{id}/delete', 'App\Http\Controllers\Admin\AdminCommentController@delete')
         ->name("admin.Comment.delete");
     Route::get('admin/Comment/{id}/edit', 'App\Http\Controllers\Admin\AdminCommentController@edit')
         ->name("admin.Comment.edit");
     Route::put('admin/Comment/{id}/update', 'App\Http\Controllers\Admin\AdminCommentController@update')
         ->name("admin.Comment.update");
+    
+    //review
+    Route::get('/admin/Review', 'App\Http\Controllers\Admin\ReviewsController@index')
+    ->name("admin.Review.index");
+    Route::post('/admin/Review/add', 'App\Http\Controllers\Admin\ReviewsController@add')
+    ->name("admin.Review.add");
+    Route::delete('admin/Review/{id}/delete', 'App\Http\Controllers\Admin\ReviewsController@delete')
+        ->name("admin.Review.delete");
+    Route::get('admin/Review/{id}/edit', 'App\Http\Controllers\Admin\ReviewsController@edit')
+        ->name("admin.Review.edit");
+    Route::put('admin/Review/{id}/update', 'App\Http\Controllers\Admin\ReviewsController@update')
+        ->name("admin.Review.update");
     
 
 });

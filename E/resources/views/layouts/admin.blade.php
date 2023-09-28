@@ -105,22 +105,28 @@
 
                 <!-- Nav right -->
                 <ul class="navbar-nav me-auto text-uppercase ">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('admin.store.index') }}">Tùy chỉnh sản phẩm <i
-                                class="fa-solid fa-gear"></i></a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('admin.user') }}">tùy chỉnh Người dùng <i
-                                class="fa-solid fa-gear"></i></a>
-                    </li>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Tùy chỉnh <i class="fa-solid fa-gear"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="{{ route('admin.store.index') }}">Sản phẩm</a></li>
+                          <li><a class="dropdown-item" href="{{ route('admin.user') }}">Người dùng</a></li>
+                          <li><a class="dropdown-item" href="{{ route('admin.cart.index') }}">Đơn đặt hàng</a></li>
+                        </ul>
+                      </div>
+                      
+                      <div class="nav-item dropdown">
+                        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Quản lý <i class="fa-solid fa-clipboard-list"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                          <li><a class="dropdown-item" href="{{ route('admin.Comment.index') }}">Bình luận</a></li>
+                          <li><a class="dropdown-item" href="{{ route('admin.Review.index') }}">Đánh giá</a></li>
+                        </ul>
+                      </div>
+                      
                     
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('admin.cart.index') }}">Quản lý đơn đặt hàng <i class="fa-solid fa-clipboard-list"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('admin.Comment.index') }}">Bình luận <i class="fa-solid fa-clipboard-list"></i></a>
-                    </li>
                     <li class="nav-item">
                         <a href="http://localhost:3000" class="nav-link text-white" target="_blank">Trang chủ <i class="fa-solid fa-user"></i></a>
                     </li>
