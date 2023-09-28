@@ -9,6 +9,7 @@ import { MyCommentType } from "constants/MyCommentType";
 
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { idText } from "typescript";
 
 type LoginInfo = {
   id: number;
@@ -47,35 +48,41 @@ const ShowProduct = () => {
     comment: string
   ) {
     try {
-      if (userId === null) {
+      {localStorage.getItem("user-info") ? (userId = userId) : (userId = 0)}
+      if (userId === 0) {
         alert("Vui lòng đăng nhập");
         navigate("/login");
+      }else {
+        const data = {
+          productId: productId,
+          comment: comment,
+          user_id: userId,
+        };
+  
+        let result = await fetch("http://127.0.0.1:8000/api/Comment/add", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+          },
+        });
+  
+        result = await result.json();
+        console.log(result);
+
+          fetchCmtList();
+
+        alert(` Bình luận đã được đăng`,);
+        
+        // Gọi phương thức POST hoặc PUT đến API Laravel
+        // const response = await axios.post(`/api/cart/add/3`, data);
+  
+        // // Xử lý phản hồi từ API (nếu cần)
+        console.log(result);
+        // navigate("/shop");
       }
-      const data = {
-        productId: productId,
-        comment: comment,
-        user_id: userId,
-      };
-
-      let result = await fetch("http://127.0.0.1:8000/api/Comment/add", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-        },
-      });
-
-      result = await result.json();
-
-      alert(` Bình luận đã được đăng `);
-
-      // Gọi phương thức POST hoặc PUT đến API Laravel
-      // const response = await axios.post(`/api/cart/add/3`, data);
-
-      // // Xử lý phản hồi từ API (nếu cần)
-      console.log(result);
-      // navigate("/shop");
+      
 
       // Cập nhật giao diện người dùng nếu cần
     } catch (error) {
@@ -83,29 +90,29 @@ const ShowProduct = () => {
       console.error(error);
     }
   }
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        let reqComments = await fetch(
-          "http://127.0.0.1:8000/api/Comment/listPro",
-          {
-            method: "POST",
-            body: JSON.stringify({ product_id: ProId }),
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-          }
-        );
-        let commentsResponse = await reqComments.json();
-        console.log(commentsResponse);
-        setComments(commentsResponse);
-      } catch (error) {
-        console.error(error);
-      }
+  async function fetchCmtList() {
+    try {
+      let reqComments = await fetch(
+        "http://127.0.0.1:8000/api/Comment/listPro",
+        {
+          method: "POST",
+          body: JSON.stringify({ product_id: ProId }),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+      let commentsResponse = await reqComments.json();
+      console.log(commentsResponse);
+      setComments(commentsResponse);
+    } catch (error) {
+      console.error(error);
     }
-    
-    fetchData();
+  }
+  useEffect(() => {
+
+    fetchCmtList();
   }, [ProId]);
   async function handleAddToCart(
     productId: number,
@@ -347,7 +354,7 @@ const ShowProduct = () => {
                     }}/>
             <button
               className="ms-2 ps-2 btn btn-primary"
-              onClick={() => handleAddComment(Number(data.id), Number(user.id), NewCmt)}
+              onClick={() => handleAddComment(data.id, Number(user?.id), NewCmt)}
             >
               Đăng
             </button>
