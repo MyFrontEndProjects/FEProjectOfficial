@@ -23,19 +23,17 @@ const Shop = () => {
       console.error("Error parsing user info:", error);
     }
   }
+
   const [data, setData] = useState<MyDataType[]>([]);
+
   const [Category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
+
+
+
   const [Comment, setComment] = useState("");
   console.log(Comment);
-  // async function deleteItem(id: number) {
-  //   let result = await fetch("http://127.0.0.1:8000/api/delete/" + id, {
-  //     method: "DELETE",
-  //   });
-  //   result = await result.json();
-  //   fetchData(); // Gọi lại fetchData sau khi xóa thành công
-  //   console.warn(result);
-  // }
+
 
 
 //lấy danh sách loại sản phẩm
@@ -54,13 +52,14 @@ const Shop = () => {
   }, []);
   //lọc theo loại
   useEffect(() => {
+
     async function fetchData() {
       try {
         // Đầu tiên, lấy danh sách danh mục
-        let reqCategories = await fetch(
+        let reqPrice = await fetch(
           "http://127.0.0.1:8000/api/getCategory"
         );
-        let categoriesResponse = await reqCategories.json();
+        let categoriesResponse = await reqPrice.json();
         setCategories(categoriesResponse);
 
         // Sau đó, lấy danh sách sản phẩm dựa trên danh mục đã chọn
@@ -82,6 +81,58 @@ const Shop = () => {
 
     fetchData(); // Gọi fetchData khi Component được tạo
   }, [Category]);
+
+
+  const [selectedPrice, setSelectedPrice] = useState(""); // State để lưu giá đã chọn
+  const [priceOptions, setPriceOptions] = useState([]); // State để lưu danh sách giá
+
+  // Lấy danh sách giá từ API khi component được tạo
+  useEffect(() => {
+    async function fetchPrice() {
+      try {
+        let req = await fetch("http://127.0.0.1:8000/api/getPrice");
+        let response = await req.json();
+        setPriceOptions(response); // Cập nhật danh sách giá
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchPrice();
+  }, []);
+
+  // Lấy danh sách sản phẩm dựa trên giá đã chọn
+  useEffect(() => {
+    async function fetchData2() {
+      try {
+        let reqProducts = await fetch("http://127.0.0.1:8000/api/listprice", {
+          method: "POST",
+          body: JSON.stringify({ selectedPrice: selectedPrice }),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
+        let productsResponse = await reqProducts.json();
+        // Cập nhật danh sách sản phẩm theo giá
+        setData(productsResponse); // Bạn cần tự xử lý cập nhật state hoặc hiển thị sản phẩm ở đây
+        console.log(productsResponse);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData2(); // Gọi fetchData khi Component được tạo
+  }, [selectedPrice]);
+
+
+
+
+
+
+
+
+
 
 
   //thêm sản phẩm vào cart 
@@ -169,11 +220,15 @@ const Shop = () => {
     setData(result);
   }
 
+
+
+
   return (
     <>
       <div className="container">
         <div className="row d-flex justify-content-between">
           <div className="col-lg-5 col-md-6 col-sm-12 py-2">
+
             <div className="row">
               <label
                 htmlFor="selectedCategory"
@@ -192,7 +247,7 @@ const Shop = () => {
                     console.log(e.target.value);
                   }}
                 >
-                  <option value="0">Lọc</option>
+                  <option value="0">Lọc theo dòng sản phẩm / Hủy</option>
                   {categories.length > 0 &&
                     categories.map((category) => (
                       <option key={category} value={category}>
@@ -201,6 +256,33 @@ const Shop = () => {
                     ))}
                 </select>
               </form>
+
+
+
+
+              <form className="col d-flex">
+                <select
+                  name="selectedPrice"
+                  id="selectedPrice"
+                  className="col-lg-10 col-md-8 col-8 form-control-sm"
+                  onChange={(e) => {
+                    setSelectedPrice(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                >
+                  <option value="">Lọc theo giá</option>
+                  {priceOptions.length > 0 &&
+                    priceOptions.map((priceOption) => (
+                      <option key={priceOption} value={priceOption}>
+                        {priceOption}
+                      </option>
+                    ))}
+                </select>
+              </form>
+
+
+
+
             </div>
           </div>
 
@@ -246,7 +328,7 @@ const Shop = () => {
       <div className="py-5 text-center mt-5">
         <h1>Get Your Game On</h1>
       </div>
-      
+
 
       <section className="container py-5">
         <div className="row gy-4">
@@ -331,14 +413,14 @@ const Shop = () => {
                                   />
                                 </div>
                                 <div className="modal-body">
-                                  <textarea  name="comment" id="comment" className="form-control" rows={3} onChange={(e) => setComment(e.target.value)}/>
+                                  <textarea name="comment" id="comment" className="form-control" rows={3} onChange={(e) => setComment(e.target.value)} />
                                 </div>
                                 <div className="modal-footer">
                                   <button
                                     type="button"
                                     className="btn btn-secondary"
                                     data-bs-dismiss="modal"
-                                    
+
                                   >
                                     Đóng
                                   </button>
