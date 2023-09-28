@@ -31,7 +31,7 @@ class AdminCommentController extends Controller
                 $cmt->product_id = $request->productId;
                 $cmt->comment= $request->comment;
                 $cmt->save();
-                return $cmt;
+                return back();
             } else {
                 session()->flash('ID_not_found', 'Sản phẩm hoặc người dùng không tồn tại.');
             return redirect()->route('admin.Comment.index');

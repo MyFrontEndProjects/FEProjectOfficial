@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.json";
-import { MyDataType } from '../../constants/MyDataType';
+import { MyDataType } from "../../constants/MyDataType";
+import { MyCommentType } from "constants/MyCommentType";
+
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -21,8 +23,10 @@ type LoginInfo = {
   balance: number;
 };
 const ShowProduct = () => {
-  let user: LoginInfo;
+  const { id } = useParams<{ id: string }>();
 
+  let user: LoginInfo;
+  const [Comments, setComments] = useState<MyCommentType[]>([]);
   // Lấy giá trị từ localStorage và kiểm tra nếu có
   const userString = localStorage.getItem("user-info");
   if (userString) {
@@ -35,8 +39,79 @@ const ShowProduct = () => {
   }
   const navigate = useNavigate();
   const [Quantity, setQuantity] = useState(1);
+  const [ProId, setProId] = useState("");
+  const [NewCmt, setNewCmt] = useState("");
+  async function handleAddComment(
+    productId: number,
+    userId: number,
+    comment: string
+  ) {
+    try {
+      if (userId === null) {
+        alert("Vui lòng đăng nhập");
+        navigate("/login");
+      }
+      const data = {
+        productId: productId,
+        comment: comment,
+        user_id: userId,
+      };
 
-  async function handleAddToCart(productId: number, userId: number, quantity: number) {
+      let result = await fetch("http://127.0.0.1:8000/api/Comment/add", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+      });
+
+      result = await result.json();
+
+      alert(` Bình luận đã được đăng `);
+
+      // Gọi phương thức POST hoặc PUT đến API Laravel
+      // const response = await axios.post(`/api/cart/add/3`, data);
+
+      // // Xử lý phản hồi từ API (nếu cần)
+      console.log(result);
+      // navigate("/shop");
+
+      // Cập nhật giao diện người dùng nếu cần
+    } catch (error) {
+      // Xử lý lỗi nếu có
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        let reqComments = await fetch(
+          "http://127.0.0.1:8000/api/Comment/listPro",
+          {
+            method: "POST",
+            body: JSON.stringify({ product_id: ProId }),
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        );
+        let commentsResponse = await reqComments.json();
+        console.log(commentsResponse);
+        setComments(commentsResponse);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    
+    fetchData();
+  }, [ProId]);
+  async function handleAddToCart(
+    productId: number,
+    userId: number,
+    quantity: number
+  ) {
     try {
       if (userId === null) {
         userId = 1;
@@ -73,7 +148,6 @@ const ShowProduct = () => {
     }
   }
   const [data, setData] = useState<MyDataType | null>(null); // Đổi state data để chứa một sản phẩm duy nhất
-  const { id } = useParams<{ id: string }>();
   const [List, setList] = useState<MyDataType[]>([]);
   // Tạo state khác để lưu giá trị mặc định của Category
   const [defaultCategory, setDefaultCategory] = useState<string>("");
@@ -88,7 +162,7 @@ const ShowProduct = () => {
 
         // Cập nhật giá trị mặc định của Category
         setDefaultCategory(result.category);
-
+        setProId(result.id);
         setData(result);
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -98,7 +172,6 @@ const ShowProduct = () => {
 
     fetchData();
   }, [id]);
-
 
   useEffect(() => {
     async function fetchData() {
@@ -122,8 +195,6 @@ const ShowProduct = () => {
     fetchData();
   }, [defaultCategory]); // Khi giá trị mặc định của Category thay đổi, gọi fetchData
 
-
-
   if (!data) {
     return (
       <>
@@ -143,7 +214,10 @@ const ShowProduct = () => {
               <div className="card-body">
                 <div className="row">
                   <div className="col-lg-6 col-md-12 mb-4">
-                    <div className="image-container" style={{ overflow: 'hidden', marginTop: 10 }}>
+                    <div
+                      className="image-container"
+                      style={{ overflow: "hidden", marginTop: 10 }}
+                    >
                       <img
                         src={"http://127.0.0.1:8000/" + data.file_path}
                         alt="img"
@@ -173,7 +247,10 @@ const ShowProduct = () => {
                   <div className="row">
                     <div className="col-md-6 mb-3">
                       <p className="fw-bold">Price</p>
-                      <h3 className="text-black-50"> {data.price} <i className="fa-solid fa-lira-sign" /></h3>
+                      <h3 className="text-black-50">
+                        {" "}
+                        {data.price} <i className="fa-solid fa-lira-sign" />
+                      </h3>
                     </div>
                   </div>
                 </div>
@@ -199,15 +276,16 @@ const ShowProduct = () => {
         </div>
       </div>
 
-
       <div className="container py-5">
         <h2>Sản phẩm cùng loại ({data.category})</h2>
         <div className="row gy-4">
           {List.map((item) => (
             <div className="col-lg-4 col-md-6">
               <div className="card mb-4 d-flex flex-column h-100 border-0">
-
-                <div className="image-container" style={{ height: 350, overflow: 'hidden', marginTop: 10 }}>
+                <div
+                  className="image-container"
+                  style={{ height: 350, overflow: "hidden", marginTop: 10 }}
+                >
                   <Link to={"/show/" + item.id}>
                     <img
                       src={"http://127.0.0.1:8000/" + item.file_path}
@@ -219,7 +297,10 @@ const ShowProduct = () => {
 
                 <div className="card-body flex-grow-1 d-flex flex-column">
                   <div className="row text-center mb-3">
-                    <Link to={"/show/" + item.id} className="text-decoration-none text-success">
+                    <Link
+                      to={"/show/" + item.id}
+                      className="text-decoration-none text-success"
+                    >
                       <h4>{item.name}</h4>
                     </Link>
                   </div>
@@ -231,13 +312,19 @@ const ShowProduct = () => {
                   </div>
 
                   <div className="row ms-3 ms-md-5 pt-3 text-black-50">
-                    <h3>{item.price} <i className="fa-solid fa-lira-sign" /></h3>
+                    <h3>
+                      {item.price} <i className="fa-solid fa-lira-sign" />
+                    </h3>
                   </div>
 
                   <div className="mt-auto">
                     <div className="container d-flex justify-content-center justify-content-md-around">
-                      <button className="btn btn-outline-warning text-black" onClick={() => handleAddToCart(item.id, user.id, 1)}>
-                        Thêm vào giỏ hàng <i className="fa-solid fa-cart-plus" />
+                      <button
+                        className="btn btn-outline-warning text-black"
+                        onClick={() => handleAddToCart(item.id, user.id, 1)}
+                      >
+                        Thêm vào giỏ hàng{" "}
+                        <i className="fa-solid fa-cart-plus" />
                       </button>
 
                       <button className="btn btn-outline-success text-black">
@@ -251,7 +338,35 @@ const ShowProduct = () => {
           ))}
         </div>
       </div>
-      <style dangerouslySetInnerHTML={{ __html: "\n    .card-footer {\n        width: 100%;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        padding-top: 10px;\n        border-top: 1px solid #ddd;\n    }\n\n    .text-title>a {\n        text-decoration: none;\n    }\n\n    .text-title {\n        font-weight: 900;\n        font-size: 1.2em;\n        line-height: 1.5;\n    }\n\n\n    /*Button*/\n    .card-button {\n        border: 1px solid #252525;\n        display: flex;\n        padding: .3em;\n        cursor: pointer;\n        border-radius: 50px;\n        transition: .3s ease-in-out;\n    }\n\n    /*Hover*/\n    /* Khi ảnh nằm trong một container */\n    .image-container {\n        position: relative;\n        /* Để xác định vị trí tương đối */\n        overflow: hidden;\n        /* Ẩn phần ảnh vượt ra khỏi container */\n    }\n\n    /* Ảnh ban đầu */\n    .image-container img {\n        width: 100%;\n        /* Đặt chiều rộng ban đầu */\n        height: auto;\n        /* Tự động tính chiều cao */\n        transition: transform 0.3s;\n        /* Hiệu ứng chuyển đổi */\n    }\n\n    /* Ảnh khi hover */\n    .image-container:hover img {\n        transform: scale(1.1);\n        /* Phóng to ảnh khi hover */\n    }\n\n    .card-button:hover {\n        border: 1px solid #ffcaa6;\n        background-color: #ffcaa6;\n    }\n" }} />
+      <div className="container bg-light rounded">
+        <div className="row py-5 row-cols-1 row-cols-sm-2">
+          <h2>Đánh giá sản phẩm</h2>
+          <div className="col d-flex">
+            <input type="text" className="form-control" onChange={(e) => {
+                      setNewCmt(e.target.value);
+                    }}/>
+            <button
+              className="ms-2 ps-2 btn btn-primary"
+              onClick={() => handleAddComment(Number(data.id), Number(user.id), NewCmt)}
+            >
+              Đăng
+            </button>
+          </div>
+          <div className="col text-end"></div>
+        </div>
+        {Comments.length > 0 ? (
+          Comments.map((comment) => <p key={comment.id}>{comment.comment}</p>)
+        ) : (
+          <p>Chưa có bình luận nào</p>
+        )}
+      </div>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html:
+            "\n    .card-footer {\n        width: 100%;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        padding-top: 10px;\n        border-top: 1px solid #ddd;\n    }\n\n    .text-title>a {\n        text-decoration: none;\n    }\n\n    .text-title {\n        font-weight: 900;\n        font-size: 1.2em;\n        line-height: 1.5;\n    }\n\n\n    /*Button*/\n    .card-button {\n        border: 1px solid #252525;\n        display: flex;\n        padding: .3em;\n        cursor: pointer;\n        border-radius: 50px;\n        transition: .3s ease-in-out;\n    }\n\n    /*Hover*/\n    /* Khi ảnh nằm trong một container */\n    .image-container {\n        position: relative;\n        /* Để xác định vị trí tương đối */\n        overflow: hidden;\n        /* Ẩn phần ảnh vượt ra khỏi container */\n    }\n\n    /* Ảnh ban đầu */\n    .image-container img {\n        width: 100%;\n        /* Đặt chiều rộng ban đầu */\n        height: auto;\n        /* Tự động tính chiều cao */\n        transition: transform 0.3s;\n        /* Hiệu ứng chuyển đổi */\n    }\n\n    /* Ảnh khi hover */\n    .image-container:hover img {\n        transform: scale(1.1);\n        /* Phóng to ảnh khi hover */\n    }\n\n    .card-button:hover {\n        border: 1px solid #ffcaa6;\n        background-color: #ffcaa6;\n    }\n",
+        }}
+      />
     </>
   );
 };

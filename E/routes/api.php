@@ -54,6 +54,7 @@ Route::put('/cart/update/{id}', 'App\Http\Controllers\CartApi@updateQuantityPro'
 Route::delete('/cart/delete/{id}', 'App\Http\Controllers\CartApi@delete');
 
 Route::post ('/Comment/list', 'App\Http\Controllers\CommentController@list');
+Route::post ('/Comment/listPro', 'App\Http\Controllers\CommentController@listCmtPro');
 Route::post('/Comment/add', 'App\Http\Controllers\CommentController@add');
 Route::get('/Comment/show/{id}', 'App\Http\Controllers\CommentController@show');
 Route::put('/Comment/update/{id}', 'App\Http\Controllers\CommentController@update');

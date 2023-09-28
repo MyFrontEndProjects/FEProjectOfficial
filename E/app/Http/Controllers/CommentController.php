@@ -48,6 +48,10 @@ class CommentController extends Controller
     {   $id = $request->user_id;
         return Comment::where('user_id', $id)->get();
     }
+    function listCmtPro(Request $request)
+    {   $id = $request->product_id;
+        return Comment::where('product_id', $id)->get();
+    }
     public function delete($id)
     {
         Comment::destroy($id);

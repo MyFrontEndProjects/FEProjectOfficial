@@ -7,8 +7,8 @@ import "bootstrap-icons/font/bootstrap-icons.json";
 import { MyDataType } from "../../constants/MyDataType";
 import { LoginInfo } from "services/userService";
 import Footer from "components/Footer";
-import {useSelector} from "react-redux";
-import { RootState } from "store";
+
+
 
 const Shop = () => {
   let user: LoginInfo;
@@ -162,7 +162,7 @@ const Shop = () => {
     let result = await response.json();
     setData(result);
   }
-  const isLoginedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+
   return (
     <>
       <div className="container">
