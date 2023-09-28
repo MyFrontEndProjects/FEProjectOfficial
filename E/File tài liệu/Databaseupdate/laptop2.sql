@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 27, 2023 lúc 05:01 PM
+-- Thời gian đã tạo: Th9 28, 2023 lúc 08:55 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -39,6 +39,26 @@ CREATE TABLE `carts` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `carts`
+--
+
+INSERT INTO `carts` (`id`, `quantityPro`, `price`, `name`, `file_path`, `product_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(10, 1, 1599, 'PREDATOR TRITON 17 X\r\n', 'products/store3.webp', 2, 2, '2023-09-27 08:08:39', '2023-09-27 08:08:39'),
+(11, 1, 1599, 'PREDATOR HELIOS NEO 16\r\n', 'products/store4.webp', 3, 2, '2023-09-27 08:08:42', '2023-09-27 08:08:42'),
+(12, 1, 1599, 'Swift 14', 'products/store5.webp', 5, 2, '2023-09-27 08:08:45', '2023-09-27 08:08:45'),
+(13, 3, 1800, 'PREDATOR TRITON 16', 'products/store2.webp', 1, 2, '2023-09-27 08:37:34', '2023-09-27 08:37:34'),
+(14, 10, 1800, 'PREDATOR TRITON 16', 'products/store2.webp', 1, 2, '2023-09-27 08:40:52', '2023-09-27 08:40:52'),
+(15, 1, 1800, 'PREDATOR TRITON 16', 'products/store2.webp', 1, 2, '2023-09-27 09:26:21', '2023-09-27 09:26:21'),
+(16, 1, 1599, 'PREDATOR HELIOS NEO 16\r\n', 'products/store4.webp', 3, 2, '2023-09-27 09:26:41', '2023-09-27 09:26:41'),
+(17, 1, 1599, 'PREDATOR TRITON 14', 'products/store1.webp', 4, 2, '2023-09-27 09:26:54', '2023-09-27 09:26:54'),
+(18, 1, 1599, 'Swift 14', 'products/store5.webp', 5, 2, '2023-09-27 09:27:03', '2023-09-27 09:27:03'),
+(19, 1, 1599, 'Swift 14', 'products/store5.webp', 5, 2, '2023-09-27 10:07:47', '2023-09-27 10:07:47'),
+(20, 5, 1599, 'Nitro 7', 'products/store11.webp', 10, 5, '2023-09-27 17:36:00', '2023-09-27 17:36:00'),
+(21, 1, 1599, 'PREDATOR TRITON 17 X\r\n', 'products/store3.webp', 2, 2, '2023-09-27 21:39:12', '2023-09-27 21:39:12'),
+(22, 1, 1800, 'PREDATOR TRITON 16', 'products/store2.webp', 1, 2, '2023-09-27 23:34:18', '2023-09-27 23:34:18'),
+(23, 1, 1599, 'PREDATOR TRITON 17 X\r\n', 'products/store3.webp', 2, 5, '2023-09-27 23:38:00', '2023-09-27 23:38:00');
+
 -- --------------------------------------------------------
 
 --
@@ -53,6 +73,16 @@ CREATE TABLE `comments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `comments`
+--
+
+INSERT INTO `comments` (`id`, `comment`, `product_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(2, 'hello', 1, 3, '2023-09-27 10:55:30', '2023-09-27 10:55:30'),
+(3, 'dadcascasgg', 1, 5, '2023-09-27 11:06:36', '2023-09-27 11:06:36'),
+(4, 'Laptop này xịn quá', 1, 5, '2023-09-27 11:30:40', '2023-09-27 11:30:40'),
+(5, 'abc', 1, 2, '2023-09-27 22:31:25', '2023-09-27 22:31:25');
 
 -- --------------------------------------------------------
 
@@ -191,10 +221,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `phone`, `address`, `balance`, `avatar`, `remember_token`, `created_at`, `updated_at`, `api_token`) VALUES
 (1, 'admin', 'Admin@gmail.com', NULL, '12345678', 'admin', 935688218, 'abc', 5000000, 'avatars/S2qvhgXVolOIBzQTJxwD6OIlOETxUTMOmCPjccIU.png', NULL, '2023-09-26 08:44:26', '2023-09-26 11:43:00', NULL),
-(2, 'john', 'john@gmail.com', NULL, '$2y$10$oKjnHclLMKNlYesbZGc41uAhJvJkqCszaVGNTdHNXUowJYU.31FQO', 'admin', NULL, 'address', 5000, NULL, NULL, '2023-09-26 12:21:50', '2023-09-27 07:47:49', 'e9fa2b2c0bd0854f2efa308455fbf6d6970e17d2'),
+(2, 'john', 'john@gmail.com', NULL, '$2y$10$oKjnHclLMKNlYesbZGc41uAhJvJkqCszaVGNTdHNXUowJYU.31FQO', 'admin', NULL, 'address', 5000, NULL, NULL, '2023-09-26 12:21:50', '2023-09-27 23:44:09', 'b86715bb1f85b02f3f75a4e442f0d261ff904255'),
 (3, 'john', 'kkk@gmail.com', NULL, '$2y$10$.MtlqiEzlA/8WkvLdU1Ee.gGIDXl16fACChYj6N1T2VtK/PvpaYyC', 'client', NULL, 'address', 5000, NULL, NULL, '2023-09-26 12:23:21', '2023-09-26 12:23:21', NULL),
 (4, 'Danie', 'Daniel@gmail.com', NULL, '$2y$10$QpkA0Ohjb1Uu4OIJonV4V.HCs1om100IN.uN/gq9Cun3ysbP3Nmye', 'client', NULL, 'address', 5000, NULL, NULL, '2023-09-26 14:57:37', '2023-09-26 14:57:37', NULL),
-(5, 'Takagi', 'takagi@gmail.com', NULL, '$2y$10$OcJ6fdY5NmC78.BofMZ88.rkCDCsRzFiqrqj88i8UvxS4cTC76K5i', 'client', 1314791837, '123 Main', 50000000, 'avatars/user.png', NULL, '2023-09-27 02:08:50', '2023-09-27 02:08:50', 'aca8d7bdbe0187b8b366106427c11a15390fa781');
+(5, 'Takagi', 'takagi@gmail.com', NULL, '$2y$10$OcJ6fdY5NmC78.BofMZ88.rkCDCsRzFiqrqj88i8UvxS4cTC76K5i', 'client', 1314791837, '123 Main', 50000000, 'avatars/user.png', NULL, '2023-09-27 02:08:50', '2023-09-27 23:37:34', '235225c166c5475d6bce9e0cfbdafb8ea1068dbd');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -264,13 +294,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`

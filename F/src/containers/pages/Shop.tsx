@@ -307,7 +307,7 @@ const Shop = () => {
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
                           >
-                            Mua ngay <i className="fa-regular fa-credit-card" />
+                            Bình luận <i className="fa-regular fa-credit-card" />
                           </button>
                           <div
                             className="modal fade"
@@ -369,7 +369,7 @@ const Shop = () => {
                           </button>
 
                           <button className="btn btn-outline-success text-black">
-                            Mua ngay <i className="fa-regular fa-credit-card" />
+                            Bình luận <i className="fa-regular fa-credit-card" />
                           </button>
                         </>
                       )}

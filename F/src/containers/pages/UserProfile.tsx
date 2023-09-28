@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { MyCommentType } from "constants/MyCommentType";
+import { Link } from "react-router-dom";
 type LoginInfo = {
   id: number;
   name: string;
@@ -31,14 +32,17 @@ const UserProfile = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        let reqComments = await fetch("http://127.0.0.1:8000/api/Comment/list", {
-          method: "POST",
-          body: JSON.stringify({ user_id: user?.id }), 
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        });
+        let reqComments = await fetch(
+          "http://127.0.0.1:8000/api/Comment/list",
+          {
+            method: "POST",
+            body: JSON.stringify({ user_id: user?.id }),
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        );
         let commentsResponse = await reqComments.json();
         console.log(commentsResponse);
         setData(commentsResponse);
@@ -48,7 +52,7 @@ const UserProfile = () => {
     }
 
     fetchData();
-  }, [user?.id]); 
+  }, [user?.id]);
   return (
     <>
       <div className="container">
@@ -101,15 +105,51 @@ const UserProfile = () => {
                   <h6 className="text-black f-w-400">{user?.balance}</h6>
                 </div>
               </div>
-              <div className="row">
-                <div className="col-sm-6">
-                  <p className="m-b-10 f-w-600">Bình luận của tôi</p>
-                  {data.map((item, index) => ( 
-                   <>
-                  <h6 className="text-black f-w-400"> {index} {" "} { item.comment }</h6>
-                   </> 
-                  ))}
-                </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-8">
+            <div className="card">
+              <div className="card-header text-center bg-primary text-white">
+                Danh sách Bình luận
+              </div>
+              <div className="card-body">
+                <table className="table table-bordered border-primary table-hover table-striped">
+                  <thead>
+                    <tr className="table-primary border-primary text-center">
+                      <th>#</th>
+                      <th>Mã sản phẩm</th>
+                      <th>Bình luận</th>
+                      <th>Tính năng</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((item, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{item.product_id}</td>
+                        <td>{item.comment}</td>
+                        <td>
+                          <span className="mx-1">
+                            <Link to={"/show/" + item.product_id}>
+                              <i className="bi bi-eye" />
+                            </Link>
+                          </span>
+                          <span className="mx-1">
+                            <Link to={"productUpdate/" + item.id}>
+                              <i className="bi-pencil-square text-primary" />
+                            </Link>
+                          </span>
+                          {/* <span onClick={() => deleteItem(item.id)} className="mx-1">
+                       <i className="bi-trash text-danger" />
+                     </span> */}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
