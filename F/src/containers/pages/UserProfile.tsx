@@ -109,7 +109,7 @@ const UserProfile = () => {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row justify-content-center mt-5">
           <div className="col-md-8">
             <div className="card">
               <div className="card-header text-center bg-primary text-white">

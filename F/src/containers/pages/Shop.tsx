@@ -5,19 +5,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.json";
 import { MyDataType } from "../../constants/MyDataType";
+import { LoginInfo } from "services/userService";
 import Footer from "components/Footer";
-type LoginInfo = {
-  id: number;
-  name: string;
-  email: string;
-  accessToken: string;
-  avatar: string;
-  role: string;
-  phone: string;
-  address: string;
-  api_token: string;
-  balance: number;
-};
+import {useSelector} from "react-redux";
+import { RootState } from "store";
 
 const Shop = () => {
   let user: LoginInfo;
@@ -171,6 +162,7 @@ const Shop = () => {
     let result = await response.json();
     setData(result);
   }
+  const isLoginedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   return (
     <>
       <div className="container">

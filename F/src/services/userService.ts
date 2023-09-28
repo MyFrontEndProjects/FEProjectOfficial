@@ -1,7 +1,7 @@
 import api from "./api";
 import ResponseWrapper from "./responseWrapper";
 
-type LoginInfo  = {
+export type LoginInfo  = {
     id: number;
     name: string;
     email: string;

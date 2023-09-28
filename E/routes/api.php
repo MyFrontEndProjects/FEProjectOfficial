@@ -58,4 +58,5 @@ Route::post('/Comment/add', 'App\Http\Controllers\CommentController@add');
 Route::get('/Comment/show/{id}', 'App\Http\Controllers\CommentController@show');
 Route::put('/Comment/update/{id}', 'App\Http\Controllers\CommentController@update');
 Route::delete('/Comment/delete/{id}', 'App\Http\Controllers\CommentController@delete');
-
+Route::post('/item/add/{id}', 'App\Http\Controllers\CartController@add')
+    ->name('cart.add');

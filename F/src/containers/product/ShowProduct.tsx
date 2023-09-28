@@ -252,14 +252,6 @@ const ShowProduct = () => {
         </div>
       </div>
       <style dangerouslySetInnerHTML={{ __html: "\n    .card-footer {\n        width: 100%;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        padding-top: 10px;\n        border-top: 1px solid #ddd;\n    }\n\n    .text-title>a {\n        text-decoration: none;\n    }\n\n    .text-title {\n        font-weight: 900;\n        font-size: 1.2em;\n        line-height: 1.5;\n    }\n\n\n    /*Button*/\n    .card-button {\n        border: 1px solid #252525;\n        display: flex;\n        padding: .3em;\n        cursor: pointer;\n        border-radius: 50px;\n        transition: .3s ease-in-out;\n    }\n\n    /*Hover*/\n    /* Khi ảnh nằm trong một container */\n    .image-container {\n        position: relative;\n        /* Để xác định vị trí tương đối */\n        overflow: hidden;\n        /* Ẩn phần ảnh vượt ra khỏi container */\n    }\n\n    /* Ảnh ban đầu */\n    .image-container img {\n        width: 100%;\n        /* Đặt chiều rộng ban đầu */\n        height: auto;\n        /* Tự động tính chiều cao */\n        transition: transform 0.3s;\n        /* Hiệu ứng chuyển đổi */\n    }\n\n    /* Ảnh khi hover */\n    .image-container:hover img {\n        transform: scale(1.1);\n        /* Phóng to ảnh khi hover */\n    }\n\n    .card-button:hover {\n        border: 1px solid #ffcaa6;\n        background-color: #ffcaa6;\n    }\n" }} />
-
-
-
-
-
-
-
-
     </>
   );
 };

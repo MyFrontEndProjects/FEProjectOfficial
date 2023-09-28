@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Footer from "components/Footer";
 import {
   faFacebook,
   faGoogle,
@@ -46,7 +47,7 @@ const Register: React.FC = () => {
       },
     });
 
-    result = await result.json(); 
+    result = await result.json();
     localStorage.setItem("user-info", JSON.stringify(result));
     console.log(result);
     navigate("/"); // Khi dữ liệu đã truyền vào thì nó sẽ chuyển đến trang main
@@ -59,7 +60,7 @@ const Register: React.FC = () => {
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                   <p className="lead fw-normal mb-0 me-3">Đăng nhập bằng</p>
                   <button type="button" className="btn ">
                     <FontAwesomeIcon icon={faFacebook} />
@@ -75,17 +76,7 @@ const Register: React.FC = () => {
                 <div className="divider d-flex align-items-center my-4">
                   <p className="text-center fw-bold mx-3 mb-0">Hay</p>
                 </div>
-                {/* <div className="form-outline mb-4">
-                  <label htmlFor="name">Avatar:</label>
-                  <input
-                    type="file"
-                    {...register("avatar", { required: true })}
-                    className="form-control mt-2"
-                    id="name"
-                    placeholder="Enter full name"
-                  />
-                  {errors.avatar && <p role="alert">avatar is required</p>}
-                </div> */}
+            
                 <div className="form-outline mb-4">
                   <label htmlFor="name">Tên tài khoản:</label>
                   <input
@@ -125,11 +116,10 @@ const Register: React.FC = () => {
                 </div>
                 <div className="text-center text-lg-start mt-4 pt-2">
                   <button
-                  type="submit"
+                    type="submit"
                     className="btn btn-primary btn-lg"
                     style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-                  id="signup-button"
-                   
+                    id="signup-button"
                   >
                     Đăng Ký
                   </button>
@@ -143,38 +133,66 @@ const Register: React.FC = () => {
               </form>
             </div>
             <div className="col-md-9 col-lg-6 col-xl-5">
-            <img
-              src="https://evcom.com.br/wp-content/uploads/sites/4/2020/02/Banner-Como-Atuamos_1920x1080square-1024x995.png"
-              alt="sample"
-              className="img-fluid"
-            />
+              <div
+                id="carCarousel"
+                className="carousel slide"
+                data-bs-ride="carousel"
+              >
+                {/* Hình ảnh xe hơi */}
+                <div className="carousel-inner">
+                  <div className="carousel-item active">
+                    <img
+                      src={"http://127.0.0.1:8000/img/caro-1.webp"}
+                      className="d-block w-100"
+                      alt="Car 1"
+                    />
+                  </div>
+                  <div className="carousel-item">
+                    <img
+                      src={"http://127.0.0.1:8000/img/caro-2.webp"}
+                      className="d-block w-100"
+                      alt="Car 2"
+                    />
+                  </div>
+                  <div className="carousel-item">
+                    <img
+                      src={"http://127.0.0.1:8000/img/caro-3.webp"}
+                      className="d-block w-100"
+                      alt="Car 3"
+                    />
+                  </div>
+                </div>
+                {/* Nút chuyển trang */}
+                <a
+                  className="carousel-control-prev"
+                  href="#carCarousel"
+                  role="button"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    className="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  />
+                  <span className="visually-hidden">Previous</span>
+                </a>
+                <a
+                  className="carousel-control-next"
+                  href="#carCarousel"
+                  role="button"
+                  data-bs-slide="next"
+                >
+                  <span
+                    className="carousel-control-next-icon"
+                    aria-hidden="true"
+                  />
+                  <span className="visually-hidden">Next</span>
+                </a>
+              </div>
+            </div>
           </div>
-          </div>
-        </div>
-        <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary fixed-bottom">
-          {/* Copyright */}
-          <div className="text-white mb-3 mb-md-0">
-            Copyright © 2020. All rights reserved.
-          </div>
-          {/* Copyright */}
-          {/* Right */}
-          <div>
-            <a href="#!" className="text-white me-4">
-              <FontAwesomeIcon icon={faFacebook} style={{ color: "#ffffff" }} />
-            </a>
-            <a href="#!" className="text-white me-4">
-              <FontAwesomeIcon icon={faTwitter} style={{ color: "#ffffff" }} />
-            </a>
-            <a href="#!" className="text-white me-4">
-              <FontAwesomeIcon icon={faGoogle} style={{ color: "#ffffff" }} />
-            </a>
-            <a href="#!" className="text-white">
-              <FontAwesomeIcon icon={faGithub} style={{ color: "#ffffff" }} />
-            </a>
-          </div>
-          {/* Right */}
         </div>
       </section>
+      <Footer />
     </>
   );
 };

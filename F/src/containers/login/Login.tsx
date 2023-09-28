@@ -12,6 +12,7 @@ import {
   // faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import userService from "services/userService";
+import Footer from "components/Footer";
 // import { library } from '@fortawesome/fontawesome-svg-core'
 // import { fas } from '@fortawesome/free-solid-svg-icons'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -28,8 +29,8 @@ const Login = () => {
     userService.login(email, password).then((res) => {
       if (res.errorCode === 0) {
         setMessage("");
-      console.log(res.data);
-      localStorage.setItem("user-info", JSON.stringify(res.data));
+        console.log(res.data);
+        localStorage.setItem("user-info", JSON.stringify(res.data));
         navigate("/");
       } else {
         setMessage(res.message);
@@ -42,11 +43,61 @@ const Login = () => {
         <div className="container-fluid h-custom">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-md-9 col-lg-6 col-xl-5">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                alt="sample"
-                className="img-fluid"
-              />
+              <div
+                id="carCarousel"
+                className="carousel slide"
+                data-bs-ride="carousel"
+              >
+                {/* Hình ảnh xe hơi */}
+                <div className="carousel-inner">
+                  <div className="carousel-item active">
+                    <img
+                      src={"http://127.0.0.1:8000/img/caro-1.webp"}
+                      className="d-block w-100"
+                      alt="Car 1"
+                    />
+                  </div>
+                  <div className="carousel-item">
+                    <img
+                      src={"http://127.0.0.1:8000/img/caro-2.webp"}
+                      className="d-block w-100"
+                      alt="Car 2"
+                    />
+                  </div>
+                  <div className="carousel-item">
+                    <img
+                      src={"http://127.0.0.1:8000/img/caro-3.webp"}
+                      className="d-block w-100"
+                      alt="Car 3"
+                    />
+                  </div>
+                </div>
+                {/* Nút chuyển trang */}
+                <a
+                  className="carousel-control-prev"
+                  href="#carCarousel"
+                  role="button"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    className="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  />
+                  <span className="visually-hidden">Previous</span>
+                </a>
+                <a
+                  className="carousel-control-next"
+                  href="#carCarousel"
+                  role="button"
+                  data-bs-slide="next"
+                >
+                  <span
+                    className="carousel-control-next-icon"
+                    aria-hidden="true"
+                  />
+                  <span className="visually-hidden">Next</span>
+                </a>
+              </div>
             </div>
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <p className="text-center text-danger">{message}</p>
@@ -134,30 +185,9 @@ const Login = () => {
             </div>
           </div>
         </div>
-        {/* <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary fixed-bottom">
-          
-          <div className="text-white mb-3 mb-md-0">
-            Copyright © 2020. All rights reserved.
-          </div>
-          
-         
-          <div>
-            <a href="#!" className="text-white me-4">
-              <FontAwesomeIcon icon={faFacebook} style={{ color: "#ffffff" }} />
-            </a>
-            <a href="#!" className="text-white me-4">
-              <FontAwesomeIcon icon={faTwitter} style={{ color: "#ffffff" }} />
-            </a>
-            <a href="#!" className="text-white me-4">
-              <FontAwesomeIcon icon={faGoogle} style={{ color: "#ffffff" }} />
-            </a>
-            <a href="#!" className="text-white">
-              <FontAwesomeIcon icon={faGithub} style={{ color: "#ffffff" }} />
-            </a>
-          </div>
-         
-        </div> */}
+        
       </section>
+      <Footer/>
     </>
   );
 };
