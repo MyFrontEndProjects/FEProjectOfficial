@@ -73,8 +73,9 @@ class AdminUsersController extends Controller
         $User->phone = $request->input('phone');
         $User->address = $request->input('address');
         $User->role = $request->input('role');
+        if ($request->file('avatar')){
         $User->avatar = $request->file('avatar')->store('avatars');
-
+        }
         $User->save();
         return redirect()->route('admin.user');
     }
