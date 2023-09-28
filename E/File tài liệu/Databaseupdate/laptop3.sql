@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 28, 2023 lúc 09:17 PM
+-- Thời gian đã tạo: Th9 28, 2023 lúc 11:44 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `laptop2`
+-- Cơ sở dữ liệu: `laptop3`
 --
 
 -- --------------------------------------------------------
@@ -44,20 +44,7 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `quantityPro`, `price`, `name`, `file_path`, `product_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(10, 1, 1599, 'PREDATOR TRITON 17 X\r\n', 'products/store3.webp', 2, 2, '2023-09-27 08:08:39', '2023-09-27 08:08:39'),
-(11, 1, 1599, 'PREDATOR HELIOS NEO 16\r\n', 'products/store4.webp', 3, 2, '2023-09-27 08:08:42', '2023-09-27 08:08:42'),
-(12, 1, 1599, 'Swift 14', 'products/store5.webp', 5, 2, '2023-09-27 08:08:45', '2023-09-27 08:08:45'),
-(13, 3, 1800, 'PREDATOR TRITON 16', 'products/store2.webp', 1, 2, '2023-09-27 08:37:34', '2023-09-27 08:37:34'),
-(14, 10, 1800, 'PREDATOR TRITON 16', 'products/store2.webp', 1, 2, '2023-09-27 08:40:52', '2023-09-27 08:40:52'),
-(15, 1, 1800, 'PREDATOR TRITON 16', 'products/store2.webp', 1, 2, '2023-09-27 09:26:21', '2023-09-27 09:26:21'),
-(16, 1, 1599, 'PREDATOR HELIOS NEO 16\r\n', 'products/store4.webp', 3, 2, '2023-09-27 09:26:41', '2023-09-27 09:26:41'),
-(17, 1, 1599, 'PREDATOR TRITON 14', 'products/store1.webp', 4, 2, '2023-09-27 09:26:54', '2023-09-27 09:26:54'),
-(18, 1, 1599, 'Swift 14', 'products/store5.webp', 5, 2, '2023-09-27 09:27:03', '2023-09-27 09:27:03'),
-(19, 1, 1599, 'Swift 14', 'products/store5.webp', 5, 2, '2023-09-27 10:07:47', '2023-09-27 10:07:47'),
-(20, 5, 1599, 'Nitro 7', 'products/store11.webp', 10, 5, '2023-09-27 17:36:00', '2023-09-27 17:36:00'),
-(21, 1, 1599, 'PREDATOR TRITON 17 X\r\n', 'products/store3.webp', 2, 2, '2023-09-27 21:39:12', '2023-09-27 21:39:12'),
-(22, 1, 1800, 'PREDATOR TRITON 16', 'products/store2.webp', 1, 2, '2023-09-27 23:34:18', '2023-09-27 23:34:18'),
-(23, 1, 1599, 'PREDATOR TRITON 17 X\r\n', 'products/store3.webp', 2, 5, '2023-09-27 23:38:00', '2023-09-27 23:38:00');
+(25, 1, 1599, 'PREDATOR TRITON 17 X\r\n', 'products/store3.webp', 2, 2, '2023-09-28 14:43:54', '2023-09-28 14:43:54');
 
 -- --------------------------------------------------------
 
@@ -334,7 +321,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT cho bảng `comments`
@@ -364,7 +351,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `reviews`

@@ -57,13 +57,93 @@ const CartList = () => {
   useEffect(() => {
     fetchData();
   }, []);
+// var cart_HTML;
+// if (data.length>0) {
+//   cart_HTML = `
+//   <table className="table table-bordered border-primary table-hover table-striped">
+//     <thead>
+//       <tr className="table-primary border-primary text-center">
+//         <th>Tên sản phẩm</th>
+//         <th style={{ width: 150 }} className="d-none d-sm-table-cell">
+//           Hình ảnh
+//         </th>
+//         <th>Số lượng</th>
+//         <th>Giá</th>
+//         <th>Tổng tiền</th>
+//         <th>Chỉnh sửa số lượng</th>
+//       </tr>
+//     </thead>
+//     <tbody className="text-center">
+//       {data.map((item, index) => (
+//         <tr className="" key={index}>
+//           <td>{item.name}</td>
+//           <td className="d-none d-sm-table-cell">
+//             <img
+//               src={"http://127.0.0.1:8000/" + item.file_path}
+//               alt="img"
+//               className="img-fluid"
+//             />
+//           </td>
+//           <td className="justify-content-around">
+//             <span>{item.quantityPro}</span>
+//           </td>
+//           <td>{item.price}</td>
+//           <td>{item.price * item.quantityPro}</td>
+//           <td>
+//             <div className="container">
+//               <div className="row">
+//                 <div className="col-lg-2 col-sm-6 d-flex align-items-center">
+//                   <Link to={"/show/" + item.product_id}>
+//                     <i className="bi bi-eye" />
+//                   </Link>
+//                   <span
+//                     onClick={() => deleteItem(item.id)}
+//                     className="mx-3"
+//                   >
+//                     <i className="bi-trash text-danger" />
+//                   </span>
+//                 </div>
+//                 <div className="col-lg-7 col-sm-6">
+//                   <input
+//                     type="number"
+//                     defaultValue={item.quantityPro}
+//                     className="form-control input-number px-1"
+//                     min={1}
+//                     onChange={(e) =>
+//                       setNewQuantity(parseInt(e.target.value))
+//                     }
+//                   />
+//                 </div>
+//                 <div className="col-lg-2 col-sm-6 d-md-flex justify-content-md-center">
+//                   <button
+//                     className="btn btn-outline-info"
+//                     onClick={() => updateQuantityPro(item.id)}
+//                   >
+//                     Update
+//                   </button>
+//                 </div>
+//               </div>
+//             </div>
+//           </td>
+//         </tr>
+//       ))}
+//     </tbody>
+//   </table>
+// `;
+// } else {
+//   cart_HTML = `<div>
+//   <div className="card card-body py-5 text-center shadow-sm">
+//     <h4>Giỏ hàng của bạn đang trống</h4>
+//   </div>
+// </div>`
+// }
 
   return (
     <>
 
 
       <div className="container">
-        <table className="table table-bordered border-primary table-hover table-striped">
+      <table className="table table-bordered border-primary table-hover table-striped">
           <thead>
             <tr className="table-primary border-primary text-center">
               <th>Tên sản phẩm</th>
