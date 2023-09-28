@@ -77,3 +77,9 @@ Route::post('/Reviews/add', 'App\Http\Controllers\ReviewsController@add');
 Route::put('/Reviews/update/{id}', 'App\Http\Controllers\ReviewsController@update');
 Route::delete('/Reviews/delete/{id}', 'App\Http\Controllers\ReviewsController@delete');
 
+
+// Route checkout
+
+Route::post('/checkout', 'App\Http\Controllers\BillController@checkout');
+Route::post('/getCheckout', 'App\Http\Controllers\BillController@getCheckout');
+Route::post('/getId', 'App\Http\Controllers\BillController@getCheckout');
