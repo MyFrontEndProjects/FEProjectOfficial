@@ -217,6 +217,9 @@ const Shop = () => {
 
 
 
+
+
+
   return (
     <>
       <div className="container">
@@ -231,13 +234,22 @@ const Shop = () => {
                 Lọc{" "}
                 <i className="ms-1 fa-solid fa-filter align-text-bottom"></i>:
               </label>
-              <form className="col d-flex">
+
+
+              <form  className="col d-flex">
                 <select
                   name="selectedCategory"
                   id="selectedCategory"
                   className="col-lg-10 col-md-8 col-8 form-control-sm"
                   onChange={(e) => {
-                    setCategory(e.target.value);
+                    if (e.target.value !== "0") {
+                      // Nếu giá trị của selectedCategory không rỗng
+                      // thì set selectedPrice thành giá trị mặc định (Lọc theo giá / Hủy)
+                      setSelectedPrice("0");
+                      setCategory(e.target.value);
+                    } else {
+                      console.log("Hủy được chọn");
+                    }
                     console.log(e.target.value);
                   }}
                 >
@@ -261,10 +273,11 @@ const Shop = () => {
                   className="col-lg-10 col-md-8 col-8 form-control-sm"
                   onChange={(e) => {
                     setSelectedPrice(e.target.value);
+                    
                     console.log(e.target.value);
                   }}
                 >
-                  <option value="">Lọc theo giá</option>
+                  <option value="">Lọc theo giá / Hủy</option>
                   {priceOptions.length > 0 &&
                     priceOptions.map((priceOption) => (
                       <option key={priceOption} value={priceOption}>
