@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sanpham;
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -17,7 +16,7 @@ class ProductController extends Controller
 
         return view('Store.index')->with('storeData', $storeData);
     }
-    function list(Request $request)
+    public function list(Request $request)
     {
         $selectedCategory = $request->selectedCategory;
         if ($selectedCategory && $selectedCategory !== '0') {
@@ -27,11 +26,26 @@ class ProductController extends Controller
         }
         return $products;
     }
-    function getCategory()
+
+    public function getCategory()
     {
         $categories = Product::distinct()->pluck('category');
         return response()->json($categories);
     }
+
+    public function listprice(Request $request)
+    {
+        $selectedPrice = $request->selectedPrice;
+        $products = Product::where('price', $selectedPrice)->get();
+        return $products;
+    }
+
+    public function getPrice()
+    {
+        $prices = Product::distinct()->pluck('price');
+        return response()->json($prices);
+    }
+
     public function filterStores(Request $request)
     {
         $storeData = [];
@@ -47,9 +61,7 @@ class ProductController extends Controller
         return view('Store.index')->with('storeData', $storeData);
     }
 
-
-
-    function search($key)
+    public function search($key)
     {
         if ($key == '') {
             return Product::all();
@@ -57,8 +69,8 @@ class ProductController extends Controller
             return Product::where('name', 'like', '%' . $key . '%')
                 ->orWhere('price', $key)
                 ->orWhere('category', 'like', '%' . $key . '%') // Sử dụng 'like' cho category
-                ->orWhere('brand', 'like', '%' . $key . '%')   // Sử dụng 'like' cho brand
-                ->orWhere('size', 'like', $key)    // Sử dụng 'like' cho size
+                ->orWhere('brand', 'like', '%' . $key . '%') // Sử dụng 'like' cho brand
+                ->orWhere('size', 'like', $key) // Sử dụng 'like' cho size
                 ->orWhere('color', 'like', '%' . $key . '%') // S
                 ->orWhere('description', 'like', '%' . $key . '%') // S
                 ->get();
@@ -75,7 +87,6 @@ class ProductController extends Controller
         return view('Store.show')->with("storeData", $storeData);
     }
 
-
     public function showApi($id)
     {
         return Product::find($id);
@@ -86,7 +97,6 @@ class ProductController extends Controller
         $path = storage_path('app/ProductImages/' . $filename);
         return response()->file($path);
     }
-
 
     public function getSearch(Request $request)
     {
@@ -122,7 +132,7 @@ class ProductController extends Controller
             return $output;
         }
     }
-    public  function addProduct(Request $request)
+    public function addProduct(Request $request)
     {
         $request->validate([
             'name' => 'required|max:255',

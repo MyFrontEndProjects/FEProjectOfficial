@@ -134,16 +134,8 @@ const OffcanvasExample = () => {
               </div>
             </NavLink>
           </div>
-          
+
           <div className="d-flex mx-5 align-items-center">
-            {user && user.role === "admin" ? (
-              <Link to="http://localhost:8000/login" target="_blank" style={{ textDecoration: "none" }}
-                className="nav-link d-none d-md-flex align-self-center text-center text-uppercase fw-bold text-white me-3">
-                <div className="align-self-center" style={{ fontFamily: "cursive" }}>
-                  Quản trị <i className="fa-solid fa-screwdriver-wrench"></i>
-                </div>
-              </Link>
-            ) : null}
 
 
             <Nav className="justify-content-end text-white flex-grow-1 pe-3 text-uppercase fw-bold ">
@@ -197,6 +189,18 @@ const OffcanvasExample = () => {
                 </>
               )}
             </Nav>
+
+            {user && user.role === "admin" ? (
+              <Link to="http://localhost:8000/login" target="_blank" style={{ textDecoration: "none" }}
+                className="nav-link d-none d-md-flex align-self-center text-center text-uppercase fw-bold text-white me-3">
+                <div className="align-self-center" style={{ fontFamily: "cursive" }}>
+                  Quản trị <i className="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+              </Link>
+            ) : null}
+
+
+
 
           </div>
 

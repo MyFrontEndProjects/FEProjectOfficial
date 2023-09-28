@@ -36,8 +36,17 @@ Route::get('login', function (){
 Route::get ('search/{key}', [ProductController::class,'search']);
 // Route lấy danh sách sản phẩm 
 Route::post ('list', [ProductController::class,'list']);
+
 // Route lấy category của sản phẩm
 Route::get ('getCategory', [ProductController::class,'getCategory']);
+
+// Route lấy danh sách theo giá 
+Route::post ('listprice', [ProductController::class,'listprice']);
+
+// Route lấy price của sản phẩm
+Route::get ('getPrice', [ProductController::class,'getPrice']);
+
+
 // Route show sản phẩm
 Route::get ('show/{id}', [ProductController::class,'showApi']);
 // Route::middleware('auth')->group(function () {

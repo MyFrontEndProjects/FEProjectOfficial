@@ -49,10 +49,9 @@ const Homesection2 = () => {
                             </div>
 
                         </div>
-                        <div className="d-flex justify-content-center">
-                            <button className="btn btn-warning text-black d-flex align-items-center">
-                                Xem thêm
-                                <i className="fa-solid fa-cart-plus ms-2" />
+                        <div className="d-flex justify-content-center  ">
+                            <button onClick={() => { window.location.href = "/show/13"; }} className="text-white btn btn-warning text-black d-flex align-items-center">
+                                Xem thêm <i className="fa-solid fa-cart-plus ms-2" />
                             </button>
                         </div>
                     </div>
@@ -86,9 +85,8 @@ const Homesection2 = () => {
                         </div>
 
                         <div className="d-flex justify-content-center">
-                            <button className="btn btn-warning text-black d-flex align-items-center">
-                                Xem thêm
-                                <i className="fa-solid fa-cart-plus ms-2" />
+                            <button onClick={() => { window.location.href = "/show/12"; }} className="text-white btn btn-warning text-black d-flex align-items-center">
+                                Xem thêm <i className="fa-solid fa-cart-plus ms-2" />
                             </button>
                         </div>
 
@@ -121,9 +119,8 @@ const Homesection2 = () => {
                         </div>
 
                         <div className="d-flex justify-content-center">
-                            <button className="btn btn-warning text-black d-flex align-items-center">
-                                Xem thêm
-                                <i className="fa-solid fa-cart-plus ms-2" />
+                            <button onClick={() => { window.location.href = "/show/11"; }} className="text-white btn btn-warning text-black d-flex align-items-center">
+                                Xem thêm <i className="fa-solid fa-cart-plus ms-2" />
                             </button>
                         </div>
 
@@ -186,9 +183,8 @@ const Homesection2 = () => {
 
                         </div>
                         <div className="d-flex justify-content-center">
-                            <button className="btn btn-warning text-black d-flex align-items-center">
-                                Xem thêm
-                                <i className="fa-solid fa-cart-plus ms-2" />
+                            <button onClick={() => { window.location.href = "/show/3"; }} className="text-white btn btn-warning text-black d-flex align-items-center">
+                                Xem thêm <i className="fa-solid fa-cart-plus ms-2" />
                             </button>
                         </div>
                     </div>
@@ -221,9 +217,8 @@ const Homesection2 = () => {
                         </div>
 
                         <div className="d-flex justify-content-center">
-                            <button className="btn btn-warning text-black d-flex align-items-center">
-                                Xem thêm
-                                <i className="fa-solid fa-cart-plus ms-2" />
+                            <button onClick={() => { window.location.href = "/show/1"; }} className="text-white btn btn-warning text-black d-flex align-items-center">
+                                Xem thêm <i className="fa-solid fa-cart-plus ms-2" />
                             </button>
                         </div>
 
@@ -256,9 +251,8 @@ const Homesection2 = () => {
                         </div>
 
                         <div className="d-flex justify-content-center">
-                            <button className="btn btn-warning text-black d-flex align-items-center">
-                                Xem thêm
-                                <i className="fa-solid fa-cart-plus ms-2" />
+                            <button onClick={() => { window.location.href = "/show/2"; }} className="text-white btn btn-warning text-black d-flex align-items-center">
+                                Xem thêm <i className="fa-solid fa-cart-plus ms-2" />
                             </button>
                         </div>
 
