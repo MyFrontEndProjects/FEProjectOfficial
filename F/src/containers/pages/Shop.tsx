@@ -13,7 +13,7 @@ import Footer from "components/Footer";
 const Shop = () => {
   let user: LoginInfo;
 
-  // Lấy giá trị từ localStorage và kiểm tra nếu có
+  // lấy user-info (người dùng) trên localStorage và kiểm tra nếu có
   const userString = localStorage.getItem("user-info");
   if (userString) {
     try {
@@ -35,6 +35,8 @@ const Shop = () => {
   console.log(Comment);
 
 
+
+//lấy danh sách loại sản phẩm
   useEffect(() => {
     async function fetchCategory() {
       try {
@@ -48,7 +50,7 @@ const Shop = () => {
 
     fetchCategory();
   }, []);
-
+  //lọc theo loại
   useEffect(() => {
 
     async function fetchData() {
@@ -132,6 +134,8 @@ const Shop = () => {
 
 
 
+
+  //thêm sản phẩm vào cart 
   async function handleAddToCart(productId: number, userId: number) {
     try {
       if (userId === null) {
@@ -169,7 +173,9 @@ const Shop = () => {
       console.error(error);
     }
   }
-  async function handleAddComment(productId: number, userId: number, comment: string) {
+
+  //thêm bình luận
+  async function handleAddComment(productId: number, userId: number, comment: string){
     try {
       if (userId === null) {
         userId = 1;
@@ -206,7 +212,7 @@ const Shop = () => {
       console.error(error);
     }
   }
-
+//tìm kiếm
   async function search(key: string) {
     console.warn(key);
     let response = await fetch("http://127.0.0.1:8000/api/search/" + key);

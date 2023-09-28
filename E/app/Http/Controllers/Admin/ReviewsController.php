@@ -20,7 +20,8 @@ class ReviewsController extends Controller
         $user = User::find($request->user_id);
         $review = $request->review;
         if ($review ==null || $review =='') {
-            return back();
+            
+            
         } else {
             if ($user) {
                 $review = new Review();
@@ -32,11 +33,10 @@ class ReviewsController extends Controller
                 }
                 $review->review= $request->review;
                 $review->save();
-                return $review;
+                return back();
             } else {
-                return response()->json([
-                    "message" => 'nguoi dung khong ton tai'
-                ]);
+                session()->flash('ID_not_found', 'Không có mã người dùng này');
+            return redirect()->route('admin.Review.index');
             }
         }
     }
@@ -51,6 +51,7 @@ class ReviewsController extends Controller
     {
         $review = Review::findOrFail($id);
         $review->review = $request->review;
+        $review->phone= $request->phone;
         $review->save();
         return redirect()->route('admin.Review.index');
     }
