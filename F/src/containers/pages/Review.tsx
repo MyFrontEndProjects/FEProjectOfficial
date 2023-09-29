@@ -84,21 +84,37 @@ const Review = () => {
       console.error(error);
     }
   }
+
+ 
+
+  const randomUserIds = ["Thỏ Gấu", "Mèo", "Chuột" , "Chồn" , "Gấu Trúc" , "Rắn Xanh Lè "];
+
+  function getRandomUserId() {
+    const randomIndex = Math.floor(Math.random() * randomUserIds.length);
+    return randomUserIds[randomIndex];
+  }
   const navigate = useNavigate();
   return (
     <div className="container py-5">
       <h2>Danh sách đánh giá</h2>
-      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-        {reviews.map((review, index) => (
-          <div key={review.id} className="col">
-            <div className={`mb-3 ${colClasses[index]} rounded p-3 shadow`}>
-              <p>Người dùng : {review.user_id}</p>
-              <p>Số điện thoại: {review.phone}</p>
-              <p>Đánh giá: {review.review}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <table className="table table-bordered">
+        <thead>
+          <tr>
+            <th>Người dùng</th>
+            <th>Số điện thoại</th>
+            <th>Đánh giá</th>
+          </tr>
+        </thead>
+        <tbody>
+          {reviews.map((review) => (
+            <tr key={review.id}>
+              <td>{getRandomUserId()}</td>
+              <td>{review.phone}</td>
+              <td>{review.review}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
       <h2>Thêm đánh giá mới</h2>
 
