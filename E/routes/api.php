@@ -83,3 +83,4 @@ Route::delete('/Reviews/delete/{id}', 'App\Http\Controllers\ReviewsController@de
 Route::post('/checkout', 'App\Http\Controllers\BillController@checkout');
 Route::post('/getCheckout', 'App\Http\Controllers\BillController@getCheckout');
 Route::post('/getId', 'App\Http\Controllers\BillController@getCheckout');
+Route::delete('/checkout/delete/{id}', 'App\Http\Controllers\BillController@DeleteCheckout');

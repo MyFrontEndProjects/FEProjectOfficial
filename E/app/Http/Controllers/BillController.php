@@ -33,4 +33,19 @@ class BillController extends Controller
         
         return Bill::where('user_id', $request->user_id)->latest();
     }
+
+    public function deleteCheckout($id){
+        try {
+            $bill = Bill::findOrFail($id);
+            $bill->delete();
+
+            return response()->json([
+                "message" => 'Xóa thành công'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                "message" => 'Lỗi: ' . $e->getMessage()
+            ], 500);
+        }
+    }
 }
