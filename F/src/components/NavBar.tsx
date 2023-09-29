@@ -179,6 +179,9 @@ const OffcanvasExample = () => {
                         <NavLink to="/cart" className="nav-link text-black">
                           Giỏ hàng
                         </NavLink>
+                        <NavLink to="/review" className="nav-link text-black">
+                          Đánh giá
+                        </NavLink>
                       </NavDropdown.Item>
                     </NavDropdown>
                   </>

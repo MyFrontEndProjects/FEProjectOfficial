@@ -4,6 +4,7 @@ import { LoginInfo } from "services/userService";
 import { BillType } from "constants/BillType";
 const Bills = () => {
   const [Data, setData] = useState<BillType[]>([]);
+
   let user: LoginInfo;
   const userString = localStorage.getItem("user-info");
   if (userString) {
@@ -36,11 +37,32 @@ const Bills = () => {
 
     fetchData(); // Gọi fetchData khi Component được tạo
   }, []);
+
+  async function DeleteData(id: Number) {
+    try {
+      // Sau đó, lấy danh sách sản phẩm dựa trên danh mục đã chọn
+      let req = await fetch(`http://127.0.0.1:8000/api/checkout/delete/${id}`, {
+        method: "DeLETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      let bills = await req.json();
+      setData(bills);
+      console.log(bills);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handleDeleteClick = (id: Number) => {
+    DeleteData(id);
+  };
   return (
     <>
-    
       <div className="container">
-      <div className="row justify-content-center mt-5">
+        <div className="row justify-content-center mt-5">
           <div className="col-md-8">
             <div className="card">
               <div className="card-header text-center bg-primary text-white">
@@ -53,24 +75,37 @@ const Bills = () => {
                       <th>#</th>
                       <th>Mã hóa đơn</th>
                       <th>Tổng cộng</th>
-                      <th>Xem sản phẩm</th>
+                      <th>Xoá</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {Data.map((item, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{item.id}</td>
-                        <td>{item.total}</td>
+                    {Data.length > 0 ? (
+                      Data.map((item, index) => (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>{item.id}</td>
+                          <td>{item.total}</td>
+                          <td className="text-center">
+                            <button
+                              className="btn btn-danger"
+                              onClick={() => handleDeleteClick(item.id)}
+                            >
+                              <i className="bi-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={4} className="text-center">Không có hóa đơn.</td>
                       </tr>
-                    ))}
+                    )}
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
         </div>
-        
       </div>
     </>
   );
