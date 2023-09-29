@@ -112,7 +112,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li><a class="dropdown-item" href="{{ route('admin.store.index') }}">Sản phẩm</a></li>
                           <li><a class="dropdown-item" href="{{ route('admin.user') }}">Người dùng</a></li>
-                          <li><a class="dropdown-item" href="{{ route('admin.cart.index') }}">Đơn đặt hàng</a></li>
+                          {{-- <li><a class="dropdown-item" href="{{ route('admin.cart.index') }}">Đơn đặt hàng</a></li> --}}
                         </ul>
                       </div>
                       

@@ -85,8 +85,8 @@ Route::middleware('admin')->group(function () {
     Route::put('/userProfile/{id}/update', 'App\Http\Controllers\Admin\AdminUsersController@updateUser')
         ->name("userProfile.update");
     //cart
-    Route::get('/admin/cart', 'App\Http\Controllers\Admin\AdminCartController@index')
-        ->name("admin.cart.index");
+    // Route::get('/admin/cart', 'App\Http\Controllers\Admin\AdminCartController@index')
+    //     ->name("admin.cart.index");
 
     Route::post('/admin/cart/add', 'App\Http\Controllers\Admin\AdminCartController@add')
         ->name("admin.cart.add");
