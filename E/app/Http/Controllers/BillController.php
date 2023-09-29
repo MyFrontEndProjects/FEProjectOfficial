@@ -31,19 +31,6 @@ class BillController extends Controller
     }
     public function getId(Request $request){
         
-        try {
-            // Sử dụng Eloquent để lấy bản ghi mới nhất với điều kiện user_id
-            $latestRecord = Bill::where('user_id', $request->user_id)->latest('created_at')->first();
-            
-            // Kiểm tra xem có bản ghi nào hay không
-            if ($latestRecord) {
-                return response()->json($latestRecord);
-            } else {
-                return response()->json(['message' => 'Không tìm thấy bản ghi'], 404);
-            }
-        } catch (\Exception $e) {
-            // Xử lý lỗi nếu có
-            return response()->json(['message' => 'Lỗi: ' . $e->getMessage()], 500);
-        }
+        return Bill::where('user_id', $request->user_id)->latest();
     }
 }

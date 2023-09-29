@@ -15,6 +15,8 @@ import AboutUs from "containers/pages/AboutUs";
 import Contact from "containers/pages/Contact";
 import UserProfile from "containers/pages/UserProfile";
 import Review from "containers/pages/Review";
+import Checkout from "containers/pages/Checkout";
+import Bills from "containers/pages/Bills";
 const RouteContent = () => {
   return (
     <>
@@ -65,7 +67,12 @@ const RouteContent = () => {
           />
           <Route path="/show/:id" element={<ShowProduct />} />
           <Route path="search" element={<SearchProduct />} />
-          
+          <Route path="/checkout" element={<Protected>
+            <Checkout />
+              </Protected> } />
+          <Route path="/bills" element={<Protected>
+                <Bills/>
+              </Protected>} />
         </Routes>
       </div>
     </>

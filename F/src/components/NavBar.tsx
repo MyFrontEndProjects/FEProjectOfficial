@@ -48,7 +48,7 @@ const OffcanvasExample = () => {
   return (
     <>
       <Container className="bg-dark m">
-        <Navbar expand="md" className="bg-dark py-0 fixed-top d-flex justify-content-around">
+        <Navbar expand="sm" className="bg-dark py-0 fixed-top d-flex justify-content-around">
 
           <Navbar.Brand className="d-flex d-md-flex d-lg-flex align-content-center justify-content-center justify-content-md-start justify-cotent-lg-start">
 
@@ -166,12 +166,18 @@ const OffcanvasExample = () => {
                       className="nav-item "
                     >
                       <NavDropdown.Item onClick={LogOut}>
-                        Logout
+                        Đăng xuất
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
                       <NavDropdown.Item className="text-black">
                         <NavLink to="/profile" className="nav-link text-black">
-                          My Profile
+                          Tài khoản
+                        </NavLink>
+                        <NavLink to="/bills" className="nav-link text-black">
+                          Danh sách hóa đơn
+                        </NavLink>
+                        <NavLink to="/cart" className="nav-link text-black">
+                          Giỏ hàng
                         </NavLink>
                       </NavDropdown.Item>
                     </NavDropdown>
@@ -192,12 +198,12 @@ const OffcanvasExample = () => {
                     >
                       <NavDropdown.Item href="#action3">
                         <NavLink to="/login" className="nav-link text-black">
-                          Login
+                          Đăng nhập
                         </NavLink>
                       </NavDropdown.Item>
                       <NavDropdown.Item href="#action4">
                         <NavLink to="/register" className="nav-link text-black">
-                          Register
+                          Đăng ký
                         </NavLink>
                       </NavDropdown.Item>
                     </NavDropdown>

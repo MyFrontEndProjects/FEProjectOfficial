@@ -122,7 +122,7 @@ const UserProfile = () => {
                       <th>#</th>
                       <th>Mã sản phẩm</th>
                       <th>Bình luận</th>
-                      <th>Tính năng</th>
+                      <th>Xem sản phẩm</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -137,14 +137,6 @@ const UserProfile = () => {
                               <i className="bi bi-eye" />
                             </Link>
                           </span>
-                          <span className="mx-1">
-                            <Link to={"productUpdate/" + item.id}>
-                              <i className="bi-pencil-square text-primary" />
-                            </Link>
-                          </span>
-                          {/* <span onClick={() => deleteItem(item.id)} className="mx-1">
-                       <i className="bi-trash text-danger" />
-                     </span> */}
                         </td>
                       </tr>
                     ))}
