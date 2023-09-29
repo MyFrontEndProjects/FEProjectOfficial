@@ -127,14 +127,6 @@ const Shop = () => {
 
 
 
-
-
-
-
-
-
-
-
   //thêm sản phẩm vào cart 
   async function handleAddToCart(productId: number, userId: number) {
     try {
@@ -149,7 +141,7 @@ const Shop = () => {
 
       let result = await fetch("http://127.0.0.1:8000/api/cart/add", {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(data),                           
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",
